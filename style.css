@@ -5,172 +5,161 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
 }
 
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
 /* Шапка */
 header {
-    background-color: #333;
-    color: white;
+    background-color: #222;
     padding: 20px 0;
 }
 
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
+header .logo img {
     width: 150px;
-    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
-/* Главный экран */
+/* Фоновый блок с текстом */
 .hero-section {
-    background-image: url('https://via.placeholder.com/1200x500'); /* Замените на свое изображение */
-    background-size: cover;
-    background-position: center;
+    background: url('https://via.placeholder.com/1600x600') no-repeat center center/cover;
     padding: 100px 0;
     color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-align: center;
 }
 
-.hero-content h2 {
-    font-size: 48px;
+.hero-section h2 {
+    font-size: 36px;
     margin-bottom: 20px;
 }
 
-.hero-content p {
-    font-size: 24px;
+.hero-section p {
+    font-size: 20px;
+    line-height: 1.5;
 }
 
 /* Секция категорий */
 .categories-section {
-    padding: 40px 0;
+    padding: 50px 0;
     background-color: #fff;
 }
 
-.categories-section h2 {
-    font-size: 32px;
+.center-text {
+    text-align: center;
     margin-bottom: 30px;
+}
+
+.center-text h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
 }
 
 .categories {
     display: flex;
     justify-content: space-around;
-    gap: 20px;
+    flex-wrap: wrap;
 }
 
 .category {
-    width: 250px;
+    width: 22%;
     text-align: center;
-    background-color: #fff;
-    border-radius: 8px;
+    margin: 20px 0;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease;
-}
-
-.category:hover {
-    transform: scale(1.05);
 }
 
 .category img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
+    max-width: 100%;
+    border-radius: 8px;
 }
 
 .category h3 {
-    font-size: 22px;
-    margin-top: 10px;
+    font-size: 24px;
+    margin: 15px 0;
 }
 
 .category p {
     font-size: 16px;
-    padding: 10px;
+    margin-bottom: 20px;
 }
 
 .category-link {
-    display: inline-block;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
     text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 20px;
     border-radius: 5px;
-    margin-top: 10px;
-    font-size: 16px;
     transition: background-color 0.3s;
 }
 
 .category-link:hover {
-    background-color: #0056b3;
+    background-color: #555;
 }
 
-/* Секции товаров */
+/* Секции продуктов */
 .product-section {
-    padding: 40px 0;
-    background-color: #fff;
+    padding: 50px 0;
+    background-color: #f9f9f9;
 }
 
 .product-section h2 {
+    text-align: center;
     font-size: 32px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .products {
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .product {
+    width: 30%;
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 250px;
     padding: 20px;
-    transition: transform 0.3s ease;
-}
-
-.product:hover {
-    transform: scale(1.05);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
 }
 
 .product img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    max-width: 100%;
     border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .product h3 {
     font-size: 20px;
-    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .product p {
     font-size: 18px;
-    margin: 10px 0;
+    margin-bottom: 20px;
 }
 
-button {
-    background-color: #28a745;
+.add-to-cart {
+    padding: 10px 20px;
+    background-color: #333;
     color: white;
     border: none;
-    padding: 10px 20px;
-    cursor: pointer;
     border-radius: 5px;
-    margin-top: 10px;
-    font-size: 16px;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
-button:hover {
-    background-color: #218838;
+.add-to-cart:hover {
+    background-color: #555;
 }
