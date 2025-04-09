@@ -1,219 +1,53 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Интернет-магазин Пенопласта и Декоров</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-    header {
-      background-color: #2f4f85;
-      color: white;
-      padding: 15px 0;
-      text-align: center;
-      position: relative;
-    }
-    header img {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      width: 50px;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-    }
-    .product {
-      background-color: white;
-      margin: 10px;
-      padding: 20px;
-      border-radius: 10px;
-      width: 220px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s ease;
-    }
-    .product:hover {
-      transform: translateY(-10px);
-    }
-    .product img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
-    .product h3 {
-      color: #2f4f85;
-      font-size: 1.2rem;
-      margin: 10px 0;
-    }
-    .product p {
-      font-size: 1rem;
-      color: #666;
-      margin-bottom: 15px;
-    }
-    .product .price {
-      font-size: 1.3rem;
-      color: #4CAF50;
-      margin-bottom: 15px;
-    }
-    .product input[type="number"] {
-      padding: 5px;
-      font-size: 1rem;
-      width: 60px;
-      text-align: center;
-    }
-    .product button {
-      padding: 10px 20px;
-      background-color: #2f4f85;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    .product button:hover {
-      background-color: #4CAF50;
-    }
-    .order-form {
-      margin-top: 20px;
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      width: 300px;
-      margin-left: auto;
-      margin-right: auto;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    .order-form input, .order-form select {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-    .order-form button {
-      width: 100%;
-      padding: 10px;
-      background-color: #2f4f85;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 1.1rem;
-    }
-    .order-form button:hover {
-      background-color: #4CAF50;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>Интернет-магазин Пенопласта и Декоров</h1>
-  <img src="logo.png" alt="Логотип">
-</header>
+    <!-- Шапка -->
+    <header>
+        <h1>Магазин</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Товары</a></li>
+                <li><a href="#">Корзина</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="container">
-  <div class="product" id="product1">
-    <img src="penoplast1.jpg" alt="Пенопласт 1">
-    <h3>Пенопласт 1</h3>
-    <p>Описание пенопласта 1</p>
-    <p class="price">500 ₽</p>
-    <input type="number" id="quantity1" value="1" min="1">
-    <button onclick="addToOrder('Пенопласт 1', 500, 'penoplast1')">Добавить в корзину</button>
-  </div>
+    <!-- Секция товаров -->
+    <section id="products">
+        <h2>Наши товары</h2>
+        <div class="product" data-id="1">
+            <img src="https://via.placeholder.com/200" alt="Товар 1">
+            <h3>Товар 1</h3>
+            <p>Цена: 1000 руб.</p>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product" data-id="2">
+            <img src="https://via.placeholder.com/200" alt="Товар 2">
+            <h3>Товар 2</h3>
+            <p>Цена: 1500 руб.</p>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <!-- Можно добавить больше товаров -->
+    </section>
 
-  <div class="product" id="product2">
-    <img src="penoplast2.jpg" alt="Пенопласт 2">
-    <h3>Пенопласт 2</h3>
-    <p>Описание пенопласта 2</p>
-    <p class="price">450 ₽</p>
-    <input type="number" id="quantity2" value="1" min="1">
-    <button onclick="addToOrder('Пенопласт 2', 450, 'penoplast2')">Добавить в корзину</button>
-  </div>
+    <!-- Корзина -->
+    <section id="cart">
+        <h2>Корзина</h2>
+        <ul id="cart-items">
+            <!-- Сюда будут добавляться товары -->
+        </ul>
+        <p id="total">Общая сумма: 0 руб.</p>
+        <button id="checkout">Оформить заказ</button>
+    </section>
 
-  <!-- Пример декора -->
-  <div class="product" id="decor1">
-    <img src="decor1.jpg" alt="Декор 1">
-    <h3>Декор 1</h3>
-    <p>Описание декора 1</p>
-    <p class="price">300 ₽</p>
-    <input type="number" id="decor_quantity1" value="1" min="1">
-    <button onclick="addToOrder('Декор 1', 300, 'decor1')">Добавить в корзину</button>
-  </div>
-
-  <!-- Дополнительные товары (пенопласт и декоры) можно добавить по аналогии -->
-
-</div>
-
-<div class="order-form">
-  <h3>Оформление заказа</h3>
-  <input type="text" id="name" placeholder="Введите ваше имя" required>
-  <input type="tel" id="phone" placeholder="Введите номер телефона" required>
-  <select id="delivery">
-    <option value="preorder">Предзаказ</option>
-    <option value="delivery">Доставка</option>
-  </select>
-  <button onclick="submitOrder()">Оформить заказ</button>
-</div>
-
-<script>
-  const cart = [];
-
-  function addToOrder(productName, price, productId) {
-    const quantity = document.getElementById(productId).querySelector('input').value;
-    cart.push({ productName, price, quantity });
-    alert(`${productName} добавлен в корзину!`);
-  }
-
-  function submitOrder() {
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const delivery = document.getElementById("delivery").value;
-
-    const orderDetails = cart.map(item => `${item.productName} - ${item.quantity} шт. по ${item.price} ₽`).join("\n");
-    const orderMessage = `
-      Новый заказ:
-      Имя: ${name}
-      Телефон: ${phone}
-      Доставка: ${delivery}
-      Товары:
-      ${orderDetails}
-    `;
-
-    sendOrderToDiscord(orderMessage);
-  }
-
-  function sendOrderToDiscord(message) {
-    const webhookURL = 'ВАШ_ДИСКОРД_ВЕБХУК_URL';
-
-    fetch(webhookURL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        content: message
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      alert("Ваш заказ оформлен!");
-    })
-    .catch(error => {
-      console.error("Ошибка при отправке заказа в Discord:", error);
-    });
-  }
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
