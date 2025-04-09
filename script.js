@@ -1,133 +1,64 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// Массив товаров
+const products = [
+    { id: 1, name: 'Пенопласт 1', price: 500, category: 'penoplast' },
+    { id: 2, name: 'Пенопласт 2', price: 600, category: 'penoplast' },
+    { id: 3, name: 'Декор 1', price: 800, category: 'decor' },
+    { id: 4, name: 'Декор 2', price: 900, category: 'decor' },
+    { id: 5, name: 'Арт изделие 1', price: 1200, category: 'art' },
+    { id: 6, name: 'Арт изделие 2', price: 1500, category: 'art' },
+    { id: 7, name: 'Другие товары 1', price: 700, category: 'other' },
+    { id: 8, name: 'Другие товары 2', price: 750, category: 'other' }
+];
+
+// Корзина
+let cart = [];
+
+// Функция добавления товара в корзину
+function addToCart(productId) {
+    const product = products.find(p => p.id === productId);
+    if (product) {
+        cart.push(product);
+        updateCart();
+    }
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+// Функция обновления корзины
+function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    const total = document.getElementById('total');
+    
+    // Очищаем список товаров в корзине
+    cartItems.innerHTML = '';
+    
+    let totalPrice = 0;
+    
+    // Добавляем товары в корзину
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ${item.price} руб.`;
+        cartItems.appendChild(li);
+        totalPrice += item.price;
+    });
+
+    // Обновляем общую сумму
+    total.textContent = `Общая сумма: ${totalPrice} руб.`;
 }
 
-/* Шапка */
-header {
-    background-color: #333;
-    color: white;
-    padding: 20px 0;
-}
+// Добавляем обработчики событий для кнопок "Добавить в корзину"
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const productId = parseInt(button.closest('.product').getAttribute('data-id'));
+        addToCart(productId);
+    });
+});
 
-header .container {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-header nav ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-header nav ul li {
-    margin: 0 15px;
-}
-
-header nav ul li a {
-    color: white;
-    text-decoration: none;
-}
-
-.hero-section {
-    background-image: url('https://via.placeholder.com/1200x400');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 100px 0;
-    text-align: center;
-}
-
-.hero-section h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.hero-section p {
-    font-size: 18px;
-}
-
-.product-section {
-    padding: 40px 0;
-}
-
-.product-section h2 {
-    text-align: center;
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.products {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.product {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 200px;
-}
-
-.product img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-#cart {
-    background-color: white;
-    padding: 40px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#cart-items {
-    list-style-type: none;
-    padding: 0;
-}
-
-#checkout {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-top: 20px;
-}
-
-#checkout:hover {
-    background-color: #0056b3;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
+// Обработчик для кнопки "Оформить заказ"
+document.getElementById('checkout').addEventListener('click', () => {
+    if (cart.length > 0) {
+        alert('Заказ оформлен! Спасибо за покупку!');
+        cart = [];
+        updateCart();
+    } else {
+        alert('Корзина пуста!');
+    }
+});
