@@ -1,1 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пенопласт - Магазин декоративных товаров</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Шапка */
+        header {
+            background-color: #222;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header .logo img {
+            max-width: 150px;
+        }
+
+        /* Фоновый блок */
+        #hero {
+            background: url('https://via.placeholder.com/1920x400') no-repeat center center/cover;
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+
+        #hero h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        #hero p {
+            font-size: 20px;
+        }
+
+        /* Секция товаров */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #penoplast-products h2 {
+            text-align: center;
+            margin: 40px 0;
+            font-size: 32px;
+            color: #333;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .product p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #444;
+        }
+
+        /* Мобильная адаптация */
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            #hero h2 {
+                font-size: 28px;
+            }
+
+            #hero p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="logo">
+            <a href="#">
+                <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png?ex=67f80914&is=67f6b794&hm=959258616c382d03abc8eba06e02703ca23e0fd4fbe036c7a07a789bf0e97ed4&" alt="Логотип">
+            </a>
+        </div>
+    </header>
+
+    <!-- Фоновый блок с текстом -->
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Пенопласт для декора</h2>
+            <p>Широкий ассортимент товаров из пенопласта для вашего интерьера.</p>
+        </div>
+    </section>
+
+    <!-- Секция товаров: Пенопласт -->
+    <section id="penoplast-products">
+        <div class="container">
+            <h2>Наши товары из Пенопласта</h2>
+            <div class="products">
+                <!-- Продукт 1 -->
+                <div class="product" data-id="1">
+                    <img src="https://via.placeholder.com/300x200" alt="Пенопласт 1">
+                    <h3>Пенопласт 1</h3>
+                    <p>Цена: 800 грн.</p>
+                    <p>Товары для декора, выполненные из пенопласта. Идеально подходят для создания фигур и различных декоративных элементов.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <!-- Продукт 2 -->
+                <div class="product" data-id="2">
+                    <img src="https://via.placeholder.com/300x200" alt="Пенопласт 2">
+                    <h3>Пенопласт 2</h3>
+                    <p>Цена: 600 грн.</p>
+                    <p>Легкие и прочные материалы для декора. Подходит для различных рукоделий и создания декоративных объектов.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <!-- Продукт 3 -->
+                <div class="product" data-id="3">
+                    <img src="https://via.placeholder.com/300x200" alt="Пенопласт 3">
+                    <h3>Пенопласт 3</h3>
+                    <p>Цена: 750 грн.</p>
+                    <p>Этот пенопласт подходит для создания объемных фигур и объектов для интерьера, с возможностью покраски.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <!-- Продукт 4 -->
+                <div class="product" data-id="4">
+                    <img src="https://via.placeholder.com/300x200" alt="Пенопласт 4">
+                    <h3>Пенопласт 4</h3>
+                    <p>Цена: 900 грн.</p>
+                    <p>Универсальный пенопласт для различных декоративных целей. Прочный и легкий в обработке.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <!-- Продукт 5 -->
+                <div class="product" data-id="5">
+                    <img src="https://via.placeholder.com/300x200" alt="Пенопласт 5">
+                    <h3>Пенопласт 5</h3>
+                    <p>Цена: 950 грн.</p>
+                    <p>Декоративный пенопласт для создания оригинальных фигур, ландшафтных объектов и декорации на праздники.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <!-- Продукт 6 -->
+                <div class="product" data-id="6">
+                    <img src="https://via.placeholder.com/300x200" alt="Пенопласт 6">
+                    <h3>Пенопласт 6</h3>
+                    <p>Цена: 850 грн.</p>
+                    <p>Отличный вариант для создания поделок и декоративных элементов. Идеален для работ с детьми.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
 
