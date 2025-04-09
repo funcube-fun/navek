@@ -3,49 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магазин</title>
+    <title>Магазин декоративных товаров</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- Шапка -->
     <header>
-        <h1>Магазин</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Главная</a></li>
-                <li><a href="#">Товары</a></li>
-                <li><a href="#">Корзина</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1>Магазин декоративных товаров</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#penoplast">Пенопласт</a></li>
+                    <li><a href="#decor">Декор</a></li>
+                    <li><a href="#art">Арт изделия</a></li>
+                    <li><a href="#other">Другие товары</a></li>
+                    <li><a href="#cart">Корзина</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <!-- Секция товаров -->
-    <section id="products">
-        <h2>Наши товары</h2>
-        <div class="product" data-id="1">
-            <img src="https://via.placeholder.com/200" alt="Товар 1">
-            <h3>Товар 1</h3>
-            <p>Цена: 1000 руб.</p>
-            <button class="add-to-cart">Добавить в корзину</button>
+    <!-- Фоновый блок с текстом -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <h2>Добро пожаловать в наш магазин!</h2>
+            <p>Здесь вы найдете уникальные товары для декора вашего дома и сада.</p>
         </div>
-        <div class="product" data-id="2">
-            <img src="https://via.placeholder.com/200" alt="Товар 2">
-            <h3>Товар 2</h3>
-            <p>Цена: 1500 руб.</p>
-            <button class="add-to-cart">Добавить в корзину</button>
+    </section>
+
+    <!-- Секция товаров: Пенопласт -->
+    <section id="penoplast" class="product-section">
+        <div class="container">
+            <h2>Пенопласт</h2>
+            <div class="products">
+                <!-- Товар 1 -->
+                <div class="product" data-id="1">
+                    <img src="https://via.placeholder.com/200" alt="Пенопласт 1">
+                    <h3>Пенопласт 1</h3>
+                    <p>Цена: 500 руб.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <!-- Товар 2 -->
+                <div class="product" data-id="2">
+                    <img src="https://via.placeholder.com/200" alt="Пенопласт 2">
+                    <h3>Пенопласт 2</h3>
+                    <p>Цена: 600 руб.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+            </div>
         </div>
-        <!-- Можно добавить больше товаров -->
+    </section>
+
+    <!-- Секция товаров: Декор -->
+    <section id="decor" class="product-section">
+        <div class="container">
+            <h2>Декор</h2>
+            <div class="products">
+                <!-- Товар 1 -->
+                <div class="product" data-id="3">
+                    <img src="https://via.placeholder.com/200" alt="Декор 1">
+                    <h3>Декор 1</h3>
+                    <p>Цена: 800 руб.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <!-- Товар 2 -->
+                <div class="product" data-id="4">
+                    <img src="https://via.placeholder.com/200" alt="Декор 2">
+                    <h3>Декор 2</h3>
+                    <p>Цена: 900 руб.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция товаров: Арт изделия -->
+    <section id="art" class="product-section">
+        <div class="container">
+            <h2>Арт изделия</h2>
+            <div class="products">
+                <!-- Товар 1 -->
+                <div class="product" data-id="5">
+                    <img src="https://via.placeholder.com/200" alt="Арт изделие 1">
+                    <h3>Арт изделие 1</h3>
+                    <p>Цена: 1200 руб.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <!-- Товар 2 -->
+                <div class="product" data-id="6">
+                    <img src="https://via.placeholder.com/200" alt="Арт изделие 2">
+                    <h3>Арт изделие 2</h3>
+                    <p>Цена: 1500 руб.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция товаров: Другие товары -->
+    <section id="other" class="product-section">
+        <div class="container">
+            <h2>Другие товары</h2>
+            <div class="products">
+                <!-- Товар 1 -->
+                <div class="product" data-id="7">
+                    <img src="https://via.placeholder.com/200" alt="Другие товары 1">
+                    <h3>Другие товары 1</h3>
+                    <p>Цена: 700 руб.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <!-- Товар 2 -->
+                <div class="product" data-id="8">
+                    <img src="https://via.placeholder.com/200" alt="Другие товары 2">
+                    <h3>Другие товары 2</h3>
+                    <p>Цена: 750 руб.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Корзина -->
-    <section id="cart">
-        <h2>Корзина</h2>
-        <ul id="cart-items">
-            <!-- Сюда будут добавляться товары -->
-        </ul>
-        <p id="total">Общая сумма: 0 руб.</p>
-        <button id="checkout">Оформить заказ</button>
+    <section id="cart" class="cart-section">
+        <div class="container">
+            <h2>Корзина</h2>
+            <ul id="cart-items">
+                <!-- Сюда добавляются товары -->
+            </ul>
+            <p id="total">Общая сумма: 0 руб.</p>
+            <button id="checkout">Оформить заказ</button>
+        </div>
     </section>
 
     <script src="script.js"></script>
