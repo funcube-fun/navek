@@ -116,6 +116,41 @@
             .category {
                 width: 100%;
             }
+            
+            /* Логотип и шапка */
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .logo img {
+                width: 120px;
+            }
+
+            /* Навигация на мобильных */
+            nav.navbar a {
+                display: inline-block;
+                margin: 10px 0;
+            }
+
+            /* Разделы контента */
+            .categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            /* Контакты и адреса */
+            .info-section {
+                padding: 30px 20px;
+            }
         }
 
         /* Стиль для кнопок */
@@ -295,17 +330,13 @@
         </div>
     </section>
 
-    <!-- Контакты -->
+    <!-- Контакты и Адреса -->
     <section id="contacts" class="info-section">
-        <h2>Контакты</h2>
+        <h2>Контакты и Адреса</h2>
         <p><span class="icon">📞</span>Телефон: +38 (050) 123-45-67</p>
         <p><span class="icon">✉️</span>Email: info@decor-shop.ua</p>
         <p>Мы всегда рады ответить на ваши вопросы!</p>
-    </section>
-
-    <!-- Адреса -->
-    <section id="addresses" class="info-section">
-        <h2>Наши адреса</h2>
+        <h3>Наши адреса</h3>
         <p>г. Киев, ул. Крещатик, 22</p>
         <p>г. Львов, пл. Рынок, 5</p>
         <p>г. Одесса, ул. Дерибасовская, 10</p>
