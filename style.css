@@ -169,41 +169,6 @@ body {
     color: #333;
     max-width: 800px;
     margin: 10px auto;
-    .about-us-section {
-    background: linear-gradient(135deg, #f2f2f2, #ffffff);
-    padding: 80px 20px;
-    text-align: center;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
-    border-top: 2px solid #e0e0e0;
-    border-bottom: 2px solid #e0e0e0;
-}
-
-.about-us-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: #333;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
-}
-
-.about-us-section p {
-    font-size: 1.25rem;
-    line-height: 1.8;
-    color: #444;
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 0 10px;
-}
-
-@media (max-width: 768px) {
-    .about-us-section h2 {
-        font-size: 2rem;
-    }
-
-    .about-us-section p {
-        font-size: 1.1rem;
-    }
-}
-
-}
+   
 
 }
