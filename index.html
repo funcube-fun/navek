@@ -5,6 +5,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин декоративных товаров</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* === Категории === */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .category {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            overflow: hidden;
+            width: 260px;
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+        }
+
+        .category img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .category h3 {
+            margin: 15px 0 10px;
+            font-size: 1.3rem;
+            color: #333;
+        }
+
+        .category p {
+            font-size: 1rem;
+            padding: 0 15px;
+            color: #666;
+        }
+
+        .category-link {
+            display: inline-block;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .category-link:hover {
+            background-color: #0056b3;
+        }
+
+        /* === О нас === */
+        .about-us-section {
+            background: #f7f7f7;
+            padding: 80px 20px;
+            text-align: center;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .about-us-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .about-us-section p {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 20px auto;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* === Футер === */
+        .footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.95rem;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,7 +107,7 @@
         <div class="container header-container">
             <div class="logo">
                 <a href="#">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png?ex=67f80914&is=67f6b794&hm=959258616c382d03abc8eba06e02703ca23e0fd4fbe036c7a07a789bf0e97ed4&" alt="Логотип">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png" alt="Логотип">
                 </a>
             </div>
         </div>
@@ -21,7 +115,7 @@
 
     <!-- Фоновый блок с текстом -->
     <section id="hero" class="hero-section">
-        <img src="https://cdn.discordapp.com/attachments/1340715579203518507/1359611563467866122/29fb966c2b0bb663.jpg?ex=67f81c71&is=67f6caf1&hm=dab7260a94675150fad5955e0a05f173db133a3593cbf647adf855863acd94b4&" alt="Логотип">
+        <img src="https://cdn.discordapp.com/attachments/1340715579203518507/1359611563467866122/29fb966c2b0bb663.jpg" alt="Фон">
         <div class="hero-content">
             <h2>Добро пожаловать в наш магазин!</h2>
             <p>Здесь вы найдете уникальные товары для декора вашего дома и сада.</p>
@@ -35,35 +129,35 @@
                 <h2>Наши категории</h2>
             </div>
             <div class="categories">
-                <div class="category" id="penoplast">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg?ex=67f80a77&is=67f6b8f7&hm=6123f805f8fab8227983c49d81227a9404d1c0780a8f4f1eaa356515141389d2&" alt="Пенопласт">
+                <div class="category">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Пенопласт">
                     <h3>Пенопласт</h3>
-                    <p>Товары для декора, выполненные из пенопласта.</p>
-                    <a href="penoplast.html" class="category-link">Посмотреть товары</a>
+                    <p>Декоративные формы и заготовки из пенопласта.</p>
+                    <a href="penoplast.html" class="category-link">Смотреть</a>
                 </div>
-                <div class="category" id="penoplast">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg?ex=67f80a77&is=67f6b8f7&hm=6123f805f8fab8227983c49d81227a9404d1c0780a8f4f1eaa356515141389d2&" alt="Пенопласт">
+                <div class="category">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Упаковка">
                     <h3>Упаковка</h3>
-                    <p>Товары для упаковки, выполненные из пенопласта.</p>
-                    <a href="upakovkapenoplast.html" class="category-link">Посмотреть товары</a>
+                    <p>Материалы и формы для стильной упаковки.</p>
+                    <a href="upakovkapenoplast.html" class="category-link">Смотреть</a>
                 </div>
-                <div class="category" id="decor">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359591266647802080/1.png?ex=67f80989&is=67f6b809&hm=8e201b5b3f3e66376fa236250964becfd6fb88d09130cae11cba0b0d0a3871c8&" alt="Декор">
+                <div class="category">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359591266647802080/1.png" alt="Декор">
                     <h3>Декор</h3>
-                    <p>Красивые декоративные элементы для дома.</p>
-                    <a href="decor.html" class="category-link">Посмотреть товары</a>
+                    <p>Элементы для интерьера и экстерьера.</p>
+                    <a href="decor.html" class="category-link">Смотреть</a>
                 </div>
-                <div class="category" id="art">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359606233774166076/images.png?ex=67f8177a&is=67f6c5fa&hm=2ce3ba7911fd24b60e88a2f1b852b262e02db2c1a3af961f8328472988e14970&" alt="Арт изделия">
+                <div class="category">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359606233774166076/images.png" alt="Арт">
                     <h3>Арт изделия</h3>
-                    <p>Эксклюзивные арт-объекты для интерьера.</p>
-                    <a href="art.html" class="category-link">Посмотреть товары</a>
+                    <p>Авторские и дизайнерские арт-объекты.</p>
+                    <a href="art.html" class="category-link">Смотреть</a>
                 </div>
-                <div class="category" id="other">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png?ex=67f80914&is=67f6b794&hm=959258616c382d03abc8eba06e02703ca23e0fd4fbe036c7a07a789bf0e97ed4&" alt="Другие товары">
+                <div class="category">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png" alt="Другие">
                     <h3>Другие товары</h3>
-                    <p>Дополнительные товары для творчества и декора.</p>
-                    <a href="other.html" class="category-link">Посмотреть товары</a>
+                    <p>Все, что не вошло в основные категории.</p>
+                    <a href="other.html" class="category-link">Смотреть</a>
                 </div>
             </div>
         </div>
@@ -75,7 +169,7 @@
             <h2>Пенопласт</h2>
             <div class="products">
                 <div class="product" data-id="1">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg?ex=67f80a77&is=67f6b8f7&hm=6123f805f8fab8227983c49d81227a9404d1c0780a8f4f1eaa356515141389d2&" alt="Пенопласт 1">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Пенопласт 1">
                     <h3>Пенопласт 1</h3>
                     <p>Цена: 800 грн.</p>
                     <button class="add-to-cart">Добавить в корзину</button>
@@ -95,18 +189,21 @@
         <div class="container">
             <h2>О нас</h2>
             <p>
-                Наша компания занимается продажей декоративных товаров для дома и сада. 
-                Мы верим, что каждый уголок вашего дома может стать особенным благодаря уникальным деталям. 
-                В нашем ассортименте вы найдете как классические, так и современные элементы декора, 
-                созданные с любовью и вниманием к качеству. Мы работаем напрямую с производителями, 
-                чтобы предложить вам лучшие цены и оригинальные изделия.
+                Мы — команда, увлечённая декором. Уже с 2006 года мы помогаем создавать уют и стиль в каждом доме. 
+                Вдохновляем на творчество, поставляем только качественные изделия и стремимся быть ближе к каждому клиенту.
             </p>
             <p>
-                Мы стремимся сделать ваш опыт покупок максимально приятным: 
-                удобный интерфейс сайта, быстрая доставка и отзывчивая поддержка — всё для вашего комфорта.
+                Наша цель — превратить обычное пространство в место с душой. Мы верим, что детали решают всё.
             </p>
         </div>
     </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2006–2025 Магазин декоративных товаров. Все права защищены.</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
