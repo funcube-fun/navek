@@ -10,7 +10,7 @@
         header {
             background-color: #fff;
             padding: 20px 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header-container {
@@ -46,6 +46,39 @@
             color: #fff;
         }
 
+        /* Гамбургер меню для мобильных устройств */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .hamburger-menu span {
+            width: 25px;
+            height: 4px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .navbar.active {
+                display: flex;
+            }
+        }
+
         /* Контейнер */
         .container {
             width: 90%;
@@ -76,7 +109,7 @@
             border-radius: 8px;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .category img {
@@ -107,6 +140,11 @@
             transition: background 0.3s;
         }
 
+        .category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
         .category a:hover {
             background-color: #0056b3;
         }
@@ -116,59 +154,9 @@
             .category {
                 width: 100%;
             }
-            
-            /* Логотип и шапка */
-            .header-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .logo img {
-                width: 120px;
-            }
-
-            /* Навигация на мобильных */
-            nav.navbar a {
-                display: inline-block;
-                margin: 10px 0;
-            }
-
-            /* Разделы контента */
-            .categories {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-content h2 {
-                font-size: 1.8rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            /* Контакты и адреса */
-            .info-section {
-                padding: 30px 20px;
-            }
         }
 
-        /* Стиль для кнопок */
-        .add-to-cart {
-            border-radius: 6px;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .add-to-cart:hover {
-            background-color: #0056b3;
-        }
-
-        /* Для разделов Контакты и Адреса */
+        /* Секция контактов и адресов */
         .info-section {
             padding: 60px 20px;
             background-color: #f7f7f7;
@@ -189,13 +177,10 @@
             line-height: 1.6;
         }
 
-        /* Футер */
-        .footer {
-            background-color: #222;
-            color: #aaa;
-            text-align: center;
-            padding: 20px 10px;
-            font-size: 0.95rem;
+        /* Иконки для контактов */
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
         }
 
         /* Плавная прокрутка */
@@ -203,14 +188,15 @@
             scroll-behavior: smooth;
         }
 
-        /* Иконки для контактов */
-        .icon {
-            font-size: 1.5rem;
-            margin-right: 8px;
+        /* Карта на странице */
+        .map-container {
+            margin-top: 20px;
+            position: relative;
+            height: 400px;
+            width: 100%;
         }
 
-        /* Стиль для кнопок в шапке */
-        nav.navbar a,
+        /* Стиль для кнопок */
         .add-to-cart {
             border-radius: 6px;
             padding: 10px 15px;
@@ -219,11 +205,12 @@
             border: none;
             cursor: pointer;
             text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
         }
 
-        nav.navbar a:hover,
         .add-to-cart:hover {
             background-color: #0056b3;
+            transform: scale(1.1); /* Увеличение кнопки */
         }
     </style>
 </head>
@@ -243,6 +230,11 @@
                 <a href="#contacts">Контакты</a>
                 <a href="#addresses">Адреса</a>
             </nav>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </header>
 
@@ -289,66 +281,4 @@
                 <div class="category" id="other">
                     <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png" alt="Другие товары">
                     <h3>Другие товары</h3>
-                    <p>Дополнительные товары для творчества и декора.</p>
-                    <a href="other.html" class="category-link">Посмотреть товары</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Секция товаров: Пенопласт -->
-    <section id="penoplast-products" class="product-section">
-        <div class="container">
-            <h2>Пенопласт</h2>
-            <div class="products">
-                <div class="product" data-id="1">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Пенопласт 1">
-                    <h3>Пенопласт 1</h3>
-                    <p>Цена: 800 грн.</p>
-                    <button class="add-to-cart">Добавить в корзину</button>
-                </div>
-                <div class="product" data-id="2">
-                    <img src="https://via.placeholder.com/200" alt="Пенопласт 2">
-                    <h3>Пенопласт 2</h3>
-                    <p>Цена: 600 грн.</p>
-                    <button class="add-to-cart">Добавить в корзину</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- О нас -->
-    <section id="about-us" class="about-us-section">
-        <div class="container">
-            <h2>О нас</h2>
-            <p>
-                Мы — команда, увлечённая декором. Уже с 2006 года мы помогаем создавать уют и стиль в каждом доме.
-            </p>
-            <p>
-                Вдохновляем на творчество, поставляем только качественные изделия и стремимся быть ближе к каждому клиенту.
-            </p>
-        </div>
-    </section>
-
-    <!-- Контакты и Адреса -->
-    <section id="contacts" class="info-section">
-        <h2>Контакты и Адреса</h2>
-        <p><span class="icon">📞</span>Телефон: +38 (050) 123-45-67</p>
-        <p><span class="icon">✉️</span>Email: info@decor-shop.ua</p>
-        <p>Мы всегда рады ответить на ваши вопросы!</p>
-        <h3>Наши адреса</h3>
-        <p>г. Киев, ул. Крещатик, 22</p>
-        <p>г. Львов, пл. Рынок, 5</p>
-        <p>г. Одесса, ул. Дерибасовская, 10</p>
-    </section>
-
-    <!-- Футер -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2006–2025 Магазин декоративных товаров. Все права защищены.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                    <p>Дополнитель
