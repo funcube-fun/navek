@@ -1,154 +1,240 @@
 <!DOCTYPE html>
 <html lang="ua">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Магазин декоративных товаров</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Стили для навигации */
-    nav.navbar {
-      background-color: #fff;
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      text-align: center;
-      padding: 10px 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин декоративных товаров</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Стили для навигации */
+        nav.navbar {
+            background-color: #fff;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    nav.navbar a {
-      margin: 0 15px;
-      font-size: 1rem;
-      text-decoration: none;
-      color: #333;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
+        nav.navbar a {
+            margin: 0 15px;
+            font-size: 1rem;
+            text-decoration: none;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
 
-    nav.navbar a:hover {
-      background-color: #007bff;
-      color: #fff;
-    }
+        nav.navbar a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
 
-    /* Контакты и адреса */
-    .info-section {
-      padding: 60px 20px;
-      background-color: #f7f7f7;
-      text-align: center;
-    }
+        /* Адаптивность для мобильных устройств */
+        @media (max-width: 768px) {
+            nav.navbar a {
+                display: block;
+                margin: 10px 0;
+            }
+        }
 
-    .info-section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #333;
-    }
+        /* Контакты и адреса */
+        .info-section {
+            padding: 60px 20px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
 
-    .info-section p {
-      font-size: 1.1rem;
-      color: #555;
-      max-width: 800px;
-      margin: 0 auto 10px;
-      line-height: 1.6;
-    }
+        .info-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-    /* Футер */
-    .footer {
-      background-color: #222;
-      color: #aaa;
-      text-align: center;
-      padding: 20px 10px;
-      font-size: 0.95rem;
-    }
-  </style>
+        .info-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 10px;
+            line-height: 1.6;
+        }
+
+        /* Футер */
+        .footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 0.95rem;
+        }
+
+        /* Плавная прокрутка */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Иконки для контактов */
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
+        }
+
+        /* Общие стили для кнопок */
+        .navbar a,
+        .add-to-cart {
+            border-radius: 6px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .navbar a:hover,
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+
+        /* Для красивого отображения с контейнерами */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Шапка -->
-  <header>
-    <div class="container header-container">
-      <div class="logo">
-        <a href="#">
-          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png" alt="Логотип" />
-        </a>
-      </div>
-    </div>
-  </header>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png" alt="Логотип">
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <!-- Навигация -->
-  <nav class="navbar">
-    <a href="#about-us">О нас</a>
-    <a href="#penoplast-products">Товары</a>
-    <a href="#contacts">Контакты</a>
-    <a href="#addresses">Адреса</a>
-  </nav>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <a href="#about-us">О нас</a>
+        <a href="#penoplast-products">Товары</a>
+        <a href="#contacts">Контакты</a>
+        <a href="#addresses">Адреса</a>
+    </nav>
 
-  <!-- Блок приветствия -->
-  <section id="hero" class="hero-section">
-    <img src="https://cdn.discordapp.com/attachments/1340715579203518507/1359611563467866122/29fb966c2b0bb663.jpg" alt="Фон" />
-    <div class="hero-content">
-      <h2>Добро пожаловать в наш магазин!</h2>
-      <p>Здесь вы найдете уникальные товары для декора вашего дома и сада.</p>
-    </div>
-  </section>
+    <!-- Фоновый блок с текстом -->
+    <section id="hero" class="hero-section">
+        <img src="https://cdn.discordapp.com/attachments/1340715579203518507/1359611563467866122/29fb966c2b0bb663.jpg" alt="Фон">
+        <div class="hero-content">
+            <h2>Добро пожаловать в наш магазин!</h2>
+            <p>Здесь вы найдете уникальные товары для декора вашего дома и сада.</p>
+        </div>
+    </section>
 
-  <!-- Категории -->
-  <section id="categories" class="categories-section">
-    <div class="container">
-      <div class="center-text">
-        <h2>Наши категории</h2>
-      </div>
-      <div class="categories">
-        <!-- Категории тут (смотри выше код, повторяться не будем) -->
-      </div>
-    </div>
-  </section>
+    <!-- Секция категорий -->
+    <section id="categories" class="categories-section">
+        <div class="container">
+            <div class="center-text">
+                <h2>Наши категории</h2>
+            </div>
+            <div class="categories">
+                <div class="category" id="penoplast">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Пенопласт">
+                    <h3>Пенопласт</h3>
+                    <p>Товары для декора, выполненные из пенопласта.</p>
+                    <a href="penoplast.html" class="category-link">Посмотреть товары</a>
+                </div>
+                <div class="category" id="penoplast">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Пенопласт">
+                    <h3>Упаковка</h3>
+                    <p>Товары для упаковки, выполненные из пенопласта.</p>
+                    <a href="upakovkapenoplast.html" class="category-link">Посмотреть товары</a>
+                </div>
+                <div class="category" id="decor">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359591266647802080/1.png" alt="Декор">
+                    <h3>Декор</h3>
+                    <p>Красивые декоративные элементы для дома.</p>
+                    <a href="decor.html" class="category-link">Посмотреть товары</a>
+                </div>
+                <div class="category" id="art">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359606233774166076/images.png" alt="Арт изделия">
+                    <h3>Арт изделия</h3>
+                    <p>Эксклюзивные арт-объекты для интерьера.</p>
+                    <a href="art.html" class="category-link">Посмотреть товары</a>
+                </div>
+                <div class="category" id="other">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png" alt="Другие товары">
+                    <h3>Другие товары</h3>
+                    <p>Дополнительные товары для творчества и декора.</p>
+                    <a href="other.html" class="category-link">Посмотреть товары</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Товары -->
-  <section id="penoplast-products" class="product-section">
-    <div class="container">
-      <h2>Пенопласт</h2>
-      <div class="products">
-        <!-- Продукты тут -->
-      </div>
-    </div>
-  </section>
+    <!-- Секция товаров: Пенопласт -->
+    <section id="penoplast-products" class="product-section">
+        <div class="container">
+            <h2>Пенопласт</h2>
+            <div class="products">
+                <div class="product" data-id="1">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Пенопласт 1">
+                    <h3>Пенопласт 1</h3>
+                    <p>Цена: 800 грн.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <div class="product" data-id="2">
+                    <img src="https://via.placeholder.com/200" alt="Пенопласт 2">
+                    <h3>Пенопласт 2</h3>
+                    <p>Цена: 600 руб.</p>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- О нас -->
-  <section id="about-us" class="about-us-section">
-    <div class="container">
-      <h2>О нас</h2>
-      <p>
-        Мы — команда, увлечённая декором. Уже с 2006 года мы помогаем создавать уют и стиль в каждом доме.
-      </p>
-      <p>
-        Вдохновляем на творчество, поставляем только качественные изделия и стремимся быть ближе к каждому клиенту.
-      </p>
-    </div>
-  </section>
+    <!-- О нас -->
+    <section id="about-us" class="about-us-section">
+        <div class="container">
+            <h2>О нас</h2>
+            <p>
+                Мы — команда, увлечённая декором. Уже с 2006 года мы помогаем создавать уют и стиль в каждом доме.
+            </p>
+            <p>
+                Вдохновляем на творчество, поставляем только качественные изделия и стремимся быть ближе к каждому клиенту.
+            </p>
+        </div>
+    </section>
 
-  <!-- Контакты -->
-  <section id="contacts" class="info-section">
-    <h2>Контакты</h2>
-    <p>Телефон: +38 (050) 123-45-67</p>
-    <p>Email: info@decor-shop.ua</p>
-    <p>Мы всегда рады ответить на ваши вопросы!</p>
-  </section>
+    <!-- Контакты -->
+    <section id="contacts" class="info-section">
+        <h2>Контакты</h2>
+        <p><span class="icon">📞</span>Телефон: +38 (050) 123-45-67</p>
+        <p><span class="icon">✉️</span>Email: info@decor-shop.ua</p>
+        <p>Мы всегда рады ответить на ваши вопросы!</p>
+    </section>
 
-  <!-- Адреса -->
-  <section id="addresses" class="info-section">
-    <h2>Наши адреса</h2>
-    <p>г. Киев, ул. Крещатик, 22</p>
-    <p>г. Львов, пл. Рынок, 5</p>
-    <p>г. Одесса, ул. Дерибасовская, 10</p>
-  </section>
+    <!-- Адреса -->
+    <section id="addresses" class="info-section">
+        <h2>Наши адреса</h2>
+        <p>г. Киев, ул. Крещатик, 22</p>
+        <p>г. Львов, пл. Рынок, 5</p>
+        <p>г. Одесса, ул. Дерибасовская, 10</p>
+    </section>
 
-  <!-- Футер -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2006–2025 Магазин декоративных товаров. Все права защищены.</p>
-    </div>
-  </footer>
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2006–2025 Магазин декоративных товаров. Все права защищены.</p>
+        </div>
+    </footer>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
