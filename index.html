@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="ua">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Магазин декоративных товаров</title>
     <style>
-        /* ===== ОБЩИЙ СТИЛЬ ===== */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -17,45 +16,44 @@
             margin: 0 auto;
         }
 
-        /* ===== ХЕДЕР ===== */
+        /* Хедер */
+        header {
+            background-color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
         .header-container {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            padding: 10px 0;
-            gap: 20px;
+            justify-content: space-between;
+            padding: 0 20px;
         }
 
         .logo img {
-            max-width: 150px;
-            height: auto;
+            width: 150px;
         }
 
-        .header-text {
-            font-size: 1.1rem;
-            color: #333;
-        }
-
+        /* Линия под шапкой */
         .nav-line {
-            background-color: #f0f0f0;
-            border-top: 1px solid #ccc;
+            background-color: #f1f1f1;
             padding: 8px 0;
             text-align: center;
             font-size: 1rem;
-            color: #555;
+            color: #666;
         }
 
+        /* Блок кнопок */
         .button-bar {
-            background: #ffffff;
-            padding: 20px 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+            padding: 30px 0;
         }
 
         .buttons-container {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .custom-button {
@@ -75,7 +73,7 @@
             transform: scale(1.05);
         }
 
-        /* ===== HERO ===== */
+        /* Герой-секция */
         .hero-section {
             position: relative;
             text-align: center;
@@ -107,7 +105,7 @@
             font-size: 1.2rem;
         }
 
-        /* ===== КАТЕГОРИИ ===== */
+        /* Категории */
         .categories {
             display: flex;
             flex-wrap: wrap;
@@ -147,44 +145,41 @@
             border-radius: 5px;
         }
 
-        /* ===== ПРОДУКТЫ ===== */
-        .product-section .products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .product {
-            flex: 1 1 calc(50% - 40px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 15px;
+        /* Контакты и адреса */
+        .info-section {
+            padding: 60px 20px;
+            background-color: #f7f7f7;
             text-align: center;
-            background: #fff;
-            border-radius: 10px;
         }
 
-        .product img {
-            width: 100%;
-            max-height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
+        .info-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
         }
 
-        .add-to-cart {
-            margin-top: 10px;
-            padding: 8px 15px;
-            background-color: #008cba;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        .info-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 10px;
+            line-height: 1.6;
         }
 
-        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
+        }
+
+        /* Адаптация */
         @media (max-width: 768px) {
-            .category, .product {
+            .category {
                 flex: 1 1 100%;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
             }
 
             .hero-content h2 {
@@ -198,37 +193,12 @@
             .logo img {
                 max-width: 120px;
             }
-
-            .buttons-container {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        /* ===== О НАС ===== */
-        .about-us-section {
-            background-color: #f9f9f9;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .about-us-section h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .about-us-section p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 10px auto;
         }
     </style>
 </head>
 <body>
 
-    <!-- ХЕДЕР -->
+    <!-- Шапка -->
     <header>
         <div class="container header-container">
             <div class="logo">
@@ -236,16 +206,13 @@
                     <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png" alt="Логотип">
                 </a>
             </div>
-            <div class="header-text">
-                <p>Ваш персональный слоган или текст здесь</p>
-            </div>
         </div>
         <div class="nav-line">
-            <p>Напишите здесь ваш информационный текст или слоган</p>
+            <p>Текст по центру вместо навигации — сюда можно писать инфо</p>
         </div>
     </header>
 
-    <!-- КНОПКИ -->
+    <!-- Кнопки -->
     <section class="button-bar">
         <div class="container buttons-container">
             <a href="#about-us" class="custom-button">О нас</a>
@@ -256,7 +223,7 @@
         </div>
     </section>
 
-    <!-- ГЕРОЙ -->
+    <!-- Герой -->
     <section id="hero" class="hero-section">
         <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359934418407526631/X9NVHwyulpXSgAAAABJRU5ErkJggg.png" alt="Фон">
         <div class="hero-content">
@@ -265,18 +232,55 @@
         </div>
     </section>
 
-    <!-- КАТЕГОРИИ -->
+    <!-- Категории -->
     <section id="categories" class="categories-section">
         <div class="container">
             <div class="center-text">
                 <h2>Наши категории</h2>
             </div>
             <div class="categories">
-                <div class="category" id="penoplast">
+                <div class="category">
                     <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Пенопласт">
                     <h3>Пенопласт</h3>
                     <p>Товары для декора, выполненные из пенопласта.</p>
                     <a href="penoplast.html" class="category-link">Посмотреть товары</a>
                 </div>
-                <div class="category" id="upakovka">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359935980169199989/images.png" alt
+                <div class="category">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359935980169199989/images.png" alt="Упаковка">
+                    <h3>Упаковка</h3>
+                    <p>Товары для упаковки, выполненные из пенопласта.</p>
+                    <a href="upakovkapenoplast.html" class="category-link">Посмотреть товары</a>
+                </div>
+                <div class="category">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359591266647802080/1.png" alt="Декор">
+                    <h3>Декор</h3>
+                    <p>Красивые декоративные элементы для дома.</p>
+                    <a href="decor.html" class="category-link">Посмотреть товары</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="info-section">
+        <div class="container">
+            <h2>Контакты</h2>
+            <p><span class="icon">📞</span>Телефон: +380 (44) 123-45-67</p>
+            <p><span class="icon">✉️</span>Email: info@example.com</p>
+            <p><span class="icon">📍</span>Адрес: Киев, ул. Примерная, 1</p>
+        </div>
+    </section>
+
+    <!-- Адреса -->
+    <section id="addresses" class="info-section">
+        <div class="container">
+            <h2>Наши адреса</h2>
+            <div class="map-container">
+                <!-- карта -->
+                <p>Карта будет тут</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
