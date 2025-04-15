@@ -226,4 +226,27 @@ body {
     max-width: 800px;
     margin: 10px auto;
 }
+.site-title h1 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-left: 20px;
+}
+
+/* Контейнер рядом с логотипом и заголовком */
+.header-container {
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+/* Текстовое меню под шапкой */
+.text-menu {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+}
+
 
