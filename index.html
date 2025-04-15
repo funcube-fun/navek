@@ -256,6 +256,63 @@
         padding: 15px;
       }
     }
+           /* Секция контактов и адресов */
+        .info-section {
+            padding: 60px 20px;
+            background-color: #f7f7f7;
+            text-align: center;
+        }
+
+        .info-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto 10px;
+            line-height: 1.6;
+        }
+
+        /* Иконки для контактов */
+        .icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
+        }
+
+        /* Плавная прокрутка */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Карта на странице */
+        .map-container {
+            margin-top: 20px;
+            position: relative;
+            height: 400px;
+            width: 100%;
+        }
+
+        /* Стиль для кнопок */
+        .add-to-cart {
+            border-radius: 6px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #0056b3;
+            transform: scale(1.1); /* Увеличение кнопки */
+        }
+
   </style>
 </head>
 <body>
@@ -265,7 +322,7 @@
     <div class="header-container">
       <div class="logo">
         <a href="#">
-          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png" alt="Логотип">
+          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png?ex=67ff5d07&is=67fe0b87&hm=1f53234f67921ab0413681c95d94bfd0d2273d24f72d99a6673e1b5c6b7535ec&" alt="Логотип">
         </a>
       </div>
       <div class="site-title">
@@ -287,7 +344,7 @@
 
   <!-- Фоновый блок -->
   <section id="hero" class="hero-section">
-    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359934418407526631/X9NVHwyulpXSgAAAABJRU5ErkJggg.png" alt="Фон">
+    <img src="https://cdn.discordapp.com/attachments/1340715579203518507/1359611563467866122/29fb966c2b0bb663.jpg?ex=67ff5cb1&is=67fe0b31&hm=936404a668d61875d4e156432a39a09dd95b7b55fd2e017a2e50b245b40d5634&" alt="Фон">
     <div class="hero-content">
       <h2>Добро пожаловать в наш магазин!</h2>
       <p>Здесь вы найдете уникальные товары для декора вашего дома и сада.</p>
@@ -308,16 +365,28 @@
       <h2 style="text-align:center; margin-bottom: 30px;">Наши категории</h2>
       <div class="categories">
         <div class="category">
-          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Пенопласт">
+          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg?ex=67ff4ab7&is=67fdf937&hm=b4a17be11fe90c61f4aaafb3f97ec3daba1cd41997a384607d32b04ff3562d6e&" alt="Пенопласт">
           <h3>Пенопласт</h3>
-          <p>Товары для декора, выполненные из пенопласта.</p>
+          <p>Товары для утепления, выполненные из пенопласта.</p>
           <a href="penoplast.html">Посмотреть товары</a>
         </div>
         <div class="category">
-          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359935980169199989/images.png" alt="Упаковка">
+          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359935980169199989/images.png?ex=67ff3954&is=67fde7d4&hm=796304b84c8e18a155b4d83fce868bf2b9dcd9fb25e19aac1c34c02188c56d4a&" alt="Упаковка">
           <h3>Упаковка</h3>
           <p>Товары для упаковки, выполненные из различных материалов.</p>
           <a href="upakovka.html">Посмотреть товары</a>
+         </div>
+         <div class="category">
+          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359936346738790481/images.png?ex=67ff39ab&is=67fde82b&hm=5bdb2c05e807e5995b3f7531bb7cb512785642fa689676d1054388ea7c8ba361&" alt="АРТ товары">
+          <h3>АРТ товары</h3>
+          <p>Арт товары, выполненные из различных материалов.</p>
+          <a href="art.html">Посмотреть товары</a>
+         </div>
+         <div class="category">
+          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359591266647802080/1.png?ex=67ff49c9&is=67fdf849&hm=5e99f5cc8382a60c52bbfe47e1ce472249ddc6189eed4f782e22a1e38925818e&" alt="Декор">
+          <h3>АРТ товары</h3>
+          <p>Декоративные товары, выполненные из различных материалов.</p>
+          <a href="dekot.html">Посмотреть товары</a>
         </div>
       </div>
     </div>
@@ -330,6 +399,16 @@
       <p>Для получения дополнительной информации, пожалуйста, свяжитесь с нами по телефону или по электронной почте.</p>
     </div>
   </section>
+    <!-- Секция адресов -->
+    <section id="addresses" class="info-section">
+        <div class="container">
+            <h2>Наши адреса</h2>
+            <div class="map-container" id="map">
+            <img src="https://cdn.discordapp.com/attachments/1340715579203518507/1359611563467866122/29fb966c2b0bb663.jpg?ex=67ff5cb1&is=67fe0b31&hm=936404a668d61875d4e156432a39a09dd95b7b55fd2e017a2e50b245b40d5634&" alt="карта">
+            </div>
+        </div>
+    </section>
+
 
 </body>
 </html>
