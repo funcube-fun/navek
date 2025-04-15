@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Магазин декоративных товаров</title>
-    <link rel="stylesheet" href="style.css">
     <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Шапка */
         header {
             background-color: #fff;
@@ -16,7 +27,8 @@
         .header-container {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 20px;
             padding: 0 20px;
         }
 
@@ -24,59 +36,56 @@
             width: 150px;
         }
 
-        /* Навигация */
-        nav.navbar {
-            background-color: #fff;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            padding: 10px 0;
+        .site-title h1 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 0;
         }
 
-        nav.navbar a {
+        /* Меню под шапкой */
+        .text-menu {
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .text-menu a {
             margin: 0 15px;
             font-size: 1.1rem;
-            text-decoration: none;
+            font-weight: 500;
             color: #333;
+            text-decoration: none;
             padding: 10px 15px;
-            transition: background 0.3s;
+            transition: background 0.3s, color 0.3s;
+            border-radius: 5px;
         }
 
-        nav.navbar a:hover {
+        .text-menu a:hover {
             background-color: #007bff;
-            color: #fff;
+            color: white;
         }
 
-        /* Гамбургер меню для мобильных устройств */
-        .hamburger-menu {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
+        /* Фоновый блок */
+        .hero-section {
+            position: relative;
+            text-align: center;
         }
 
-        .hamburger-menu span {
-            width: 25px;
-            height: 4px;
-            background-color: #333;
+        .hero-section img {
+            width: 100%;
+            height: auto;
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            background-color: rgba(0,0,0,0.5);
+            padding: 20px;
             border-radius: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                display: none;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hamburger-menu {
-                display: flex;
-            }
-
-            .navbar.active {
-                display: flex;
-            }
         }
 
         /* Контейнер */
@@ -86,12 +95,11 @@
             margin: 0 auto;
         }
 
-        /* Секции */
         section {
             padding: 60px 0;
         }
 
-        /* Секция категорий */
+        /* Категории */
         .categories-section {
             background-color: #f7f7f7;
         }
@@ -149,14 +157,7 @@
             background-color: #0056b3;
         }
 
-        /* Для мобильных устройств */
-        @media (max-width: 768px) {
-            .category {
-                width: 100%;
-            }
-        }
-
-        /* Секция контактов и адресов */
+        /* Контакты и адреса */
         .info-section {
             padding: 60px 20px;
             background-color: #f7f7f7;
@@ -177,18 +178,11 @@
             line-height: 1.6;
         }
 
-        /* Иконки для контактов */
         .icon {
             font-size: 1.5rem;
             margin-right: 8px;
         }
 
-        /* Плавная прокрутка */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Карта на странице */
         .map-container {
             margin-top: 20px;
             position: relative;
@@ -196,21 +190,19 @@
             width: 100%;
         }
 
-        /* Стиль для кнопок */
-        .add-to-cart {
-            border-radius: 6px;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background 0.3s, transform 0.3s;
-        }
+        @media (max-width: 768px) {
+            .category {
+                width: 100%;
+            }
 
-        .add-to-cart:hover {
-            background-color: #0056b3;
-            transform: scale(1.1); /* Увеличение кнопки */
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .site-title h1 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -224,21 +216,21 @@
                     <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png?ex=67f8c587&is=67f77407&hm=5c116bfe684e2adbc3ade13ed79ae4ea236da694e946e1510c3de8c7c1ae2ea7&" alt="Логотип">
                 </a>
             </div>
-            <nav class="navbar">
-                <a href="#about-us">О нас</a>
-                <a href="#penoplast-products">Товары</a>
-                <a href="#contacts">Контакты</a>
-                <a href="#addresses">Адреса</a>
-            </nav>
-            <div class="hamburger-menu" id="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="site-title">
+                <h1>ДекорМаг</h1>
             </div>
         </div>
     </header>
 
-    <!-- Фоновый блок с текстом -->
+    <!-- Меню под шапкой -->
+    <div class="text-menu">
+        <a href="#about-us">О нас</a>
+        <a href="#penoplast-products">Товары</a>
+        <a href="#contacts">Контакты</a>
+        <a href="#addresses">Адреса</a>
+    </div>
+
+    <!-- Фоновый блок -->
     <section id="hero" class="hero-section">
         <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359934418407526631/X9NVHwyulpXSgAAAABJRU5ErkJggg.png?ex=67f9491f&is=67f7f79f&hm=75e481d68e61a0ff1359c750a9df3ba6f11d29c935c6fd628147461fd48d3180&" alt="Фон">
         <div class="hero-content">
@@ -247,27 +239,35 @@
         </div>
     </section>
 
-    <!-- Секция категорий -->
-    <section id="categories" class="categories-section">
+    <!-- О нас -->
+    <section id="about-us" class="info-section">
+        <div class="container">
+            <h2>О нас</h2>
+            <p>Мы специализируемся на продаже декоративных товаров для дома, праздников и упаковки. Наша миссия — вдохновлять и помогать вам создавать уют и красоту.</p>
+        </div>
+    </section>
+
+    <!-- Категории -->
+    <section id="penoplast-products" class="categories-section">
         <div class="container">
             <div class="center-text">
                 <h2>Наши категории</h2>
             </div>
             <div class="categories">
                 <div class="category" id="penoplast">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg?ex=67f8b337&is=67f761b7&hm=989037c13616ef370de7ec3f4b1e21f743965f9a2b61388099d26777038f8233&" alt="Пенопласт">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg" alt="Пенопласт">
                     <h3>Пенопласт</h3>
                     <p>Товары для декора, выполненные из пенопласта.</p>
                     <a href="penoplast.html" class="category-link">Посмотреть товары</a>
                 </div>
                 <div class="category" id="upakovka">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359935980169199989/images.png?ex=67f94a94&is=67f7f914&hm=c5a6f1f59bf4ab817bcfa9d0d61efa504f2cafab22ea5ab7ea78e830cfdc367b&" alt="Упаковка">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359935980169199989/images.png" alt="Упаковка">
                     <h3>Упаковка</h3>
                     <p>Товары для упаковки, выполненные из пенопласта.</p>
                     <a href="upakovkapenoplast.html" class="category-link">Посмотреть товары</a>
                 </div>
                 <div class="category" id="decor">
-                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359591266647802080/1.png?ex=67f8b249&is=67f760c9&hm=c4d5969d1906e089636a9cb41751b9b8c6341d4a71115a5cc8398a9a6628d899&" alt="Декор">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359591266647802080/1.png" alt="Декор">
                     <h3>Декор</h3>
                     <p>Красивые декоративные элементы для дома.</p>
                     <a href="decor.html" class="category-link">Посмотреть товары</a>
@@ -276,7 +276,7 @@
         </div>
     </section>
 
-    <!-- Секция контактов -->
+    <!-- Контакты -->
     <section id="contacts" class="info-section">
         <div class="container">
             <h2>Контакты</h2>
@@ -286,12 +286,12 @@
         </div>
     </section>
 
-    <!-- Секция адресов -->
+    <!-- Адреса -->
     <section id="addresses" class="info-section">
         <div class="container">
             <h2>Наши адреса</h2>
             <div class="map-container" id="map">
-                <!-- Вставьте карту сюда (например, с использованием Google Maps API или OpenStreetMap) -->
+                <!-- Карта вставляется здесь -->
             </div>
         </div>
     </section>
