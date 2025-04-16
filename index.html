@@ -6,7 +6,8 @@
   <title>Магазин декоративных товаров</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Arial, sans-serif; background-color: #fff; }
+    body {
+  background: linear-gradient(to right, #f0f8ff, #e6f0ff); font-family: Arial, sans-serif; background-color: #fff; }
     html { scroll-behavior: smooth; }
     header { background-color: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
     .header-container {
@@ -96,13 +97,23 @@
       .text-menu a { width: 100%; border-top: 1px solid #eee; }
       .hero-content { font-size: 0.9rem; padding: 15px; }
     }
-  </style>
+    .highlight {
+    background-color: #ffffffcc;
+    padding: 10px;
+    border-left: 5px solid #007bff;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+</style>
 </head>
 <body>
   <header>
     <div class="header-container">
-      <div class="logo"><img src="logo.png" alt="Логотип" /></div>
-      <div class="site-title"><h1>Завод пенопластовых изделий</h1></div>
+      <div class="logo"><img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png?ex=68015747&is=680005c7&hm=1d3a0ac5486a04e19b465b7a3a32073488617f532653b7fd8b1bcaf7adc926dd&" alt="Логотип" /></div>
+      <div class="site-title" style="position: absolute; left: 50%; transform: translateX(-50%); z-index: 1;">
+  <h1>Завод пенопластовых изделий</h1>
+</div>
       <div class="text-field">
         <div>По всем вопросам</div>
         <span>+380 12 779 96</span>
@@ -111,7 +122,8 @@
   </header>
 
   <div class="text-menu">
-    <a href="#about-us">О нас</a>
+    <a href="#calculator">Калькулятор</a>
+<a href="#about-us">О нас</a>
     <a href="#penoplast-products">Товары</a>
     <a href="#contacts">Контакты</a>
     <a href="#addresses">Адреса</a>
@@ -126,6 +138,7 @@
   </section>
 
   <section id="about-us" class="info-section">
+  <div class="highlight">Добро пожаловать! Мы гордимся тем, что предлагаем качественные изделия из пенопласта и упаковку для любых нужд.</div>
     <div class="container">
       <h2>О нас</h2>
       <p>Мы специализируемся на продаже декоративных товаров для дома, праздников и упаковки.</p>
@@ -137,19 +150,19 @@
       <h2 style="text-align:center; margin-bottom: 30px;">Наши категории</h2>
       <div class="categories">
         <div class="category">
-          <img src="penoplast.jpg" alt="Пенопласт">
+          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg?ex=680144f7&is=67fff377&hm=28fc6b835e6aefd57700256ab0b3b31f4d1e0e3405b1441bce285a7aa40b6c9d&" alt="Пенопласт">
           <h3>Пенопласт</h3>
           <p>Товары для утепления, выполненные из пенопласта.</p>
           <a href="#">Посмотреть товары</a>
         </div>
         <div class="category">
-          <img src="upakovka.jpg" alt="Упаковка">
+          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359935980169199989/images.png?ex=68013394&is=67ffe214&hm=71c6d7f2757fb172318b7bd10be0332edff1855b0309592270fc5ce983ed32cc&" alt="Упаковка">
           <h3>Упаковка</h3>
           <p>Упаковочные материалы различных видов.</p>
           <a href="#">Посмотреть товары</a>
         </div>
         <div class="category">
-          <img src="art.jpg" alt="АРТ">
+          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359936346738790481/images.png?ex=680133eb&is=67ffe26b&hm=aa8c3cf28d2ae1e2c27f95a91a067d86961d35b9235f0ab37bf8dc04d1fe8387&" alt="АРТ">
           <h3>АРТ товары</h3>
           <p>Креативные декоративные элементы.</p>
           <a href="#">Посмотреть товары</a>
@@ -171,36 +184,59 @@
     <div class="container">
       <h2>Наши адреса</h2>
       <div class="map-container">
-        <img src="map.jpg" alt="Карта">
+        <img src="https://cdn.discordapp.com/attachments/1340715579203518507/1359611563467866122/29fb966c2b0bb663.jpg?ex=680156f1&is=68000571&hm=311c1af8c01e812daff6bc42cc46410d2b940cd1bfbce680407882626daa8604&" alt="Карта">
       </div>
     </div>
   </section>
 
-  <section class="info-section">
-    <div class="container">
-      <h2>Калькулятор объёма</h2>
-      <p>Введите размеры (в метрах), чтобы рассчитать нужный объём куба.</p>
-      <div style="max-width: 400px; margin: 0 auto; text-align: left;">
-        <label>Длина: <input type="number" id="length" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
-        <label>Ширина: <input type="number" id="width" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
-        <label>Высота: <input type="number" id="height" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
-        <button onclick="calculateVolume()" style="margin-top:10px; padding:10px 20px; background-color:#007bff; color:white; border:none; border-radius:8px; cursor:pointer;">Рассчитать объём</button>
-        <p id="volumeResult" style="margin-top:10px; font-weight: bold;"></p>
-      </div>
-    </div>
-  </section>
+  <section id="calculator" class="info-section">
+  <div class="container">
+    <h2>Калькулятор объёма</h2>
+    <p>Введите размеры и выберите единицы измерения, чтобы рассчитать объём и площадь поверхности.</p>
+    <div style="max-width: 400px; margin: 0 auto; text-align: left;">
+  <label for="unit">Единицы измерения:</label>
+  <select id="unit" style="width:100%; padding:8px; margin:10px 0;">
+    <option value="1">Метры</option>
+    <option value="0.01">Сантиметры</option>
+    <option value="0.001">Миллиметры</option>
+  </select>
+  <label>Длина: <input type="number" id="length" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
+  <label>Ширина: <input type="number" id="width" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
+  <label>Высота: <input type="number" id="height" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
+  <button onclick="calculateVolume()" style="margin-top:10px; padding:10px 20px; background-color:#007bff; color:white; border:none; border-radius:8px; cursor:pointer;">Рассчитать</button>
+  <p id="volumeResult" style="margin-top:10px; font-weight: bold;"></p>
+  <p id="areaResult" style="font-weight: bold;"></p>
+</div>
+  </div>
+</section>
 
-  <footer>Все права защищены 2009 - 2025</footer>
+  <footer style="background-color: #ddd; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;">
+  <p style="font-size: 1rem; font-weight: bold;">Все права защищены 2009 - 2025</p>
+  <p style="font-size: 1rem;">Телефон для связи: <strong>+380 12 345 6789</strong></p>
+  <p style="max-width: 600px;">Мы рады каждому клиенту — свяжитесь с нами для индивидуальных заказов! Также вы можете посетить наш офис или написать на почту для консультации.</p>
+</footer>
 
   <script>
     function calculateVolume() {
-      const length = parseFloat(document.getElementById('length').value);
-      const width = parseFloat(document.getElementById('width').value);
-      const height = parseFloat(document.getElementById('height').value);
-      if (isNaN(length) || isNaN(width) || isNaN(height)) {
-        document.getElementById('volumeResult').textContent = 'Пожалуйста, введите все размеры.';
-        return;
-      }
+  const unit = parseFloat(document.getElementById('unit').value);
+  const length = parseFloat(document.getElementById('length').value) * unit;
+  const width = parseFloat(document.getElementById('width').value) * unit;
+  const height = parseFloat(document.getElementById('height').value) * unit;
+  if (isNaN(length) || isNaN(width) || isNaN(height)) {
+    document.getElementById('volumeResult').textContent = 'Пожалуйста, введите все размеры.';
+    document.getElementById('areaResult').textContent = '';
+    return;
+  }
+  const volume = length * width * height;
+  const area = 2 * (length * width + width * height + height * length);
+  document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
+  document.getElementById('areaResult').textContent = `Площадь поверхности: ${area.toFixed(3)} м²`;
+}
+  const volume = length * width * height;
+  const area = 2 * (length * width + width * height + height * length);
+  document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
+  document.getElementById('areaResult').textContent = `Площадь поверхности: ${area.toFixed(3)} м²`;
+}
       const volume = length * width * height;
       document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
     }
