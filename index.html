@@ -25,7 +25,8 @@
       padding: 15px 20px;
       flex-wrap: wrap;
     }
-    $1220px$2
+    .logo img {
+      width: 200px;
       height: auto;
     }
     .site-title {
@@ -141,7 +142,7 @@
   <header>
     <div class="header-container">
       <div class="logo">
-        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png?ex=68020007&is=6800ae87&hm=f78ccce15d1e096b46de46ca15098e7b7d0f99a774bc79e9961455d19501358e&" alt="Логотип" />
+        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1362525097398894733/image.png?ex=6802b5e1&is=68016461&hm=f6c4b54a1f9607d1ee228d0f3ca86de326636dd4be075482b1c13a00828c388f&" alt="Логотип" />
       </div>
       <div class="site-title">
         <h1>Завод пенопластовых изделий</h1>
@@ -158,12 +159,16 @@
     </div>
   </header>
 
-  $1
+  <div class="text-menu" id="menu">
+    <a href="#calculator">Калькулятор</a>
+    <a href="#about-us">О нас</a>
+    <a href="#penoplast-products">Товары</a>
+    <a href="#contacts">Контакты</a>
+    <a href="#addresses">Адреса</a>
+    <a href="#faq">FAQ</a>
+  </div>
 
-  <section id="background-switcher" style="text-align: center; padding: 40px 20px;">
-    <h2>Фоновое слайд-шоу</h2>
-    <div id="background-slideshow" style="width: 100%; height: 400px; background-size: cover; background-position: center; border-radius: 15px;"></div>
-  </section>
+  <div style="background-image: url('https://cdn.discordapp.com/attachments/1251956990842900563/1362525097398894733/image.png?ex=6802b5e1&is=68016461&hm=f6c4b54a1f9607d1ee228d0f3ca86de326636dd4be075482b1c13a00828c388f&'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 500px; width: 100%; margin-top: 20px;"></div>
 
   <section id="about-us">
     <h2>О нас</h2>
@@ -229,20 +234,11 @@
       }
       const volume = length * width * height;
       const area = 2 * (length * width + width * height + height * length);
-      document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
-      document.getElementById('areaResult').textContent = `Площадь поверхности: ${area.toFixed(3)} м²`;
+      document.getElementById('volumeResult').textContent = Объём: ${volume.toFixed(3)} м³;
+      document.getElementById('areaResult').textContent = Площадь поверхности: ${area.toFixed(3)} м²;
     }
-  const backgrounds = [
-  'url(https://alfagrant.com.ua/image/catalog/Category/teploizolyaciya/%D0%9F%D0%B5%D0%BD%D0%BE%D0%BF%D0%BB%D0%B0%D1%81%D1%82%20%D0%9D%D0%90%D0%92%D0%95%D0%9A.png)',
-  'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTlcVgfbuTmZ-EOB0hCTGG_3RyjKz2r6wxYeo4AfQ7WIFGyWhKv_ZJ-trVAR72mPSeCaA&usqp=CAU)'
-];
-
-let currentBackground = 0;
-setInterval(() => {
-  document.getElementById('background-slideshow').style.backgroundImage = backgrounds[currentBackground];
-  currentBackground = (currentBackground + 1) % backgrounds.length;
-}, 7000);
-
-$1
+  </script>
 </body>
 </html>
+
+
