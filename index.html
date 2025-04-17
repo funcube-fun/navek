@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ua">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,113 +7,110 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-  background: linear-gradient(to right, #f0f8ff, #e6f0ff); font-family: Arial, sans-serif; background-color: #fff; }
+      background: linear-gradient(to right, #f0f8ff, #e6f0ff);
+      font-family: Arial, sans-serif;
+      background-color: #fff;
+    }
     html { scroll-behavior: smooth; }
-    header { background-color: #fff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+    header {
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
     .header-container {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 15px 20px; flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      flex-wrap: wrap;
     }
     .logo img { width: 130px; }
-    .site-title { flex: 1; text-align: center; }
-    .site-title h1 {
-      font-size: 1.8rem; color: #0000FF; text-align: center;
+    .site-title {
+      flex: 1;
+      text-align: center;
     }
-    .text-field { flex-shrink: 0; text-align: right; }
+    .site-title h1 {
+      font-size: 1.8rem;
+      color: #0000FF;
+      text-align: center;
+    }
+    .text-field {
+      flex-shrink: 0;
+      text-align: right;
+    }
     .text-field div { font-size: 0.9rem; color: #555; }
     .text-field span {
-      padding: 10px; font-size: 1.1rem; width: 200px;
-      border: 1px solid #ddd; border-radius: 5px;
-      text-align: center; display: inline-block;
+      padding: 10px;
+      font-size: 1.1rem;
+      width: 200px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+      display: inline-block;
     }
     .text-menu {
-      background-color: #fff; text-align: center;
-      border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;
-      display: flex; flex-wrap: wrap; justify-content: center;
+      background-color: #fff;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px 10px;
     }
     .text-menu a {
-      margin: 10px; padding: 12px 24px; border-radius: 12px;
-      background-color: #007bff; color: white; text-decoration: none;
-      font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      flex: 1 1 200px;
+      max-width: 220px;
+      text-align: center;
+      padding: 20px 30px;
+      font-size: 1.2rem;
+      border-radius: 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       transition: background-color 0.3s, transform 0.2s;
     }
-    .text-menu a:hover { background-color: #0056b3; transform: translateY(-2px); }
-    .hero-section { position: relative; text-align: center; }
-    .hero-section img { width: 100%; height: auto; display: block; }
-    .hero-content {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0,0,0,0.5); color: white;
-      padding: 20px 30px; border-radius: 10px; max-width: 90%;
-    }
-    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
-    section { padding: 60px 0; }
-    .categories-section { background-color: #f7f7f7; }
-    .categories {
-      display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;
-    }
-    .category {
-      width: calc(33.33% - 20px); background-color: #fff; padding: 20px;
-      border-radius: 8px; text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .category img {
-      width: 100%; height: 200px; object-fit: cover; border-radius: 8px;
-    }
-    .category h3 { margin: 10px 0; font-size: 1.3rem; }
-    .category p { font-size: 1rem; color: #555; }
-    .category a {
-      display: inline-block; margin-top: 10px; padding: 10px 15px;
-      background-color: #007bff; color: #fff; border-radius: 5px;
-      text-decoration: none; transition: background 0.3s;
-    }
-    .category a:hover { background-color: #0056b3; }
-    .info-section {
-      background-color: #f7f7f7; text-align: center; padding: 60px 20px;
-    }
-    .info-section h2 { font-size: 2rem; margin-bottom: 20px; color: #333; }
-    .info-section p {
-      font-size: 1.1rem; color: #555; max-width: 800px;
-      margin: 0 auto 10px; line-height: 1.6;
-    }
-    .icon { font-size: 1.5rem; margin-right: 8px; }
-    .map-container {
-      margin-top: 20px; position: relative; height: 400px; width: 100%;
-    }
-    footer {
-      text-align: center; padding: 20px 0;
-      background-color: #f1f1f1; color: #666; font-size: 0.9rem;
-    }
-    @media (max-width: 992px) {
-      .category { width: calc(50% - 20px); }
+    .text-menu a:hover {
+      background-color: #0056b3;
+      transform: translateY(-3px);
     }
     @media (max-width: 768px) {
-      .category { width: 100%; }
-      .header-container { flex-direction: column; text-align: center; gap: 10px; }
-      .logo { display: none; }
-      .site-title h1 { font-size: 1.5rem; }
-      .text-menu { flex-direction: column; }
-      .text-menu a { width: 100%; border-top: 1px solid #eee; }
-      .hero-content { font-size: 0.9rem; padding: 15px; }
+      .text-menu {
+        flex-direction: column;
+        align-items: center;
+      }
+      .text-menu a {
+        width: 100%;
+        max-width: none;
+        font-size: 1rem;
+        padding: 15px;
+      }
     }
-    .highlight {
-    background-color: #ffffffcc;
-    padding: 10px;
-    border-left: 5px solid #007bff;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-</style>
+    section {
+      padding: 60px 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="header-container">
-      <div class="logo"><img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png?ex=68015747&is=680005c7&hm=1d3a0ac5486a04e19b465b7a3a32073488617f532653b7fd8b1bcaf7adc926dd&" alt="Логотип" /></div>
+      <div class="logo">
+        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png" alt="Логотип" />
+      </div>
       <div class="site-title" style="position: absolute; left: 50%; transform: translateX(-50%); z-index: 1;">
-  <h1>Завод пенопластовых изделий</h1>
-</div>
+        <h1>Завод пенопластовых изделий</h1>
+      </div>
       <div class="text-field">
         <div>По всем вопросам</div>
         <span>+380 12 779 96</span>
@@ -123,122 +120,74 @@
 
   <div class="text-menu">
     <a href="#calculator">Калькулятор</a>
-<a href="#about-us">О нас</a>
+    <a href="#about-us">О нас</a>
     <a href="#penoplast-products">Товары</a>
     <a href="#contacts">Контакты</a>
     <a href="#addresses">Адреса</a>
+    <a href="#faq">FAQ</a>
   </div>
 
-  <section class="hero-section">
-    <img src="hero.jpg" alt="Фон">
-    <div class="hero-content">
-      <h2>Добро пожаловать в наш магазин!</h2>
-      <p>Здесь вы найдете уникальные товары для декора вашего дома и сада.</p>
-    </div>
+  <section id="about-us">
+    <h2>О нас</h2>
+    <p>Мы предлагаем качественные изделия из пенопласта и упаковку для любых нужд.</p>
   </section>
 
-  <section id="about-us" class="info-section">
-  <div class="highlight">Добро пожаловать! Мы гордимся тем, что предлагаем качественные изделия из пенопласта и упаковку для любых нужд.</div>
-    <div class="container">
-      <h2>О нас</h2>
-      <p>Мы специализируемся на продаже декоративных товаров для дома, праздников и упаковки.</p>
-    </div>
+  <section id="penoplast-products">
+    <h2>Наши товары</h2>
+    <p>Пенопласт, упаковка, АРТ-декор и многое другое.</p>
   </section>
 
-  <section id="penoplast-products" class="categories-section">
-    <div class="container">
-      <h2 style="text-align:center; margin-bottom: 30px;">Наши категории</h2>
-      <div class="categories">
-        <div class="category">
-          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359592261435785429/d52f8a3466ccc6d2.jpg?ex=680144f7&is=67fff377&hm=28fc6b835e6aefd57700256ab0b3b31f4d1e0e3405b1441bce285a7aa40b6c9d&" alt="Пенопласт">
-          <h3>Пенопласт</h3>
-          <p>Товары для утепления, выполненные из пенопласта.</p>
-          <a href="#">Посмотреть товары</a>
-        </div>
-        <div class="category">
-          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359935980169199989/images.png?ex=68013394&is=67ffe214&hm=71c6d7f2757fb172318b7bd10be0332edff1855b0309592270fc5ce983ed32cc&" alt="Упаковка">
-          <h3>Упаковка</h3>
-          <p>Упаковочные материалы различных видов.</p>
-          <a href="#">Посмотреть товары</a>
-        </div>
-        <div class="category">
-          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359936346738790481/images.png?ex=680133eb&is=67ffe26b&hm=aa8c3cf28d2ae1e2c27f95a91a067d86961d35b9235f0ab37bf8dc04d1fe8387&" alt="АРТ">
-          <h3>АРТ товары</h3>
-          <p>Креативные декоративные элементы.</p>
-          <a href="#">Посмотреть товары</a>
-        </div>
-      </div>
-    </div>
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <p><strong>Телефон:</strong> +380 (44) 123-45-67</p>
+    <p><strong>Email:</strong> info@navekodessa.com</p>
+    <p><strong>Адрес:</strong> Одесса, ул. Моторная, 1</p>
   </section>
 
-  <section id="contacts" class="info-section">
-    <div class="container">
-      <h2>Контакты</h2>
-      <p><span class="icon">📞</span>+380 (44) 123-45-67</p>
-      <p><span class="icon">✉️</span>navekodessa.com</p>
-      <p><span class="icon">📍</span>Одесса, ул. Моторная, 1</p>
-    </div>
+  <section id="addresses">
+    <h2>Наши адреса</h2>
+    <p>Основной офис — Одесса, ул. Моторная, 1. Подробности уточняйте по телефону.</p>
   </section>
 
-  <section id="addresses" class="info-section">
-    <div class="container">
-      <h2>Наши адреса</h2>
-      <div class="map-container">
-        <img src="https://cdn.discordapp.com/attachments/1340715579203518507/1359611563467866122/29fb966c2b0bb663.jpg?ex=680156f1&is=68000571&hm=311c1af8c01e812daff6bc42cc46410d2b940cd1bfbce680407882626daa8604&" alt="Карта">
-      </div>
-    </div>
+  <section id="faq">
+    <h2>Часто задаваемые вопросы</h2>
+    <p><strong>Какой срок изготовления заказа?</strong><br> Обычно срок составляет от 2 до 5 рабочих дней в зависимости от объема.</p>
+    <p><strong>Можно ли сделать индивидуальный заказ?</strong><br> Да, мы принимаем индивидуальные заказы. Свяжитесь с нами для уточнения деталей.</p>
   </section>
 
-  <section id="calculator" class="info-section">
-  <div class="container">
+  <section id="calculator">
     <h2>Калькулятор объёма</h2>
-    <p>Введите размеры и выберите единицы измерения, чтобы рассчитать объём и площадь поверхности.</p>
     <div style="max-width: 400px; margin: 0 auto; text-align: left;">
-  <label for="unit">Единицы измерения:</label>
-  <select id="unit" style="width:100%; padding:8px; margin:10px 0;">
-    <option value="1">Метры</option>
-    <option value="0.01">Сантиметры</option>
-    <option value="0.001">Миллиметры</option>
-  </select>
-  <label>Длина: <input type="number" id="length" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
-  <label>Ширина: <input type="number" id="width" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
-  <label>Высота: <input type="number" id="height" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
-  <button onclick="calculateVolume()" style="margin-top:10px; padding:10px 20px; background-color:#007bff; color:white; border:none; border-radius:8px; cursor:pointer;">Рассчитать</button>
-  <p id="volumeResult" style="margin-top:10px; font-weight: bold;"></p>
-  <p id="areaResult" style="font-weight: bold;"></p>
-</div>
-  </div>
-</section>
-
-  <footer style="background-color: #ddd; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px;">
-  <p style="font-size: 1rem; font-weight: bold;">Все права защищены 2009 - 2025</p>
-  <p style="font-size: 1rem;">Телефон для связи: <strong>+380 12 345 6789</strong></p>
-  <p style="max-width: 600px;">Мы рады каждому клиенту — свяжитесь с нами для индивидуальных заказов! Также вы можете посетить наш офис или написать на почту для консультации.</p>
-</footer>
+      <label for="unit">Единицы измерения:</label>
+      <select id="unit" style="width:100%; padding:8px; margin:10px 0;">
+        <option value="1">Метры</option>
+        <option value="0.01">Сантиметры</option>
+        <option value="0.001">Миллиметры</option>
+      </select>
+      <label>Длина: <input type="number" id="length" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
+      <label>Ширина: <input type="number" id="width" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
+      <label>Высота: <input type="number" id="height" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
+      <button onclick="calculateVolume()" style="margin-top:10px; padding:10px 20px; background-color:#007bff; color:white; border:none; border-radius:8px; cursor:pointer;">Рассчитать</button>
+      <p id="volumeResult" style="margin-top:10px; font-weight: bold;"></p>
+      <p id="areaResult" style="font-weight: bold;"></p>
+    </div>
+  </section>
 
   <script>
     function calculateVolume() {
-  const unit = parseFloat(document.getElementById('unit').value);
-  const length = parseFloat(document.getElementById('length').value) * unit;
-  const width = parseFloat(document.getElementById('width').value) * unit;
-  const height = parseFloat(document.getElementById('height').value) * unit;
-  if (isNaN(length) || isNaN(width) || isNaN(height)) {
-    document.getElementById('volumeResult').textContent = 'Пожалуйста, введите все размеры.';
-    document.getElementById('areaResult').textContent = '';
-    return;
-  }
-  const volume = length * width * height;
-  const area = 2 * (length * width + width * height + height * length);
-  document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
-  document.getElementById('areaResult').textContent = `Площадь поверхности: ${area.toFixed(3)} м²`;
-}
-  const volume = length * width * height;
-  const area = 2 * (length * width + width * height + height * length);
-  document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
-  document.getElementById('areaResult').textContent = `Площадь поверхности: ${area.toFixed(3)} м²`;
-}
+      const unit = parseFloat(document.getElementById('unit').value);
+      const length = parseFloat(document.getElementById('length').value) * unit;
+      const width = parseFloat(document.getElementById('width').value) * unit;
+      const height = parseFloat(document.getElementById('height').value) * unit;
+      if (isNaN(length) || isNaN(width) || isNaN(height)) {
+        document.getElementById('volumeResult').textContent = 'Пожалуйста, введите все размеры.';
+        document.getElementById('areaResult').textContent = '';
+        return;
+      }
       const volume = length * width * height;
+      const area = 2 * (length * width + width * height + height * length);
       document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
+      document.getElementById('areaResult').textContent = `Площадь поверхности: ${area.toFixed(3)} м²`;
     }
   </script>
 </body>
