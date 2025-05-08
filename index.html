@@ -24,7 +24,257 @@
       justify-content: space-between;
       padding: 15px 20px;
       flex-wrap: wrap;
+    }<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Магазин декоративных товаров</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(to right, #f0f8ff, #e6f0ff);
+      font-family: Arial, sans-serif;
+      background-color: #fff;
     }
+    html { scroll-behavior: smooth; }
+    header {
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+      position: relative;
+    }
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      flex-wrap: wrap;
+    }
+    .logo img {
+      width: 200px;
+      height: auto;
+    }
+    .site-title {
+      flex: 1;
+      text-align: center;
+    }
+    .site-title h1 {
+      font-size: 3.5rem;
+      color: #0000FF;
+      text-align: center;
+    }
+
+    /* Изменения здесь */
+    .text-field {
+      flex-shrink: 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .call-label {
+      font-size: 1.2rem;
+      color: red;
+      font-weight: bold;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .text-field span {
+      padding: 10px;
+      font-size: 1.1rem;
+      width: 200px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      text-align: center;
+      display: inline-block;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+    }
+    .text-menu {
+      background-color: #fff;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px 10px;
+    }
+    .text-menu a {
+      flex: 1 1 200px;
+      max-width: 220px;
+      text-align: center;
+      padding: 20px 30px;
+      font-size: 1.2rem;
+      border-radius: 15px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .text-menu a:hover {
+      background-color: #0056b3;
+      transform: translateY(-3px);
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+      .text-menu {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+      }
+      .text-menu.active {
+        display: flex;
+      }
+      .text-menu a {
+        width: 100%;
+        max-width: none;
+        font-size: 1rem;
+        padding: 15px;
+      }
+    }
+    section {
+      padding: 60px 20px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    p {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png?ex=68020007&is=6800ae87&hm=f78ccce15d1e096b46de46ca15098e7b7d0f99a774bc79e9961455d19501358e&" alt="Логотип" />
+      </div>
+      <div class="site-title">
+        <h1>Завод пенопластовых изделий</h1>
+      </div>
+
+      <!-- Обновлённый блок CALL center -->
+      <div class="text-field">
+        <div class="call-label">CALL center</div>
+        <span>+380 12 779 96</span>
+      </div>
+
+      <div class="menu-toggle" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="text-menu" id="menu">
+    <a href="#calculator">Калькулятор</a>
+    <a href="#about-us">О нас</a>
+    <a href="#penoplast-products">Товары</a>
+    <a href="#contacts">Контакты</a>
+    <a href="#addresses">Адреса</a>
+    <a href="#faq">FAQ</a>
+  </div>
+
+  <div style="background-image: url('https://cdn.discordapp.com/attachments/1251956990842900563/1362525097398894733/image.png?ex=6802b5e1&is=68016461&hm=f6c4b54a1f9607d1ee228d0f3ca86de326636dd4be075482b1c13a00828c388f&'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 500px; width: 100%; margin-top: 20px;"></div>
+
+  <section id="about-us">
+    <h2>О нас</h2>
+    <p>Мы предлагаем качественные изделия из пенопласта и упаковку для любых нужд.</p>
+  </section>
+
+  <section id="penoplast-products">
+    <h2>Наши товары</h2>
+    <p>Пенопласт, упаковка, АРТ-декор и многое другое.</p>
+  </section>
+
+  <section id="calculator">
+    <h2>Калькулятор объёма</h2>
+    <div style="max-width: 400px; margin: 0 auto; text-align: left;">
+      <label for="unit">Единицы измерения:</label>
+      <select id="unit" style="width:100%; padding:8px; margin:10px 0;">
+        <option value="1">Метры</option>
+        <option value="0.01">Сантиметры</option>
+        <option value="0.001">Миллиметры</option>
+      </select>
+      <label>Длина: <input type="number" id="length" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
+      <label>Ширина: <input type="number" id="width" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
+      <label>Высота: <input type="number" id="height" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
+      <button onclick="calculateVolume()" style="margin-top:10px; padding:10px 20px; background-color:#007bff; color:white; border:none; border-radius:8px; cursor:pointer;">Рассчитать</button>
+      <p id="volumeResult" style="margin-top:10px; font-weight: bold;"></p>
+      <p id="areaResult" style="font-weight: bold;"></p>
+    </div>
+  </section>
+
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <p><strong>Телефон:</strong> +380 (44) 123-45-67</p>
+    <p><strong>Email:</strong> info@navekodessa.com</p>
+    <p><strong>Адрес:</strong> Одесса, ул. Моторная, 1</p>
+  </section>
+
+  <section id="addresses">
+    <h2>Наши адреса</h2>
+    <p>Основной офис — Одесса, ул. Моторная, 1. Подробности уточняйте по телефону.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Часто задаваемые вопросы</h2>
+    <p><strong>Какой срок изготовления заказа?</strong><br> Обычно срок составляет от 2 до 5 рабочих дней в зависимости от объема.</p>
+    <p><strong>Можно ли сделать индивидуальный заказ?</strong><br> Да, мы принимаем индивидуальные заказы. Свяжитесь с нами для уточнения деталей.</p>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+    }
+
+    function calculateVolume() {
+      const unit = parseFloat(document.getElementById('unit').value);
+      const length = parseFloat(document.getElementById('length').value) * unit;
+      const width = parseFloat(document.getElementById('width').value) * unit;
+      const height = parseFloat(document.getElementById('height').value) * unit;
+      if (isNaN(length) || isNaN(width) || isNaN(height)) {
+        document.getElementById('volumeResult').textContent = 'Пожалуйста, введите все размеры.';
+        document.getElementById('areaResult').textContent = '';
+        return;
+      }
+      const volume = length * width * height;
+      const area = 2 * (length * width + width * height + height * length);
+      document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
+      document.getElementById('areaResult').textContent = `Площадь поверхности: ${area.toFixed(3)} м²`;
+    }
+  </script>
+</body>
+</html>
+
     .logo img {
       width: 200px;
       height: auto;
