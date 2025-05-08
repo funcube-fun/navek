@@ -38,8 +38,6 @@
       color: #0000FF;
       text-align: center;
     }
-
-    /* Изменения здесь */
     .text-field {
       flex-shrink: 0;
       text-align: center;
@@ -48,7 +46,6 @@
       align-items: center;
       gap: 5px;
     }
-
     .call-label {
       font-size: 1.2rem;
       color: red;
@@ -57,7 +54,6 @@
       text-align: center;
       white-space: nowrap;
     }
-
     .text-field span {
       padding: 10px;
       font-size: 1.1rem;
@@ -67,7 +63,6 @@
       text-align: center;
       display: inline-block;
     }
-
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -81,16 +76,26 @@
       background-color: #333;
       margin: 4px 0;
     }
+
+    .menu-background {
+      background-image: url('https://cdn.discordapp.com/attachments/1251956990842900563/1362525097398894733/image.png?ex=6802b5e1&is=68016461&hm=f6c4b54a1f9607d1ee228d0f3ca86de326636dd4be075482b1c13a00828c388f&');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 40px 0;
+    }
+
     .text-menu {
-      background-color: #fff;
+      background-color: rgba(255, 255, 255, 0.9);
       text-align: center;
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
       padding: 20px 10px;
+      border-radius: 10px;
+      margin: 0 auto;
+      max-width: 1100px;
     }
     .text-menu a {
       flex: 1 1 200px;
@@ -110,6 +115,7 @@
       background-color: #0056b3;
       transform: translateY(-3px);
     }
+
     @media (max-width: 768px) {
       .menu-toggle {
         display: flex;
@@ -129,6 +135,7 @@
         padding: 15px;
       }
     }
+
     section {
       padding: 60px 20px;
     }
@@ -152,13 +159,10 @@
       <div class="site-title">
         <h1>Завод пенопластовых изделий</h1>
       </div>
-
-      <!-- Обновлённый блок CALL center -->
       <div class="text-field">
         <div class="call-label">CALL center</div>
         <span>+380 12 779 96</span>
       </div>
-
       <div class="menu-toggle" onclick="toggleMenu()">
         <div></div>
         <div></div>
@@ -167,16 +171,17 @@
     </div>
   </header>
 
-  <div class="text-menu" id="menu">
-    <a href="#calculator">Калькулятор</a>
-    <a href="#about-us">О нас</a>
-    <a href="#penoplast-products">Товары</a>
-    <a href="#contacts">Контакты</a>
-    <a href="#addresses">Адреса</a>
-    <a href="#faq">FAQ</a>
+  <!-- Обёртка с фоном и меню -->
+  <div class="menu-background">
+    <div class="text-menu" id="menu">
+      <a href="#calculator">Калькулятор</a>
+      <a href="#about-us">О нас</a>
+      <a href="#penoplast-products">Товары</a>
+      <a href="#contacts">Контакты</a>
+      <a href="#addresses">Адреса</a>
+      <a href="#faq">FAQ</a>
+    </div>
   </div>
-
-  <div style="background-image: url('https://cdn.discordapp.com/attachments/1251956990842900563/1362525097398894733/image.png?ex=6802b5e1&is=68016461&hm=f6c4b54a1f9607d1ee228d0f3ca86de326636dd4be075482b1c13a00828c388f&'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 500px; width: 100%; margin-top: 20px;"></div>
 
   <section id="about-us">
     <h2>О нас</h2>
@@ -214,37 +219,4 @@
   </section>
 
   <section id="addresses">
-    <h2>Наши адреса</h2>
-    <p>Основной офис — Одесса, ул. Моторная, 1. Подробности уточняйте по телефону.</p>
-  </section>
-
-  <section id="faq">
-    <h2>Часто задаваемые вопросы</h2>
-    <p><strong>Какой срок изготовления заказа?</strong><br> Обычно срок составляет от 2 до 5 рабочих дней в зависимости от объема.</p>
-    <p><strong>Можно ли сделать индивидуальный заказ?</strong><br> Да, мы принимаем индивидуальные заказы. Свяжитесь с нами для уточнения деталей.</p>
-  </section>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      menu.classList.toggle('active');
-    }
-
-    function calculateVolume() {
-      const unit = parseFloat(document.getElementById('unit').value);
-      const length = parseFloat(document.getElementById('length').value) * unit;
-      const width = parseFloat(document.getElementById('width').value) * unit;
-      const height = parseFloat(document.getElementById('height').value) * unit;
-      if (isNaN(length) || isNaN(width) || isNaN(height)) {
-        document.getElementById('volumeResult').textContent = 'Пожалуйста, введите все размеры.';
-        document.getElementById('areaResult').textContent = '';
-        return;
-      }
-      const volume = length * width * height;
-      const area = 2 * (length * width + width * height + height * length);
-      document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
-      document.getElementById('areaResult').textContent = `Площадь поверхности: ${area.toFixed(3)} м²`;
-    }
-  </script>
-</body>
-</html>
+    <h2
