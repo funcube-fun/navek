@@ -38,22 +38,26 @@
       color: #0000FF;
       text-align: center;
     }
+
+    /* Изменения здесь */
     .text-field {
       flex-shrink: 0;
-      text-align: right;
+      text-align: center;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 5px;
     }
+
     .call-label {
       font-size: 1.2rem;
       color: red;
       font-weight: bold;
       line-height: 1.2;
-      text-align: right;
+      text-align: center;
       white-space: nowrap;
     }
+
     .text-field span {
       padding: 10px;
       font-size: 1.1rem;
@@ -63,6 +67,7 @@
       text-align: center;
       display: inline-block;
     }
+
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -147,10 +152,13 @@
       <div class="site-title">
         <h1>Завод пенопластовых изделий</h1>
       </div>
+
+      <!-- Обновлённый блок CALL center -->
       <div class="text-field">
-        <div class="call-label">CALL<br>center</div>
+        <div class="call-label">CALL center</div>
         <span>+380 12 779 96</span>
       </div>
+
       <div class="menu-toggle" onclick="toggleMenu()">
         <div></div>
         <div></div>
@@ -234,11 +242,9 @@
       }
       const volume = length * width * height;
       const area = 2 * (length * width + width * height + height * length);
-      document.getElementById('volumeResult').textContent = Объём: ${volume.toFixed(3)} м³;
-      document.getElementById('areaResult').textContent = Площадь поверхности: ${area.toFixed(3)} м²;
+      document.getElementById('volumeResult').textContent = `Объём: ${volume.toFixed(3)} м³`;
+      document.getElementById('areaResult').textContent = `Площадь поверхности: ${area.toFixed(3)} м²`;
     }
   </script>
 </body>
 </html>
-
-
