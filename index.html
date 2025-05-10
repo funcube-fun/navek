@@ -40,10 +40,6 @@
       60% { transform: translateX(-1px); }
       80% { transform: translateX(1px); }
     }
-    @keyframes testimonialSlide {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-33.33%); }
-    }
     @keyframes glow {
       0%, 100% { box-shadow: 0 0 5px rgba(227, 6, 19, 0.3); }
       50% { box-shadow: 0 0 20px rgba(227, 6, 19, 0.7); }
@@ -418,7 +414,7 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 25px;
       text-align: center;
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
       position: relative;
       overflow: hidden;
       animation: scaleIn 0.5s ease-out both;
@@ -497,7 +493,9 @@
       animation: glow 1.5s infinite ease-in-out;
     }
     .product-card.hidden {
-      display: none;
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
     }
     .product-card:nth-child(1) { animation: scaleIn 0.5s ease-in 0.1s both; }
     .product-card:nth-child(2) { animation: scaleIn 0.5s ease-in 0.2s both; }
@@ -1222,7 +1220,7 @@
       <div class="application-card">
         <i class="fas fa-industry"></i>
         <h3 data-i18n="applications.industrial.title">Промышленность</h3>
-        <p data-i18n="applications.industrial.describe">Индивидуальные формы для производственных нужд.</p>
+        <p data-i18n="applications.industrial.desc">Индивидуальные формы для производственных нужд.</p>
       </div>
     </div>
   </section>
@@ -1365,7 +1363,6 @@
 
   <section id="faq">
     <h2 data-i18n="faq.title">Часто задаваемые вопросы</h2>
-    احصل على إجابات لأسئلتك الأكثر شيوعًا حول منتجاتنا وخدماتنا.
     <p><strong data-i18n="faq.q1.question">Какой срок изготовления заказа?</strong><br><span data-i18n="faq.q1.answer">Обычно срок составляет от 2 до 5 рабочих дней в зависимости от объема заказа.</span></p>
     <p><strong data-i18n="faq.q2.question">Можно ли сделать индивидуальный заказ?</strong><br><span data-i18n="faq.q2.answer">Да, мы принимаем индивидуальные заказы. Свяжитесь с нами для уточнения деталей.</span></p>
     <p><strong data-i18n="faq.q3.question">Что влияет на стоимость продукции?</strong><br><span data-i18n="faq.q3.answer">Цена зависит от объема заказа, типа материала, сложности изделия и срочности выполнения.</span></p>
@@ -1448,34 +1445,35 @@
   <a href="#" class="calculator-toggle" onclick="toggleCalculator()" title="Открыть калькулятор" aria-label="Open calculator"><i class="fas fa-calculator"></i></a>
 
   <script>
+    // Translation dictionary
     const translations = {
-      ua: {
-        title: "Завод пінопластових виробів",
-        "nav.products": "Продукція",
-        "nav.about-us": "Про нас",
-        "nav.contacts": "Контакти",
-        "nav.addresses": "Адреси",
+      ru: {
+        title: "Завод пенопластовых изделий",
+        "nav.products": "Продукция",
+        "nav.about-us": "О нас",
+        "nav.contacts": "Контакты",
+        "nav.addresses": "Адреса",
         "nav.faq": "FAQ",
-        "hero.title": "Якісні пінопластові вироби",
-        "hero.cta": "Зв'язатися з нами",
-        "cta-banner.title": "Запросіть розрахунок вартості вже сьогодні!",
-        "cta-banner.cta": "Отримати консультацію",
-        "products.title": "Наша продукція",
-        "filter.all": "Усі",
-        "filter.insulation": "Утеплювачі",
+        "hero.title": "Качественные пенопластовые изделия",
+        "hero.cta": "Связаться с нами",
+        "cta-banner.title": "Запросите расчет стоимости уже сегодня!",
+        "cta-banner.cta": "Получить консультацию",
+        "products.title": "Наша продукция",
+        "filter.all": "Все",
+        "filter.insulation": "Утеплители",
         "filter.packaging": "Упаковка",
         "filter.decor": "Декор",
-        "products.foam.title": "Пінопласт",
-        "products.foam.desc": "Високоякісний пінопласт для утеплення фасадів, дахів та підлог, з відмінною теплоізоляцією та довговічністю.",
-        "products.foam.details": "Щільність: 15-35 кг/м³<br>Товщина: 20-100 мм<br>Застосування: Фасади, покрівля",
-        "products.foam.badge": "Екологічний",
+        "products.foam.title": "Пенопласт",
+        "products.foam.desc": "Высококачественный пенопласт для утепления фасадов, крыш и полов, с отличной теплоизоляцией и долговечностью.",
+        "products.foam.details": "Плотность: 15-35 кг/м³<br>Толщина: 20-100 мм<br>Применение: Фасады, кровля",
+        "products.foam.badge": "Экологичный",
         "products.packaging.title": "Упаковка",
-        "products.packaging.desc": "Міцні та легкі пакувальні рішення для захисту товарів під час транспортування.",
-        "products.packaging.details": "Щільність: 10-25 кг/м³<br>Формат: Листи, форми<br>Застосування: Логістика",
-        "products.packaging.badge": "Сертифіковано",
+        "products.packaging.desc": "Прочные и легкие упаковочные решения для защиты товаров во время транспортировки.",
+        "products.packaging.details": "Плотность: 10-25 кг/м³<br>Формат: Листы, формы<br>Применение: Логистика",
+        "products.packaging.badge": "Сертифицировано",
         "products.art-decor.title": "АРТ-декор",
-        "products.art-decor.desc": "Унікальні декоративні елементи з пінопласту для інтер’єрів та фасадів.",
-        "products.art-decor.details": "Щільність: 20 кг/м³<br>Тип: 3D елементи<br>Застосування: Декор",
-        "products.art-decor.badge": "Індивідуальний дизайн",
-        "products.insulation-boards.title": "Утеплювальні плити",
-        "products.insulation-boards.desc": "Плити
+        "products.art-decor.desc": "Уникальные декоративные элементы из пенопласта для интерьеров и фасадов.",
+        "products.art-decor.details": "Плотность: 20 кг/м³<br>Тип: 3D элементы<br>Применение: Декор",
+        "products.art-decor.badge": "Индивидуальный дизайн",
+        "products.insulation-boards.title": "Утеплительные плиты",
+        "products.insulation-boards.desc":
