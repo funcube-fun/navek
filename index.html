@@ -4,32 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title data-i18n="title">Завод пенопластовых изделий</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: 'Montserrat', Arial, sans-serif;
-      background-color: #f5f7fa;
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+      background-color: #f9faff;
       min-height: 100vh;
       color: #333;
     }
     html { scroll-behavior: smooth; }
 
     /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-20px); }
+      from { opacity: 0; transform: translateX(-30px); }
       to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(227, 6, 19, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(227, 6, 19, 0.7); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* Header */
     header {
       background: linear-gradient(to bottom, #00205b, #0033A0);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
       position: fixed;
       width: 100%;
       top: 0;
@@ -45,7 +62,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px;
+      padding: 25px;
     }
     .logo {
       display: flex;
@@ -54,7 +71,7 @@
     .logo img {
       width: 140px;
       height: auto;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
     }
     .logo img:hover {
       transform: scale(1.08);
@@ -74,7 +91,7 @@
       padding: 10px 15px;
       border-radius: 25px;
       position: relative;
-      transition: background-color 0.3s, color 0.3s, transform 0.2s;
+      transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease;
     }
     .nav-menu a:hover {
       background-color: #e30613;
@@ -89,7 +106,7 @@
       bottom: 5px;
       left: 50%;
       background-color: #fff;
-      transition: width 0.3s ease, left 0.3s ease;
+      transition: width 0.4s ease, left 0.4s ease;
     }
     .nav-menu a:hover::after {
       width: 50%;
@@ -111,7 +128,7 @@
       background: #fff0f0;
       padding: 6px 12px;
       border-radius: 50px;
-      transition: background-color 0.3s, transform 0.2s;
+      transition: background-color 0.4s ease, transform 0.3s ease;
     }
     .contact-info .phone:hover {
       background-color: #ffe6e6;
@@ -127,7 +144,7 @@
       background: #0033A0;
       padding: 6px;
       border-radius: 50%;
-      transition: color 0.3s, background-color 0.3s, transform 0.2s;
+      transition: color 0.4s ease, background-color 0.4s ease, transform 0.3s ease;
     }
     .contact-info .social a:hover {
       color: #e30613;
@@ -145,7 +162,7 @@
       font-weight: 600;
       padding: 5px 8px;
       border-radius: 15px;
-      transition: color 0.3s, background-color 0.3s;
+      transition: color 0.4s ease, background-color 0.4s ease;
     }
     .contact-info .lang-toggle a:hover {
       background-color: #e30613;
@@ -167,7 +184,7 @@
       height: 3px;
       background-color: #f5f7fa;
       margin: 4px 0;
-      transition: all 0.3s;
+      transition: all 0.4s ease;
     }
     .menu-toggle.active div:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
@@ -194,11 +211,29 @@
       color: white;
       margin-top: 85px;
       margin-bottom: 30px;
-      animation: fadeIn 1s ease-in;
+      animation: fadeInUp 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
     }
     .hero-image h2 {
       font-size: 2.8rem;
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(to right, #ffffff, #e30613);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .hero-image .cta-button {
       margin-top: 25px;
@@ -208,13 +243,17 @@
       color: white;
       text-decoration: none;
       font-weight: 700;
-      border-radius: 8px;
-      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      border-radius: 12px;
+      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+      animation: pulse 2s infinite ease-in-out;
+      position: relative;
+      z-index: 2;
     }
     .hero-image .cta-button:hover {
       background: linear-gradient(to right, #b50510, #e30613);
       transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: glow 1.5s infinite ease-in-out;
     }
 
     /* CTA Banner */
@@ -227,12 +266,29 @@
       max-width: 1200px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      animation: fadeIn 1s ease-in;
+      animation: fadeInUp 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      opacity: 0.5;
     }
     .cta-banner h2 {
       font-size: 2rem;
       color: white;
       margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(to right, #ffffff, #f5f7fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .cta-banner a {
       display: inline-block;
@@ -241,12 +297,17 @@
       color: #e30613;
       text-decoration: none;
       font-weight: 700;
-      border-radius: 8px;
-      transition: background 0.3s, transform 0.2s;
+      border-radius: 12px;
+      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+      animation: pulse 2s infinite ease-in-out;
+      position: relative;
+      z-index: 1;
     }
     .cta-banner a:hover {
       background: #f5f7fa;
       transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: glow 1.5s infinite ease-in-out;
     }
 
     /* Main Content */
@@ -254,23 +315,53 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 60px 20px;
-      background: linear-gradient(to bottom, #ffffff, #f5f7fa);
-      border-bottom: 1px solid #e6f0ff;
+      background: linear-gradient(to bottom, #ffffff, #e6f0ff);
+      border-radius: 12px;
       margin-bottom: 40px;
-      animation: fadeIn 1s ease-in;
+      animation: scaleIn 0.8s ease-out;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #e30613, #00205b);
     }
     h2 {
       text-align: center;
       margin-bottom: 30px;
-      color: #0033A0;
+      color: #00205b;
       font-size: 2.2rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      background: linear-gradient(to right, #00205b, #e30613);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #e30613;
+      margin: 10px auto;
+      border-radius: 2px;
     }
     p {
-      line-height: 1.8;
+      line-height: 1.9;
       margin-bottom: 20px;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
+      color: #444;
     }
+
+    /* Product Grid */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -279,20 +370,42 @@
     }
     .product-card {
       background-color: #fff;
+      border: 1px solid #e6f0ff;
       border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px;
       text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      animation: slideIn 0.5s ease-in;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      animation: scaleIn 0.5s ease-out both;
     }
     .product-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: glow 1.5s infinite ease-in-out;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(227,6,19,0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .product-card:hover::before {
+      opacity: 1;
     }
     .product-card img {
       max-width: 100%;
       border-radius: 8px;
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.05);
     }
     .product-card h3 {
       margin: 15px 0;
@@ -302,86 +415,296 @@
     }
     .product-card .badge {
       display: inline-block;
-      background: #0033A0;
+      background: linear-gradient(to right, #00205b, #0033A0);
       color: white;
       padding: 5px 10px;
       border-radius: 12px;
       font-size: 0.8rem;
       margin-top: 10px;
     }
+    .product-card .learn-more {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 8px 15px;
+      background: linear-gradient(to right, #e6f0ff, #ffffff);
+      color: #00205b;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+    }
+    .product-card .learn-more:hover {
+      background: linear-gradient(to right, #e30613, #b50510);
+      color: #fff;
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      animation: glow 1.5s infinite ease-in-out;
+    }
+    .product-card:nth-child(1) { animation: scaleIn 0.5s ease-in 0.1s both; }
+    .product-card:nth-child(2) { animation: scaleIn 0.5s ease-in 0.2s both; }
+    .product-card:nth-child(3) { animation: scaleIn 0.5s ease-in 0.3s both; }
+    .product-card:nth-child(4) { animation: scaleIn 0.5s ease-in 0.4s both; }
+    .product-card:nth-child(5) { animation: scaleIn 0.5s ease-in 0.5s both; }
 
-    /* Calculator Section */
-    .calculator {
-      background-color: #fff;
-      padding: 25px;
+    /* Testimonial Section */
+    #testimonials {
+      background: repeating-linear-gradient(45deg, #e6f0ff, #e6f0ff 10px, #f9faff 10px, #f9faff 20px);
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    .testimonial-card {
+      background: #fff;
       border-radius: 12px;
-      border: 1px solid #e6f0ff;
+      padding: 20px;
+      text-align: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      max-width: 450px;
-      margin: 0 auto;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: scaleIn 0.5s ease-out both;
+    }
+    .testimonial-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      animation: glow 1.5s infinite ease-in-out;
+    }
+    .testimonial-card p {
+      font-style: italic;
+      margin-bottom: 15px;
+      color: #555;
+    }
+    .testimonial-card .rating {
+      margin-bottom: 10px;
+    }
+    .testimonial-card .rating i {
+      color: #f1c40f;
+      font-size: 1rem;
+    }
+    .testimonial-card h4 {
+      font-size: 1.1rem;
+      color: #00205b;
+      font-weight: 600;
+    }
+    .testimonial-card:nth-child(1) { animation: scaleIn 0.5s ease-out 0.1s both; }
+    .testimonial-card:nth-child(2) { animation: scaleIn 0.5s ease-out 0.2s both; }
+    .testimonial-card:nth-child(3) { animation: scaleIn 0.5s ease-out 0.3s both; }
+
+    /* Addresses Section */
+    .address-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    .address-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: scaleIn 0.5s ease-out both;
+    }
+    .address-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      animation: glow 1.5s infinite ease-in-out;
+    }
+    .address-card h3 {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .address-card p {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+    .address-card a {
+      color: #e30613;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.4s ease;
+    }
+    .address-card a:hover {
+      color: #b50510;
+    }
+    .address-card:nth-child(1) { animation: scaleIn 0.5s ease-out 0.1s both; }
+    .address-card:nth-child(2) { animation: scaleIn 0.5s ease-out 0.2s both; }
+
+    /* Calculator Modal */
+    .calculator-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .calculator-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+    .calculator-content {
+      background: linear-gradient(to bottom, #f9faff, #e6f0ff);
+      width: 90%;
+      max-width: 500px;
+      padding: 40px 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      animation: scaleIn 0.4s ease-out;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .calculator-content .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      color: #333;
+      cursor: pointer;
+      transition: color 0.4s ease;
+    }
+    .calculator-content .close-btn:hover {
+      color: #e30613;
+    }
+    .calculator-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .calculator {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .calculator .input-group {
+      position: relative;
     }
     .calculator label {
       display: block;
-      margin: 12px 0 6px;
-      font-weight: 600;
-      color: #0033A0;
+      margin: 10px 0 5px;
+      font-weight: 700;
+      color: #00205b;
+      animation: fadeInUp 0.4s ease-out both;
     }
     .calculator input, .calculator select {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: 1px solid #ddd;
-      border-radius: 6px;
-      transition: border-color 0.3s;
+      border-radius: 10px;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      animation: fadeInUp 0.4s ease-out both;
     }
     .calculator input:focus, .calculator select:focus {
-      border-color: #0033A0;
+      border-color: #00205b;
+      box-shadow: 0 0 8px rgba(0, 32, 91, 0.3);
       outline: none;
     }
+    .calculator .tooltip {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .calculator .input-group:hover .tooltip {
+      opacity: 1;
+    }
+    .calculator .buttons {
+      display: flex;
+      gap: 10px;
+    }
     .calculator button {
-      width: 100%;
+      flex: 1;
       padding: 14px;
-      background: linear-gradient(to right, #e30613, #b50510);
-      color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
       font-weight: 700;
       font-size: 1.1rem;
-      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+      animation: fadeInUp 0.4s ease-out both;
     }
-    .calculator button:hover {
+    .calculator button.calculate {
+      background: linear-gradient(to right, #e30613, #b50510);
+      color: white;
+    }
+    .calculator button.reset {
+      background: linear-gradient(to right, #6c757d, #5a6268);
+      color: white;
+    }
+    .calculator button.calculate:hover {
       background: linear-gradient(to right, #b50510, #e30613);
       transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: glow 1.5s infinite ease-in-out;
+    }
+    .calculator button.reset:hover {
+      background: linear-gradient(to right, #5a6268, #6c757d);
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: glow 1.5s infinite ease-in-out;
+    }
+    .calculator .results {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #333;
+      animation: fadeInUp 0.4s ease-out both;
     }
 
-    /* Sticky Contact Button */
-    .sticky-contact {
+    /* Sticky Buttons */
+    .contact-toggle, .calculator-toggle {
       position: fixed;
       bottom: 20px;
-      right: 20px;
+      z-index: 1000;
       background: linear-gradient(to right, #e30613, #b50510);
       color: white;
       padding: 15px;
       border-radius: 50%;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      z-index: 1000;
-      transition: transform 0.2s;
+      transition: transform 0.4s ease;
     }
-    .sticky-contact:hover {
-      transform: scale(1.1);
+    .contact-toggle {
+      left: 20px;
     }
-    .sticky-contact i {
+    .calculator-toggle {
+      right: 20px;
+    }
+    .contact-toggle:hover, .calculator-toggle:hover {
+      transform: scale(1.1) rotate(10deg);
+      animation: pulse 1s infinite ease-in-out;
+    }
+    .contact-toggle i, .calculator-toggle i {
       font-size: 1.5rem;
     }
 
     /* Footer */
     footer {
       background: linear-gradient(to bottom, #00205b, #0033A0);
-      color: white;
-      padding: 40px 20px;
+      color: #ffffff;
+      padding: 50px 20px;
       text-align: center;
       box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+      border-top: 2px solid rgba(255, 255, 255, 0.1);
     }
     .footer-container {
       max-width: 1200px;
@@ -395,14 +718,15 @@
       font-size: 1.2rem;
       margin-bottom: 15px;
       font-weight: 700;
+      color: #ffffff;
     }
-    .footer-container a {
-      color: #f5f7fa;
+    .footer-container p, .footer-container a {
+      color: #ffffff;
       text-decoration: none;
       font-size: 1rem;
       display: block;
       margin: 8px 0;
-      transition: color 0.3s, transform 0.2s;
+      transition: color 0.4s ease, transform 0.3s ease;
     }
     .footer-container a:hover {
       color: #e30613;
@@ -412,11 +736,31 @@
       display: inline-block;
       font-size: 1.2rem;
       margin: 0 10px 0 0;
+      color: #ffffff;
+    }
+    .footer-container .social a:hover {
+      color: #e30613;
+    }
+    .back-to-top {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #e30613;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: background 0.4s ease, transform 0.3s ease;
+    }
+    .back-to-top:hover {
+      background: #b50510;
+      animation: bounce 0.5s infinite ease-in-out;
     }
     footer .copyright {
       margin-top: 20px;
       font-size: 0.9rem;
       text-align: center;
+      color: #ffffff;
     }
 
     /* Responsive Design */
@@ -478,8 +822,21 @@
       .cta-banner h2 {
         font-size: 1.5rem;
       }
-      .product-grid {
+      .product-grid, .testimonial-grid, .address-grid {
         grid-template-columns: 1fr;
+      }
+      .calculator-content {
+        width: 95%;
+        padding: 20px;
+      }
+      .calculator .buttons {
+        flex-direction: column;
+      }
+      .contact-toggle, .calculator-toggle {
+        padding: 12px;
+      }
+      .contact-toggle i, .calculator-toggle i {
+        font-size: 1.2rem;
       }
       .footer-container {
         grid-template-columns: 1fr;
@@ -487,12 +844,6 @@
       }
       .footer-container a {
         display: inline-block;
-      }
-      .sticky-contact {
-        padding: 12px;
-      }
-      .sticky-contact i {
-        font-size: 1.2rem;
       }
     }
   </style>
@@ -506,9 +857,9 @@
         </a>
       </div>
       <nav class="nav-menu" id="menu">
-        <a href="#products" data-i18n="nav.products">Продукція</a>
+        <a href="#products" data-i18n="nav.products">Продукция</a>
         <a href="#about-us" data-i18n="nav.about-us">О нас</a>
-        <a href="#calculator" data-i18n="nav.calculator">Калькулятор</a>
+        <a href="#testimonials" data-i18n="nav.testimonials">Отзывы</a>
         <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
         <a href="#addresses" data-i18n="nav.addresses">Адреса</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
@@ -553,57 +904,68 @@
         <h3 data-i18n="products.foam.title">Пенопласт</h3>
         <p data-i18n="products.foam.desc">Высококачественный пенопласт для утепления фасадов, крыш и полов, с отличной теплоизоляцией и долговечностью.</p>
         <span class="badge" data-i18n="products.foam.badge">Экологичный</span>
+        <a href="foam.html" class="learn-more" data-i18n="products.learn-more">Посмотреть товары</a>
       </div>
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=Упаковка" alt="Упаковка" />
         <h3 data-i18n="products.packaging.title">Упаковка</h3>
         <p data-i18n="products.packaging.desc">Прочные и легкие упаковочные решения для защиты товаров во время транспортировки.</p>
         <span class="badge" data-i18n="products.packaging.badge">Сертифицировано</span>
+        <a href="packaging.html" class="learn-more" data-i18n="products.learn-more">Посмотреть товары</a>
       </div>
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=АРТ-декор" alt="АРТ-декор" />
         <h3 data-i18n="products.art-decor.title">АРТ-декор</h3>
         <p data-i18n="products.art-decor.desc">Уникальные декоративные элементы из пенопласта для интерьеров и фасадов.</p>
         <span class="badge" data-i18n="products.art-decor.badge">Индивидуальный дизайн</span>
+        <a href="art-decor.html" class="learn-more" data-i18n="products.learn-more">Посмотреть товары</a>
       </div>
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=Плиты" alt="Плиты" />
         <h3 data-i18n="products.insulation-boards.title">Утеплительные плиты</h3>
         <p data-i18n="products.insulation-boards.desc">Плиты высокой плотности для эффективного утепления зданий и сооружений.</p>
         <span class="badge" data-i18n="products.insulation-boards.badge">Высокая плотность</span>
+        <a href="insulation-boards.html" class="learn-more" data-i18n="products.learn-more">Посмотреть товары</a>
       </div>
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=Фигуры" alt="Фигуры" />
         <h3 data-i18n="products.custom-shapes.title">Фигуры на заказ</h3>
         <p data-i18n="products.custom-shapes.desc">Индивидуальные пенопластовые формы для рекламы, декора и промышленности.</p>
         <span class="badge" data-i18n="products.custom-shapes.badge">На заказ</span>
+        <a href="custom-shapes.html" class="learn-more" data-i18n="products.learn-more">Посмотреть товары</a>
       </div>
     </div>
   </section>
 
   <section id="about-us">
     <h2 data-i18n="about-us.title">О нас</h2>
-    <p data-i18n="about-us.desc">Мы — ведущий производитель пенопластовых изделий в Украине с 19-летним опытом, производящий более 10,000 м³ продукции ежемесячно на современном европейском оборудовании, с использованием качественного сырья для создания сертифицированной по ISO стандартам, экологичной и долговечной продукции (срок службы до 50 лет), обслуживающий более 500 компаний в Украине и Европе, с быстрой и надежной доставкой по всей стране благодаря автопарку из более чем 25 грузовиков.</p>
+    <p data-i18n="about-us.desc">Мы — ведущий производитель пенопластовых изделий в Украине с 19-летним опытом, производящий более 10,000 м³ продукции ежемесячно на современном европейском оборудовании, используя качественное сырье для создания сертифицированной по ISO стандартам, экологичной и долговечной продукции (срок службы до 50 лет), обслуживающий более 500 компаний в Украине и Европе, с быстрой и надежной доставкой по всей стране благодаря автопарку из более чем 25 грузовиков.</p>
   </section>
 
-  <section id="calculator">
-    <h2 data-i18n="calculator.title">Калькулятор объёма</h2>
-    <div class="calculator">
-      <label for="unit" data-i18n="calculator.unit">Единицы измерывания:</label>
-      <select id="unit">
-        <option value="1" data-i18n="calculator.unit.meters">Метры</option>
-        <option value="0.01" data-i18n="calculator.unit.centimeters">Сантиметры</option>
-        <option value="0.001" data-i18n="calculator.unit.millimeters">Миллиметры</option>
-      </select>
-      <label for="length" data-i18n="calculator.length">Длина:</label>
-      <input type="number" id="length" step="0.01">
-      <label for="width" data-i18n="calculator.width">Ширина:</label>
-      <input type="number" id="width" step="0.01">
-      <label for="height" data-i18n="calculator.height">Высота:</label>
-      <input type="number" id="height" step="0.01">
-      <button onclick="calculateVolume()" data-i18n="calculator.calculate">Рассчитать</button>
-      <p id="volumeResult"></p>
-      <p id="areaResult"></p>
+  <section id="testimonials">
+    <h2 data-i18n="testimonials.title">Отзывы наших клиентов</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p data-i18n="testimonials.t1.text">"Пенопласт превзошел все ожидания! Отличная теплоизоляция и быстрая доставка. Заказываем регулярно для наших строительных проектов."</p>
+        <h4 data-i18n="testimonials.t1.author">Иван Петров, Киев</h4>
+      </div>
+      <div class="testimonial-card">
+        <div class="rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p data-i18n="testimonials.t2.text">"Упаковочные решения из пенопласта спасли нашу продукцию при транспортировке. Качество на высоте, сервис отличный!"</p>
+        <h4 data-i18n="testimonials.t2.author">Анна Сидорова, Львов</h4>
+      </div>
+      <div class="testimonial-card">
+        <div class="rating">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p data-i18n="testimonials.t3.text">"Заказали декоративные элементы для интерьера. Индивидуальный подход и потрясающий результат. Очень довольны!"</p>
+        <h4 data-i18n="testimonials.t3.author">Олег Коваленко, Одесса</h4>
+      </div>
     </div>
   </section>
 
@@ -618,7 +980,20 @@
 
   <section id="addresses">
     <h2 data-i18n="addresses.title">Наши адреса</h2>
-    <p data-i18n="addresses.desc">Основной офис и производственная база — Одесса, ул. Моторная, 1. Подробности уточняйте по телефону.</p>
+    <div class="address-grid">
+      <div class="address-card">
+        <h3 data-i18n="addresses.odessa.title">Одесса</h3>
+        <p data-i18n="addresses.odessa.desc">Основной офис и производственная база. Изготовление пенопласта, декоративных элементов и упаковки.</p>
+        <p><strong data-i18n="addresses.address.label">Адрес:</strong> <span data-i18n="addresses.odessa.address">ул. Моторная, 1</span></p>
+        <p><strong data-i18n="addresses.phone.label">Телефон:</strong> <a href="tel:+380441234567">+380 (44) 123-45-67</a></p>
+      </div>
+      <div class="address-card">
+        <h3 data-i18n="addresses.dnipro.title">Днепр</h3>
+        <p data-i18n="addresses.dnipro.desc">Склад и пункт выдачи. Специализируемся на утеплителях и упаковочных материалах.</p>
+        <p><strong data-i18n="addresses.address.label">Адрес:</strong> <span data-i18n="addresses.dnipro.address">ул. Гвардейская, 10</span></p>
+        <p><strong data-i18n="addresses.phone.label">Телефон:</strong> <a href="tel:+380501234567">+380 (50) 123-45-67</a></p>
+      </div>
+    </div>
   </section>
 
   <section id="faq">
@@ -641,7 +1016,10 @@
         <h3 data-i18n="footer.navigation">Навигация</h3>
         <a href="#products" data-i18n="footer.products">Продукция</a>
         <a href="#about-us" data-i18n="footer.about-us">О нас</a>
+        <a href="#testimonials" data-i18n="footer.testimonials">Отзывы</a>
         <a href="#contacts" data-i18n="footer.contacts">Контакты</a>
+        <a href="#addresses" data-i18n="footer.addresses">Адреса</a>
+        <a href="#faq" data-i18n="footer.faq">FAQ</a>
       </div>
       <div>
         <h3 data-i18n="footer.social">Социальные сети</h3>
@@ -651,18 +1029,61 @@
         </div>
       </div>
     </div>
+    <a href="#" class="back-to-top" data-i18n="back-to-top">Наверх</a>
     <p class="copyright" data-i18n="footer.copyright">© 2025 Завод пенопластовых изделий. Все права защищены.</p>
   </footer>
 
-  <a href="#contacts" class="sticky-contact"><i class="fas fa-phone"></i></a>
+  <div class="calculator-modal" id="calculatorModal">
+    <div class="calculator-content">
+      <i class="fas fa-times close-btn" onclick="toggleCalculator()"></i>
+      <h2 data-i18n="calculator.title">Калькулятор объёма</h2>
+      <div class="calculator">
+        <label for="unit" data-i18n="calculator.unit">Единицы измерения:</label>
+        <div class="input-group">
+          <select id="unit">
+            <option value="1" data-i18n="calculator.unit.meters">Метры</option>
+            <option value="0.01" data-i18n="calculator.unit.centimeters">Сантиметры</option>
+            <option value="0.001" data-i18n="calculator.unit.millimeters">Миллиметры</option>
+          </select>
+          <span class="tooltip" data-i18n="calculator.unit.tooltip">Выберите единицы измерения</span>
+        </div>
+        <label for="length" data-i18n="calculator.length">Длина:</label>
+        <div class="input-group">
+          <input type="number" id="length" step="0.01">
+          <span class="tooltip" data-i18n="calculator.length.tooltip">Введите длину в выбранных единицах</span>
+        </div>
+        <label for="width" data-i18n="calculator.width">Ширина:</label>
+        <div class="input-group">
+          <input type="number" id="width" step="0.01">
+          <span class="tooltip" data-i18n="calculator.width.tooltip">Введите ширину в выбранных единицах</span>
+        </div>
+        <label for="height" data-i18n="calculator.height">Высота:</label>
+        <div class="input-group">
+          <input type="number" id="height" step="0.01">
+          <span class="tooltip" data-i18n="calculator.height.tooltip">Введите высоту в выбранных единицах</span>
+        </div>
+        <div class="buttons">
+          <button class="calculate" onclick="calculateVolume()" data-i18n="calculator.calculate">Рассчитать</button>
+          <button class="reset" onclick="resetCalculator()" data-i18n="calculator.reset">Сбросить</button>
+        </div>
+        <div class="results">
+          <p id="volumeResult"></p>
+          <p id="areaResult"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="tel:+3801277996" class="contact-toggle" title="Позвонить" aria-label="Call us"><i class="fas fa-phone"></i></a>
+  <a href="#" class="calculator-toggle" onclick="toggleCalculator()" title="Открыть калькулятор" aria-label="Open calculator"><i class="fas fa-calculator"></i></a>
 
   <script>
     const translations = {
       ua: {
-        title: "Завод пенопластових виробів",
+        title: "Завод пінопластових виробів",
         "nav.products": "Продукція",
         "nav.about-us": "Про нас",
-        "nav.calculator": "Калькулятор",
+        "nav.testimonials": "Відгуки",
         "nav.contacts": "Контакти",
         "nav.addresses": "Адреси",
         "nav.faq": "FAQ",
@@ -684,19 +1105,32 @@
         "products.insulation-boards.desc": "Плити високої щільності для ефективного утеплення будівель та споруд.",
         "products.insulation-boards.badge": "Висока щільність",
         "products.custom-shapes.title": "Фігури на замовлення",
-        "products.custom-shapes.desc": "Індивідуальні пінопластові форми для реклами, декору та промисловості.",
+        "products.custom-shapes.desc": "Індивидуальні пінопластові форми для реклами, декору та промисловості.",
         "products.custom-shapes.badge": "На замовлення",
+        "products.learn-more": "Переглянути товари",
         "about-us.title": "Про нас",
         "about-us.desc": "Ми — провідний виробник пінопластових виробів в Україні з 19-річним досвідом, що виробляє понад 10,000 м³ продукції щомісячно на сучасному європейському обладнанні, використовуючи якісну сировину для створення сертифікованої за стандартами ISO, екологічної та довговічної продукції (термін служби до 50 років), обслуговуючи понад 500 компаній в Україні та Європі, з швидкою та надійною доставкою по всій країні завдяки автопарку з більш ніж 25 вантажівок.",
+        "testimonials.title": "Відгуки наших клієнтів",
+        "testimonials.t1.text": "Пінопласт перевершив усі очікування! Відмінна теплоізоляція та швидка доставка. Замовляємо регулярно для наших будівельних проєктів.",
+        "testimonials.t1.author": "Іван Петров, Київ",
+        "testimonials.t2.text": "Пакувальні рішення з пінопласту врятували нашу продукцію при транспортуванні. Якість на висоті, сервіс відмінний!",
+        "testimonials.t2.author": "Анна Сидорова, Львів",
+        "testimonials.t3.text": "Замовили декоративні елементи для інтер’єру. Індивидуальний підхід та приголомшливий результат. Дуже задоволені!",
+        "testimonials.t3.author": "Олег Коваленко, Одеса",
         "calculator.title": "Калькулятор об'єму",
         "calculator.unit": "Одиниці вимірювання:",
         "calculator.unit.meters": "Метри",
         "calculator.unit.centimeters": "Сантиметри",
         "calculator.unit.millimeters": "Міліметри",
+        "calculator.unit.tooltip": "Виберіть одиниці вимірювання",
         "calculator.length": "Довжина:",
+        "calculator.length.tooltip": "Введіть довжину в обраних одиницях",
         "calculator.width": "Ширина:",
+        "calculator.width.tooltip": "Введіть ширину в обраних одиницях",
         "calculator.height": "Висота:",
+        "calculator.height.tooltip": "Введіть висоту в обраних одиницях",
         "calculator.calculate": "Розрахувати",
+        "calculator.reset": "Скинути",
         "calculator.volume": "Об'єм",
         "calculator.area": "Площа поверхні",
         "calculator.error": "Будь ласка, введіть усі розміри.",
@@ -709,7 +1143,14 @@
         "contacts.hours.label": "Години роботи:",
         "contacts.hours": "Пн-Пт, 9:00-18:00",
         "addresses.title": "Наші адреси",
-        "addresses.desc": "Основний офіс та виробнича база — Одеса, вул. Моторна, 1. Подробиці уточнюйте за телефоном.",
+        "addresses.odessa.title": "Одеса",
+        "addresses.odessa.desc": "Основний офіс та виробнича база. Виготовлення пінопласту, декоративних елементів та упаковки.",
+        "addresses.odessa.address": "вул. Моторна, 1",
+        "addresses.dnipro.title": "Дніпро",
+        "addresses.dnipro.desc": "Склад та пункт видачі. Спеціалізуємося на утеплювачах та пакувальних матеріалах.",
+        "addresses.dnipro.address": "вул. Гвардійська, 10",
+        "addresses.address.label": "Адреса:",
+        "addresses.phone.label": "Телефон:",
         "faq.title": "Часто задавані питання",
         "faq.q1.question": "Який термін виготовлення замовлення?",
         "faq.q1.answer": "Зазвичай термін становить від 2 до 5 робочих днів залежно від обсягу замовлення.",
@@ -719,19 +1160,21 @@
         "faq.q3.answer": "Ціна залежить від обсягу замовлення, типу матеріалу, складності виробу та терміновості виконання.",
         "faq.q4.question": "Чи здійснюєте ви міжнародну доставку?",
         "faq.q4.answer": "Так, ми доставляємо продукцію до країн Європи. Умови доставки уточнюйте у менеджерів.",
-        "footer.copyright": "© 2025 Завод пенопластових виробів. Всі права захищені.",
+        "footer.copyright": "© 2025 Завод пінопластових виробів. Усі права захищені.",
         "footer.contacts": "Контакти",
         "footer.products": "Продукція",
+        "footer.testimonials": "Відгуки",
         "footer.about-us": "Про нас",
         "footer.contact": "Тел: +380 12 779 96 | Email: info@navekodessa.com",
         "footer.navigation": "Навігація",
-        "footer.social": "Соціальні мережі"
+        "footer.social": "Соціальні мережі",
+        "back-to-top": "Вгору"
       },
       en: {
         title: "Foam Products Factory",
         "nav.products": "Products",
         "nav.about-us": "About Us",
-        "nav.calculator": "Calculator",
+        "nav.testimonials": "Testimonials",
         "nav.contacts": "Contacts",
         "nav.addresses": "Addresses",
         "nav.faq": "FAQ",
@@ -755,17 +1198,30 @@
         "products.custom-shapes.title": "Custom Shapes",
         "products.custom-shapes.desc": "Custom foam shapes for advertising, decor, and industrial applications.",
         "products.custom-shapes.badge": "Made to Order",
+        "products.learn-more": "View Products",
         "about-us.title": "About Us",
         "about-us.desc": "We are a leading foam products manufacturer in Ukraine with 19 years of experience, producing over 10,000 m³ of products monthly using modern European equipment and high-quality raw materials to create ISO-certified, eco-friendly, and durable products (up to 50 years of service life), serving over 500 companies in Ukraine and Europe, with fast and reliable delivery nationwide thanks to a fleet of over 25 trucks.",
+        "testimonials.title": "Customer Testimonials",
+        "testimonials.t1.text": "The foam exceeded all expectations! Excellent thermal insulation and fast delivery. We order regularly for our construction projects.",
+        "testimonials.t1.author": "Ivan Petrov, Kyiv",
+        "testimonials.t2.text": "Foam packaging solutions saved our products during transportation. Top quality and excellent service!",
+        "testimonials.t2.author": "Anna Sidorova, Lviv",
+        "testimonials.t3.text": "Ordered decorative elements for our interior. Personalized approach and stunning results. Very satisfied!",
+        "testimonials.t3.author": "Oleg Kovalenko, Odesa",
         "calculator.title": "Volume Calculator",
         "calculator.unit": "Units of Measurement:",
         "calculator.unit.meters": "Meters",
         "calculator.unit.centimeters": "Centimeters",
         "calculator.unit.millimeters": "Millimeters",
+        "calculator.unit.tooltip": "Select the units of measurement",
         "calculator.length": "Length:",
+        "calculator.length.tooltip": "Enter the length in selected units",
         "calculator.width": "Width:",
+        "calculator.width.tooltip": "Enter the width in selected units",
         "calculator.height": "Height:",
+        "calculator.height.tooltip": "Enter the height in selected units",
         "calculator.calculate": "Calculate",
+        "calculator.reset": "Reset",
         "calculator.volume": "Volume",
         "calculator.area": "Surface Area",
         "calculator.error": "Please enter all dimensions.",
@@ -778,7 +1234,14 @@
         "contacts.hours.label": "Working Hours:",
         "contacts.hours": "Mon-Fri, 9:00-18:00",
         "addresses.title": "Our Addresses",
-        "addresses.desc": "Main office and production base — Odesa, Motorna St, 1. Please contact us for details.",
+        "addresses.odessa.title": "Odesa",
+        "addresses.odessa.desc": "Main office and production base. Manufacturing foam, decorative elements, and packaging.",
+        "addresses.odessa.address": "Motorna St, 1",
+        "addresses.dnipro.title": "Dnipro",
+        "addresses.dnipro.desc": "Warehouse and pickup point. Specializing in insulation and packaging materials.",
+        "addresses.dnipro.address": "Gvardeyskaya St, 10",
+        "addresses.address.label": "Address:",
+        "addresses.phone.label": "Phone:",
         "faq.title": "Frequently Asked Questions",
         "faq.q1.question": "What is the production time for an order?",
         "faq.q1.answer": "The production time is usually 2 to 5 working days, depending on the order volume.",
@@ -791,16 +1254,18 @@
         "footer.copyright": "© 2025 Foam Products Factory. All rights reserved.",
         "footer.contacts": "Contacts",
         "footer.products": "Products",
+        "footer.testimonials": "Testimonials",
         "footer.about-us": "About Us",
         "footer.contact": "Phone: +380 12 779 96 | Email: info@navekodessa.com",
         "footer.navigation": "Navigation",
-        "footer.social": "Social Media"
+        "footer.social": "Social Media",
+        "back-to-top": "Back to Top"
       },
       ru: {
         title: "Завод пенопластовых изделий",
         "nav.products": "Продукция",
         "nav.about-us": "О нас",
-        "nav.calculator": "Калькулятор",
+        "nav.testimonials": "Отзывы",
         "nav.contacts": "Контакты",
         "nav.addresses": "Адреса",
         "nav.faq": "FAQ",
@@ -824,17 +1289,30 @@
         "products.custom-shapes.title": "Фигуры на заказ",
         "products.custom-shapes.desc": "Индивидуальные пенопластовые формы для рекламы, декора и промышленности.",
         "products.custom-shapes.badge": "На заказ",
+        "products.learn-more": "Посмотреть товары",
         "about-us.title": "О нас",
         "about-us.desc": "Мы — ведущий производитель пенопластовых изделий в Украине с 19-летним опытом, производящий более 10,000 м³ продукции ежемесячно на современном европейском оборудовании, используя качественное сырье для создания сертифицированной по ISO стандартам, экологичной и долговечной продукции (срок службы до 50 лет), обслуживающий более 500 компаний в Украине и Европе, с быстрой и надежной доставкой по всей стране благодаря автопарку из более чем 25 грузовиков.",
+        "testimonials.title": "Отзывы наших клиентов",
+        "testimonials.t1.text": "Пенопласт превзошел все ожидания! Отличная теплоизоляция и быстрая доставка. Заказываем регулярно для наших строительных проектов.",
+        "testimonials.t1.author": "Иван Петров, Киев",
+        "testimonials.t2.text": "Упаковочные решения из пенопласта спасли нашу продукцию при транспортировке. Качество на высоте, сервис отличный!",
+        "testimonials.t2.author": "Анна Сидорова, Львов",
+        "testimonials.t3.text": "Заказали декоративные элементы для интерьера. Индивидуальный подход и потрясающий результат. Очень довольны!",
+        "testimonials.t3.author": "Олег Коваленко, Одесса",
         "calculator.title": "Калькулятор объёма",
         "calculator.unit": "Единицы измерения:",
         "calculator.unit.meters": "Метры",
         "calculator.unit.centimeters": "Сантиметры",
         "calculator.unit.millimeters": "Миллиметры",
+        "calculator.unit.tooltip": "Выберите единицы измерения",
         "calculator.length": "Длина:",
+        "calculator.length.tooltip": "Введите длину в выбранных единицах",
         "calculator.width": "Ширина:",
+        "calculator.width.tooltip": "Введите ширину в выбранных единицах",
         "calculator.height": "Высота:",
+        "calculator.height.tooltip": "Введите высоту в выбранных единицах",
         "calculator.calculate": "Рассчитать",
+        "calculator.reset": "Сбросить",
         "calculator.volume": "Объём",
         "calculator.area": "Площадь поверхности",
         "calculator.error": "Пожалуйста, введите все размеры.",
@@ -847,7 +1325,14 @@
         "contacts.hours.label": "Часы работы:",
         "contacts.hours": "Пн-Пт, 9:00-18:00",
         "addresses.title": "Наши адреса",
-        "addresses.desc": "Основной офис и производственная база — Одесса, ул. Моторная, 1. Подробности уточняйте по телефону.",
+        "addresses.odessa.title": "Одесса",
+        "addresses.odessa.desc": "Основной офис и производственная база. Изготовление пенопласта, декоративных элементов и упаковки.",
+        "addresses.odessa.address": "ул. Моторная, 1",
+        "addresses.dnipro.title": "Днепр",
+        "addresses.dnipro.desc": "Склад и пункт выдачи. Специализируемся на утеплителях и упаковочных материалах.",
+        "addresses.dnipro.address": "ул. Гвардейская, 10",
+        "addresses.address.label": "Адрес:",
+        "addresses.phone.label": "Телефон:",
         "faq.title": "Часто задаваемые вопросы",
         "faq.q1.question": "Какой срок изготовления заказа?",
         "faq.q1.answer": "Обычно срок составляет от 2 до 5 рабочих дней в зависимости от объема заказа.",
@@ -860,10 +1345,12 @@
         "footer.copyright": "© 2025 Завод пенопластовых изделий. Все права защищены.",
         "footer.contacts": "Контакты",
         "footer.products": "Продукция",
+        "footer.testimonials": "Отзывы",
         "footer.about-us": "О нас",
         "footer.contact": "Тел: +380 12 779 96 | Email: info@navekodessa.com",
         "footer.navigation": "Навигация",
-        "footer.social": "Социальные сети"
+        "footer.social": "Социальные сети",
+        "back-to-top": "Наверх"
       }
     };
 
@@ -885,36 +1372,22 @@
       });
       localStorage.setItem('language', lang);
 
-      // Update calculator results if already calculated
       if (lastVolume !== null && lastArea !== null) {
         document.getElementById('volumeResult').textContent = `${translations[lang]['calculator.volume'] || 'Объём'}: ${lastVolume.toFixed(3)} м³`;
         document.getElementById('areaResult').textContent = `${translations[lang]['calculator.area'] || 'Площадь поверхности'}: ${lastArea.toFixed(3)} м²`;
       }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('language') || 'ua';
-      changeLanguage(savedLang);
-      document.querySelectorAll('.lang-toggle a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const lang = link.getAttribute('data-lang');
-          changeLanguage(lang);
-        });
-      });
-
-      // Header scroll effect
-      window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        header.classList.toggle('scrolled', window.scrollY > 50);
-      });
-    });
-
     function toggleMenu() {
       const menu = document.getElementById('menu');
       const toggle = document.querySelector('.menu-toggle');
       menu.classList.toggle('active');
       toggle.classList.toggle('active');
+    }
+
+    function toggleCalculator() {
+      const modal = document.getElementById('calculatorModal');
+      modal.classList.toggle('active');
     }
 
     function calculateVolume() {
@@ -933,8 +1406,4 @@
       lastVolume = length * width * height;
       lastArea = 2 * (length * width + width * height + height * length);
       document.getElementById('volumeResult').textContent = `${translations[currentLang]['calculator.volume'] || 'Объём'}: ${lastVolume.toFixed(3)} м³`;
-      document.getElementById('areaResult').textContent = `${translations[currentLang]['calculator.area'] || 'Площадь поверхности'}: ${lastArea.toFixed(3)} м²`;
-    }
-  </script>
-</body>
-</html>
+      document.getElementById('areaResult').textContent = `${translations[currentLang]['calculator.area'] || 'Площадь поверхности'}: ${lastArea.toFixed(3)}
