@@ -33,6 +33,13 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+    @keyframes vibrate {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-2px); }
+      40% { transform: translateX(2px); }
+      60% { transform: translateX(-1px); }
+      80% { transform: translateX(1px); }
+    }
     @keyframes testimonialSlide {
       0% { transform: translateX(0); }
       100% { transform: translateX(-33.33%); }
@@ -169,6 +176,7 @@
       padding: 5px 8px;
       border-radius: 15px;
       transition: color 0.4s ease, background-color 0.4s ease;
+      cursor: pointer;
     }
     .contact-info .lang-toggle a:hover {
       background-color: #e30613;
@@ -254,6 +262,7 @@
       animation: pulse 2s infinite ease-in-out;
       position: relative;
       z-index: 2;
+      cursor: pointer;
     }
     .hero-image .cta-button:hover {
       background: linear-gradient(to right, #b50510, #e30613);
@@ -308,6 +317,7 @@
       animation: pulse 2s infinite ease-in-out;
       position: relative;
       z-index: 1;
+      cursor: pointer;
     }
     .cta-banner a:hover {
       background: #f5f7fa;
@@ -477,6 +487,7 @@
       border-radius: 10px;
       font-weight: 600;
       transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+      cursor: pointer;
     }
     .product-card .learn-more:hover {
       background: linear-gradient(to right, #e30613, #b50510);
@@ -484,6 +495,9 @@
       transform: scale(1.05);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       animation: glow 1.5s infinite ease-in-out;
+    }
+    .product-card.hidden {
+      display: none;
     }
     .product-card:nth-child(1) { animation: scaleIn 0.5s ease-in 0.1s both; }
     .product-card:nth-child(2) { animation: scaleIn 0.5s ease-in 0.2s both; }
@@ -841,6 +855,11 @@
       color: #333;
       animation: fadeInUp 0.4s ease-out both;
     }
+    .calculator .error {
+      color: #e30613;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
 
     /* Sticky Buttons */
     .contact-toggle, .calculator-toggle {
@@ -853,6 +872,7 @@
       border-radius: 50%;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       transition: transform 0.4s ease;
+      cursor: pointer;
     }
     .contact-toggle {
       left: 20px;
@@ -864,7 +884,11 @@
       transform: scale(1.1) rotate(10deg);
       animation: pulse 1s infinite ease-in-out;
     }
-    .contact-toggle i, .calculator-toggle i {
+    .contact-toggle i {
+      font-size: 1.5rem;
+      animation: vibrate 0.3s infinite ease-in-out;
+    }
+    .calculator-toggle i {
       font-size: 1.5rem;
     }
 
@@ -951,6 +975,7 @@
       border-radius: 10px;
       font-weight: 600;
       transition: background 0.4s ease, transform 0.3s ease;
+      cursor: pointer;
     }
     .back-to-top:hover {
       background: #b50510;
@@ -1092,19 +1117,19 @@
         <a href="#addresses" data-i18n="nav.addresses">Адреса</a>
         <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
-      <div class="contact-info">
+      <div class="contact-info" id="contactInfo">
         <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
         <div class="social">
           <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
           <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
         <div class="lang-toggle">
-          <a href="#" data-lang="ua" class="lang active">UA</a>
+          <a href="#" data-lang="ua" class="lang">UA</a>
           <a href="#" data-lang="en" class="lang">EN</a>
-          <a href="#" data-lang="ru" class="lang">RU</a>
+          <a href="#" data-lang="ru" class="lang active">RU</a>
         </div>
       </div>
-      <div class="menu-toggle" onclick="toggleMenu()">
+      <div class="menu-toggle" id="menuToggle">
         <div></div>
         <div></div>
         <div></div>
@@ -1139,7 +1164,7 @@
         <p data-i18n="products.foam.desc">Высококачественный пенопласт для утепления фасадов, крыш и полов, с отличной теплоизоляцией и долговечностью.</p>
         <div class="product-details" data-i18n="products.foam.details">Плотность: 15-35 кг/м³<br>Толщина: 20-100 мм<br>Применение: Фасады, кровля</div>
         <span class="badge" data-i18n="products.foam.badge">Экологичный</span>
-        <a href="#" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
+        <a href="#contacts" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
       </div>
       <div class="product-card" data-category="packaging">
         <img src="https://via.placeholder.com/200x150?text=Упаковка" alt="Упаковка" />
@@ -1147,7 +1172,7 @@
         <p data-i18n="products.packaging.desc">Прочные и легкие упаковочные решения для защиты товаров во время транспортировки.</p>
         <div class="product-details" data-i18n="products.packaging.details">Плотность: 10-25 кг/м³<br>Формат: Листы, формы<br>Применение: Логистика</div>
         <span class="badge" data-i18n="products.packaging.badge">Сертифицировано</span>
-        <a href="#" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
+        <a href="#contacts" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
       </div>
       <div class="product-card" data-category="decor">
         <img src="https://via.placeholder.com/200x150?text=АРТ-декор" alt="АРТ-декор" />
@@ -1155,7 +1180,7 @@
         <p data-i18n="products.art-decor.desc">Уникальные декоративные элементы из пенопласта для интерьеров и фасадов.</p>
         <div class="product-details" data-i18n="products.art-decor.details">Плотность: 20 кг/м³<br>Тип: 3D элементы<br>Применение: Декор</div>
         <span class="badge" data-i18n="products.art-decor.badge">Индивидуальный дизайн</span>
-        <a href="#" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
+        <a href="#contacts" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
       </div>
       <div class="product-card" data-category="insulation">
         <img src="https://via.placeholder.com/200x150?text=Плиты" alt="Плиты" />
@@ -1163,7 +1188,7 @@
         <p data-i18n="products.insulation-boards.desc">Плиты высокой плотности для эффективного утепления зданий и сооружений.</p>
         <div class="product-details" data-i18n="products.insulation-boards.details">Плотность: 25-50 кг/м³<br>Толщина: 50-200 мм<br>Применение: Стены, полы</div>
         <span class="badge" data-i18n="products.insulation-boards.badge">Высокая плотность</span>
-        <a href="#" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
+        <a href="#contacts" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
       </div>
       <div class="product-card" data-category="decor">
         <img src="https://via.placeholder.com/200x150?text=Фигуры" alt="Фигуры" />
@@ -1171,7 +1196,7 @@
         <p data-i18n="products.custom-shapes.desc">Индивидуальные пенопластовые формы для рекламы, декора и промышленности.</p>
         <div class="product-details" data-i18n="products.custom-shapes.details">Плотность: 15-30 кг/м³<br>Тип: На заказ<br>Применение: Реклама, декор</div>
         <span class="badge" data-i18n="products.custom-shapes.badge">На заказ</span>
-        <a href="#" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
+        <a href="#contacts" class="learn-more" data-i18n="products.learn-more">Узнать больше</a>
       </div>
     </div>
   </section>
@@ -1197,7 +1222,7 @@
       <div class="application-card">
         <i class="fas fa-industry"></i>
         <h3 data-i18n="applications.industrial.title">Промышленность</h3>
-        <p data-i18n="applications.industrial.desc">Индивидуальные формы для производственных нужд.</p>
+        <p data-i18n="applications.industrial.describe">Индивидуальные формы для производственных нужд.</p>
       </div>
     </div>
   </section>
@@ -1313,9 +1338,9 @@
 
   <section id="contacts">
     <h2 data-i18n="contacts.title">Контакты</h2>
-    <p><strong data-i18n="contacts.phone.label">Телефон:</strong> +380 (44) 123-45-67</p>
-    <p><strong data-i18n="contacts.whatsapp.label">WhatsApp/Viber:</strong> +380 12 779 96</p>
-    <p><strong data-i18n="contacts.email.label">Email:</strong> info@navekodessa.com</p>
+    <p><strong data-i18n="contacts.phone.label">Телефон:</strong> <a href="tel:+380441234567">+380 (44) 123-45-67</a></p>
+    <p><strong data-i18n="contacts.whatsapp.label">WhatsApp/Viber:</strong> <a href="tel:+3801277996">+380 12 779 96</a></p>
+    <p><strong data-i18n="contacts.email.label">Email:</strong> <a href="mailto:info@navekodessa.com">info@navekodessa.com</a></p>
     <p><strong data-i18n="contacts.address.label">Адрес:</strong> <span data-i18n="contacts.address">Одесса, ул. Моторная, 1</span></p>
     <p><strong data-i18n="contacts.hours.label">Часы работы:</strong> <span data-i18n="contacts.hours">Пн-Пт, 9:00-18:00</span></p>
   </section>
@@ -1340,6 +1365,7 @@
 
   <section id="faq">
     <h2 data-i18n="faq.title">Часто задаваемые вопросы</h2>
+    احصل على إجابات لأسئلتك الأكثر شيوعًا حول منتجاتنا وخدماتنا.
     <p><strong data-i18n="faq.q1.question">Какой срок изготовления заказа?</strong><br><span data-i18n="faq.q1.answer">Обычно срок составляет от 2 до 5 рабочих дней в зависимости от объема заказа.</span></p>
     <p><strong data-i18n="faq.q2.question">Можно ли сделать индивидуальный заказ?</strong><br><span data-i18n="faq.q2.answer">Да, мы принимаем индивидуальные заказы. Свяжитесь с нами для уточнения деталей.</span></p>
     <p><strong data-i18n="faq.q3.question">Что влияет на стоимость продукции?</strong><br><span data-i18n="faq.q3.answer">Цена зависит от объема заказа, типа материала, сложности изделия и срочности выполнения.</span></p>
@@ -1350,7 +1376,7 @@
     <div class="footer-container">
       <div>
         <h3 data-i18n="footer.contacts">Контакты</h3>
-        <p class="contact" data-i18n="footer.contact">Тел: +380 12 779 96 | Email: info@navekodessa.com</p>
+        <p class="contact" data-i18n="footer.contact">Тел: <a href="tel:+3801277996">+380 12 779 96</a> | Email: <a href="mailto:info@navekodessa.com">info@navekodessa.com</a></p>
         <p data-i18n="contacts.address">Одесса, ул. Моторная, 1</p>
         <p data-i18n="contacts.hours">Пн-Пт, 9:00-18:00</p>
       </div>
@@ -1368,8 +1394,8 @@
           <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
         <h3 data-i18n="footer.newsletter">Подписка</h3>
-        <form class="newsletter">
-          <input type="email" placeholder="Ваш email" data-i18n-placeholder="newsletter.placeholder">
+        <form class="newsletter" onsubmit="subscribeNewsletter(event)">
+          <input type="email" placeholder="Ваш email" data-i18n-placeholder="newsletter.placeholder" required>
           <button type="submit" data-i18n="newsletter.subscribe">Подписаться</button>
         </form>
       </div>
@@ -1382,7 +1408,7 @@
     <i class="fas fa-times close-btn" onclick="toggleCalculator()"></i>
     <h2 data-i18n="calculator.title">Калькулятор объёма</h2>
     <div class="calculator">
-      <label for="unit" data-i18n="calculator.unit">Единицы измерывания:</label>
+      <label for="unit" data-i18n="calculator.unit">Единицы измерения:</label>
       <div class="input-group">
         <select id="unit">
           <option value="1" data-i18n="calculator.unit.meters">Метры</option>
@@ -1393,17 +1419,17 @@
       </div>
       <label for="length" data-i18n="calculator.length">Длина:</label>
       <div class="input-group">
-        <input type="number" id="length" step="0.01">
+        <input type="number" id="length" step="0.01" min="0">
         <span class="tooltip" data-i18n="calculator.length.tooltip">Введите длину в выбранных единицах</span>
       </div>
       <label for="width" data-i18n="calculator.width">Ширина:</label>
       <div class="input-group">
-        <input type="number" id="width" step="0.01">
+        <input type="number" id="width" step="0.01" min="0">
         <span class="tooltip" data-i18n="calculator.width.tooltip">Введите ширину в выбранных единицах</span>
       </div>
       <label for="height" data-i18n="calculator.height">Высота:</label>
       <div class="input-group">
-        <input type="number" id="height" step="0.01">
+        <input type="number" id="height" step="0.01" min="0">
         <span class="tooltip" data-i18n="calculator.height.tooltip">Введите высоту в выбранных единицах</span>
       </div>
       <div class="buttons">
@@ -1413,6 +1439,7 @@
       <div class="results">
         <p id="volumeResult"></p>
         <p id="areaResult"></p>
+        <p id="errorMessage" class="error"></p>
       </div>
     </div>
   </div>
@@ -1451,30 +1478,4 @@
         "products.art-decor.details": "Щільність: 20 кг/м³<br>Тип: 3D елементи<br>Застосування: Декор",
         "products.art-decor.badge": "Індивідуальний дизайн",
         "products.insulation-boards.title": "Утеплювальні плити",
-        "products.insulation-boards.desc": "Плити високої щільності для ефективного утеплення будівель та споруд.",
-        "products.insulation-boards.details": "Щільність: 25-50 кг/м³<br>Товщина: 50-200 мм<br>Застосування: Стіни, підлоги",
-        "products.insulation-boards.badge": "Висока щільність",
-        "products.custom-shapes.title": "Фігури на замовлення",
-        "products.custom-shapes.desc": "Індивідуальні пінопластові форми для реклами, декору та промисловості.",
-        "products.custom-shapes.details": "Щільність: 15-30 кг/м³<br>Тип: На замовлення<br>Застосування: Реклама, декор",
-        "products.custom-shapes.badge": "На замовлення",
-        "products.learn-more": "Дізнатися більше",
-        "applications.title": "Застосування нашої продукції",
-        "applications.construction.title": "Будівництво",
-        "applications.construction.desc": "Утеплювачі для фасадів, дахів та підлог, що забезпечують енергоефективність.",
-        "applications.packaging.title": "Упаковка",
-        "applications.packaging.desc": "Надійний захист товарів при транспортуванні та зберіганні.",
-        "applications.decor.title": "Декор",
-        "applications.decor.desc": "Декоративні елементи для інтер’єрів та фасадів будівель.",
-        "applications.industrial.title": "Промисловість",
-        "applications.industrial.desc": "Індивідуальні форми для виробничих потреб.",
-        "why-choose-us.title": "Чому обирають нас",
-        "why-choose-us.quality.title": "Висока якість",
-        "why-choose-us.quality.desc": "Сертифікована продукція з гарантією довговічності.",
-        "why-choose-us.speed.title": "Швидка доставка",
-        "why-choose-us.speed.desc": "Власний автопарк для оперативної доставки.",
-        "why-choose-us.eco.title": "Екологічність",
-        "why-choose-us.eco.desc": "Використовуємо безпечні та перероблювані матеріали.",
-        "why-choose-us.custom.title": "Індивідуальні рішення",
-        "why-choose-us.custom.desc": "Виготовлення продукції за вашими кресленнями.",
-        "testimonials.title": "Відгу
+        "products.insulation-boards.desc": "Плити
