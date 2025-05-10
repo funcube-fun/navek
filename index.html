@@ -9,13 +9,14 @@
     body {
       background: linear-gradient(to right, #f0f8ff, #e6f0ff);
       font-family: Arial, sans-serif;
+      background-color: #fff;
     }
     html { scroll-behavior: smooth; }
-
     header {
       background-color: #fff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       padding: 10px 0;
+      position: relative;
     }
     .header-container {
       display: flex;
@@ -35,7 +36,10 @@
     .site-title h1 {
       font-size: 3.5rem;
       color: #0000FF;
+      text-align: center;
     }
+
+    /* Изменения здесь */
     .text-field {
       flex-shrink: 0;
       text-align: center;
@@ -44,23 +48,30 @@
       align-items: center;
       gap: 5px;
     }
+
     .call-label {
       font-size: 1.2rem;
       color: red;
       font-weight: bold;
+      line-height: 1.2;
+      text-align: center;
+      white-space: nowrap;
     }
+
     .text-field span {
       padding: 10px;
       font-size: 1.1rem;
       width: 200px;
       border: 1px solid #ddd;
       border-radius: 5px;
+      text-align: center;
       display: inline-block;
     }
 
     .menu-toggle {
       display: none;
       flex-direction: column;
+      justify-content: center;
       cursor: pointer;
       padding: 10px;
     }
@@ -70,28 +81,17 @@
       background-color: #333;
       margin: 4px 0;
     }
-
-    /* Фон под кнопками по всей ширине */
-    .menu-background {
-      width: 100%;
-      background-image: url('https://bayguzin.ru/assets/images/2014/04/kvadratiki.jpg'); /* ← Замени здесь на свою ссылку */
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      padding: 40px 0;
-    }
-
     .text-menu {
-      background-color: rgba(255, 255, 255, 0.9);
+      background-color: #fff;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
       padding: 20px 10px;
-      border-radius: 10px;
-      width: 100%;
     }
-
     .text-menu a {
       flex: 1 1 200px;
       max-width: 220px;
@@ -110,7 +110,6 @@
       background-color: #0056b3;
       transform: translateY(-3px);
     }
-
     @media (max-width: 768px) {
       .menu-toggle {
         display: flex;
@@ -130,7 +129,6 @@
         padding: 15px;
       }
     }
-
     section {
       padding: 60px 20px;
     }
@@ -149,15 +147,18 @@
   <header>
     <div class="header-container">
       <div class="logo">
-        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png" alt="Логотип" />
+        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359611925847347250/2ccd5a5a25f055dd.png?ex=68020007&is=6800ae87&hm=f78ccce15d1e096b46de46ca15098e7b7d0f99a774bc79e9961455d19501358e&" alt="Логотип" />
       </div>
       <div class="site-title">
         <h1>Завод пенопластовых изделий</h1>
       </div>
+
+      <!-- Обновлённый блок CALL center -->
       <div class="text-field">
         <div class="call-label">CALL center</div>
         <span>+380 12 779 96</span>
       </div>
+
       <div class="menu-toggle" onclick="toggleMenu()">
         <div></div>
         <div></div>
@@ -166,19 +167,17 @@
     </div>
   </header>
 
-  <!-- Блок с фоном под кнопками -->
-  <div class="menu-background">
-    <div class="text-menu" id="menu">
-      <a href="#calculator">Калькулятор</a>
-      <a href="#about-us">О нас</a>
-      <a href="#penoplast-products">Товары</a>
-      <a href="#contacts">Контакты</a>
-      <a href="#addresses">Адреса</a>
-      <a href="#faq">FAQ</a>
-    </div>
+  <div class="text-menu" id="menu">
+    <a href="#calculator">Калькулятор</a>
+    <a href="#about-us">О нас</a>
+    <a href="#penoplast-products">Товары</a>
+    <a href="#contacts">Контакты</a>
+    <a href="#addresses">Адреса</a>
+    <a href="#faq">FAQ</a>
   </div>
 
-  <!-- Остальной контент -->
+  <div style="background-image: url('https://cdn.discordapp.com/attachments/1251956990842900563/1362525097398894733/image.png?ex=6802b5e1&is=68016461&hm=f6c4b54a1f9607d1ee228d0f3ca86de326636dd4be075482b1c13a00828c388f&'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 500px; width: 100%; margin-top: 20px;"></div>
+
   <section id="about-us">
     <h2>О нас</h2>
     <p>Мы предлагаем качественные изделия из пенопласта и упаковку для любых нужд.</p>
@@ -221,8 +220,8 @@
 
   <section id="faq">
     <h2>Часто задаваемые вопросы</h2>
-    <p><strong>Какой срок изготовления заказа?</strong><br>Обычно от 2 до 5 рабочих дней.</p>
-    <p><strong>Можно ли сделать индивидуальный заказ?</strong><br>Да, свяжитесь с нами для уточнения деталей.</p>
+    <p><strong>Какой срок изготовления заказа?</strong><br> Обычно срок составляет от 2 до 5 рабочих дней в зависимости от объема.</p>
+    <p><strong>Можно ли сделать индивидуальный заказ?</strong><br> Да, мы принимаем индивидуальные заказы. Свяжитесь с нами для уточнения деталей.</p>
   </section>
 
   <script>
