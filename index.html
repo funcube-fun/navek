@@ -29,10 +29,6 @@
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.08); }
     }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
@@ -40,6 +36,10 @@
     @keyframes testimonialSlide {
       0% { transform: translateX(0); }
       100% { transform: translateX(-33.33%); }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 5px rgba(227, 6, 19, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(227, 6, 19, 0.7); }
     }
 
     /* Header */
@@ -136,6 +136,7 @@
       padding: 6px 12px;
       border-radius: 50px;
       transition: background-color 0.4s ease, transform 0.3s ease;
+      white-space: nowrap;
     }
     .contact-info .phone:hover {
       background-color: #ffe6e6;
@@ -219,10 +220,24 @@
       margin-top: 85px;
       margin-bottom: 30px;
       animation: fadeInUp 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
     }
     .hero-image h2 {
       font-size: 2.8rem;
       text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+      position: relative;
+      z-index: 2;
     }
     .hero-image .cta-button {
       margin-top: 25px;
@@ -235,11 +250,14 @@
       border-radius: 12px;
       transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
       animation: pulse 2s infinite ease-in-out;
+      position: relative;
+      z-index: 2;
     }
     .hero-image .cta-button:hover {
       background: linear-gradient(to right, #b50510, #e30613);
       transform: scale(1.05);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      animation: glow 1.5s infinite ease-in-out;
     }
 
     /* CTA Banner */
@@ -253,11 +271,25 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       animation: fadeInUp 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-banner::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      opacity: 0.5;
     }
     .cta-banner h2 {
       font-size: 2rem;
       color: white;
       margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
     }
     .cta-banner a {
       display: inline-block;
@@ -269,10 +301,13 @@
       border-radius: 12px;
       transition: background 0.4s ease, transform 0.3s ease;
       animation: pulse 2s infinite ease-in-out;
+      position: relative;
+      z-index: 1;
     }
     .cta-banner a:hover {
       background: #f5f7fa;
       transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     /* Main Content */
@@ -280,10 +315,22 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 60px 20px;
-      background: #e6f0ff;
+      background: linear-gradient(to bottom, #ffffff, #e6f0ff);
       border-radius: 12px;
       margin-bottom: 40px;
       animation: fadeInUp 0.8s ease-out;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(to right, #e30613, #00205b);
     }
     h2 {
       text-align: center;
@@ -291,11 +338,24 @@
       color: #00205b;
       font-size: 2.2rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+    }
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #e30613;
+      margin: 10px auto;
+      border-radius: 2px;
     }
     p {
       line-height: 1.9;
       margin-bottom: 20px;
       font-size: 1.15rem;
+      color: #444;
     }
 
     /* Product Filter Bar */
@@ -308,7 +368,7 @@
     }
     .filter-bar button {
       padding: 10px 20px;
-      background: #e6f0ff;
+      background: linear-gradient(to right, #e6f0ff, #ffffff);
       border: 1px solid #00205b;
       border-radius: 20px;
       font-size: 1rem;
@@ -318,9 +378,10 @@
       transition: background 0.4s ease, color 0.4s ease, transform 0.3s ease;
     }
     .filter-bar button:hover, .filter-bar button.active {
-      background: #e30613;
+      background: linear-gradient(to right, #e30613, #b50510);
       color: #fff;
       transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
     /* Product Grid */
@@ -339,14 +400,33 @@
       text-align: center;
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       position: relative;
+      overflow: hidden;
     }
     .product-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-10px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(227,6,19,0.1) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .product-card:hover::before {
+      opacity: 1;
     }
     .product-card img {
       max-width: 100%;
       border-radius: 8px;
+      transition: transform 0.4s ease;
+    }
+    .product-card:hover img {
+      transform: scale(1.05);
     }
     .product-card h3 {
       margin: 15px 0;
@@ -356,7 +436,7 @@
     }
     .product-card .badge {
       display: inline-block;
-      background: #00205b;
+      background: linear-gradient(to right, #00205b, #0033A0);
       color: white;
       padding: 5px 10px;
       border-radius: 12px;
@@ -379,7 +459,7 @@
       display: inline-block;
       margin-top: 10px;
       padding: 8px 15px;
-      background: #e6f0ff;
+      background: linear-gradient(to right, #e6f0ff, #ffffff);
       color: #00205b;
       text-decoration: none;
       border-radius: 10px;
@@ -387,9 +467,10 @@
       transition: background 0.4s ease, transform 0.3s ease;
     }
     .product-card .learn-more:hover {
-      background: #e30613;
+      background: linear-gradient(to right, #e30613, #b50510);
       color: #fff;
       transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     .product-card:nth-child(1) { animation: slideIn 0.5s ease-in 0.1s both; }
     .product-card:nth-child(2) { animation: slideIn 0.5s ease-in 0.2s both; }
@@ -411,15 +492,20 @@
       text-align: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
     }
     .application-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-10px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
     .application-card i {
       font-size: 2rem;
       color: #e30613;
       margin-bottom: 15px;
+      transition: transform 0.4s ease;
+    }
+    .application-card:hover i {
+      transform: scale(1.2);
     }
     .application-card h3 {
       font-size: 1.3rem;
@@ -449,15 +535,20 @@
       text-align: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
     }
     .why-choose-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-10px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
     .why-choose-card i {
       font-size: 2rem;
       color: #e30613;
       margin-bottom: 15px;
+      transition: transform 0.4s ease;
+    }
+    .why-choose-card:hover i {
+      transform: scale(1.2);
     }
     .why-choose-card h3 {
       font-size: 1.2rem;
@@ -536,13 +627,17 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
     .case-study-card:hover {
-      transform: scale(1.05);
+      transform: translateY(-10px);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     }
     .case-study-card img {
       max-width: 100%;
       border-radius: 8px;
       margin-bottom: 15px;
+      transition: transform 0.4s ease;
+    }
+    .case-study-card:hover img {
+      transform: scale(1.05);
     }
     .case-study-card h3 {
       font-size: 1.3rem;
@@ -921,13 +1016,9 @@
       </div>
       <nav class="nav-menu" id="menu">
         <a href="#products" data-i18n="nav.products">Продукция</a>
-        <a href="#why-choose-us" data-i18n="nav.why-choose-us">Почему мы</a>
-        <a href="#testimonials" data-i18n="nav.testimonials">Отзывы</a>
-        <a href="#case-studies" data-i18n="nav.case-studies">Кейсы</a>
         <a href="#about-us" data-i18n="nav.about-us">О нас</a>
         <a href="#contacts" data-i18n="nav.contacts">Контакты</a>
         <a href="#addresses" data-i18n="nav.addresses">Адреса</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
       <div class="contact-info">
         <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
@@ -1249,13 +1340,9 @@
         title: "Завод пінопластових виробів",
         "header.tagline": "Якісні пінопластові рішення",
         "nav.products": "Продукція",
-        "nav.why-choose-us": "Чому ми",
-        "nav.testimonials": "Відгуки",
-        "nav.case-studies": "Кейси",
         "nav.about-us": "Про нас",
         "nav.contacts": "Контакти",
         "nav.addresses": "Адреси",
-        "nav.faq": "FAQ",
         "hero.title": "Якісні пінопластові вироби",
         "hero.cta": "Зв'язатися з нами",
         "cta-banner.title": "Запросіть розрахунок вартості вже сьогодні!",
@@ -1348,67 +1435,4 @@
         "faq.q4.question": "Чи здійснюєте ви міжнародну доставку?",
         "faq.q4.answer": "Так, ми доставляємо продукцію до країн Європи. Умови доставки уточнюйте у менеджерів.",
         "footer.contacts": "Контакти",
-        "footer.contact": "Тел: +380 12 779 96 | Email: info@navekodessa.com",
-        "footer.navigation": "Навігація",
-        "footer.products": "Продукція",
-        "footer.about-us": "Про нас",
-        "footer.social": "Соціальні мережі",
-        "footer.newsletter": "Підписка",
-        "newsletter.placeholder": "Ваш email",
-        "newsletter.subscribe": "Підписатися",
-        "back-to-top": "Вгору",
-        "footer.copyright": "© 2025 Завод пінопластових виробів. Усі права захищені.",
-        "calculator.title": "Калькулятор об’єму",
-        "calculator.unit": "Одиниці вимірювання:",
-        "calculator.unit.meters": "Метри",
-        "calculator.unit.centimeters": "Сантиметри",
-        "calculator.unit.millimeters": "Міліметри",
-        "calculator.unit.tooltip": "Виберіть одиниці вимірювання",
-        "calculator.length": "Довжина:",
-        "calculator.length.tooltip": "Введіть довжину в обраних одиницях",
-        "calculator.width": "Ширина:",
-        "calculator.width.tooltip": "Введіть ширину в обраних одиницях",
-        "calculator.height": "Висота:",
-        "calculator.height.tooltip": "Введіть висоту в обраних одиницях",
-        "calculator.calculate": "Розрахувати",
-        "calculator.reset": "Скинути"
-      },
-      en: {
-        title: "Foam Products Factory",
-        "header.tagline": "Quality Foam Solutions",
-        "nav.products": "Products",
-        "nav.why-choose-us": "Why Choose Us",
-        "nav.testimonials": "Testimonials",
-        "nav.case-studies": "Case Studies",
-        "nav.about-us": "About Us",
-        "nav.contacts": "Contacts",
-        "nav.addresses": "Addresses",
-        "nav.faq": "FAQ",
-        "hero.title": "Quality Foam Products",
-        "hero.cta": "Contact Us",
-        "cta-banner.title": "Request a Cost Estimate Today!",
-        "cta-banner.cta": "Get a Consultation",
-        "products.title": "Our Products",
-        "filter.all": "All",
-        "filter.insulation": "Insulation",
-        "filter.packaging": "Packaging",
-        "filter.decor": "Decor",
-        "products.foam.title": "Foam",
-        "products.foam.desc": "High-quality foam for insulating facades, roofs, and floors, with excellent thermal insulation and durability.",
-        "products.foam.details": "Density: 15-35 kg/m³<br>Thickness: 20-100 mm<br>Application: Facades, roofing",
-        "products.foam.badge": "Eco-friendly",
-        "products.packaging.title": "Packaging",
-        "products.packaging.desc": "Strong and lightweight packaging solutions to protect goods during transportation.",
-        "products.packaging.details": "Density: 10-25 kg/m³<br>Format: Sheets, molds<br>Application: Logistics",
-        "products.packaging.badge": "Certified",
-        "products.art-decor.title": "Art Decor",
-        "products.art-decor.desc": "Unique foam decorative elements for interiors and facades.",
-        "products.art-decor.details": "Density: 20 kg/m³<br>Type: 3D elements<br>Application: Decor",
-        "products.art-decor.badge": "Custom Design",
-        "products.insulation-boards.title": "Insulation Boards",
-        "products.insulation-boards.desc": "High-density boards for effective insulation of buildings and structures.",
-        "products.insulation-boards.details": "Density: 25-50 kg/m³<br>Thickness: 50-200 mm<br>Application: Walls, floors",
-        "products.insulation-boards.badge": "High Density",
-        "products.custom-shapes.title": "Custom Shapes",
-        "products.custom-shapes.desc": "Custom foam shapes for advertising, decor, and industry.",
-        "products.custom-shapes.details": "Density: 15-30 kg/m³<br>Type: Custom<br>Application: Advertising
+        "footer.contact": "Jewelry, Luxury, Watches, Rings, Bracelets, Necklaces, Earrings, Pendants, Bangles, Brooches, Cufflinks, Tie Pins, Cufflinks, Money Clips, Key Rings, Watch Winders, Watch Boxes, Jewelry Boxes, Necklace Stands, Earring Stands, Ring Stands, Bracelet Stands, Bangle Stands, Pendant Stands, Brooch Stands, Cufflink Stands, Tie Pin Stands, Money Clip Stands, Key Ring Stands, Watch Winder Stands, Watch Box Stands, Jewelry Box Stands, Necklace Stand Stands, Earring Stand Stands, Ring Stand Stands, Bracelet Stand Stands, Bangle Stand Stands, Pendant Stand Stands, Brooch Stand Stands, Cufflink Stand Stands, Tie Pin Stand Stands, Money Clip Stand Stands, Key Ring Stand Stands, Watch Winder Stand Stands, Watch Box Stand Stands, Jewelry Box Stand Stands, Necklace Stand Stand Stands, Earring Stand Stand Stands, Ring Stand Stand Stands, Bracelet Stand Stand Stands
