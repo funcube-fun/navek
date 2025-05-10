@@ -37,6 +37,10 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+    @keyframes testimonialSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-33.33%); }
+    }
 
     /* Header */
     header {
@@ -474,10 +478,16 @@
       background: repeating-linear-gradient(45deg, #e6f0ff, #e6f0ff 10px, #f9faff 10px, #f9faff 20px);
     }
     .testimonial-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      display: flex;
+      overflow: hidden;
       gap: 25px;
       margin-top: 30px;
+      width: 100%;
+      position: relative;
+    }
+    .testimonial-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
     }
     .testimonial-card {
       background: #fff;
@@ -486,6 +496,8 @@
       text-align: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
+      flex: 0 0 33.33%;
+      min-width: 250px;
     }
     .testimonial-card:hover {
       transform: scale(1.03);
@@ -507,9 +519,6 @@
       color: #00205b;
       font-weight: 600;
     }
-    .testimonial-card:nth-child(1) { animation: fadeInUp 0.5s ease-out 0.1s both; }
-    .testimonial-card:nth-child(2) { animation: fadeInUp 0.5s ease-out 0.2s both; }
-    .testimonial-card:nth-child(3) { animation: fadeInUp 0.5s ease-out 0.3s both; }
 
     /* Case Studies Section */
     .case-study-grid {
@@ -849,6 +858,13 @@
       .product-grid, .application-grid, .why-choose-grid, .testimonial-grid, .case-study-grid {
         grid-template-columns: 1fr;
       }
+      .testimonial-grid {
+        flex-direction: column;
+      }
+      .testimonial-card {
+        flex: 1;
+        min-width: 100%;
+      }
       .filter-bar {
         flex-direction: column;
         align-items: center;
@@ -905,7 +921,6 @@
       </div>
       <nav class="nav-menu" id="menu">
         <a href="#products" data-i18n="nav.products">Продукция</a>
-        <a href="#applications" data-i18n="nav.applications">Применение</a>
         <a href="#why-choose-us" data-i18n="nav.why-choose-us">Почему мы</a>
         <a href="#testimonials" data-i18n="nav.testimonials">Отзывы</a>
         <a href="#case-studies" data-i18n="nav.case-studies">Кейсы</a>
@@ -1053,26 +1068,56 @@
   <section id="testimonials">
     <h2 data-i18n="testimonials.title">Отзывы наших клиентов</h2>
     <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <div class="rating">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      <div class="testimonial-container">
+        <div class="testimonial-card">
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p data-i18n="testimonials.t1.text">"Отличное качество пенопласта и быстрая доставка. Заказываем регулярно для строительства!"</p>
+          <h4 data-i18n="testimonials.t1.author">Иван Петров, Киев</h4>
         </div>
-        <p data-i18n="testimonials.t1.text">"Отличное качество пенопласта и быстрая доставка. Заказываем регулярно для строительства!"</p>
-        <h4 data-i18n="testimonials.t1.author">Иван Петров, Киев</h4>
-      </div>
-      <div class="testimonial-card">
-        <div class="rating">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <div class="testimonial-card">
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p data-i18n="testimonials.t2.text">"Упаковка из пенопласта спасла нашу продукцию при транспортировке. Рекомендуем!"</p>
+          <h4 data-i18n="testimonials.t2.author">Анна Сидорова, Львов</h4>
         </div>
-        <p data-i18n="testimonials.t2.text">"Упаковка из пенопласта спасла нашу продукцию при транспортировке. Рекомендуем!"</p>
-        <h4 data-i18n="testimonials.t2.author">Анна Сидорова, Львов</h4>
-      </div>
-      <div class="testimonial-card">
-        <div class="rating">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        <div class="testimonial-card">
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p data-i18n="testimonials.t3.text">"Индивидуальный подход к заказу декором. Очень довольны результатом!"</p>
+          <h4 data-i18n="testimonials.t3.author">Олег Коваленко, Одесса</h4>
         </div>
-        <p data-i18n="testimonials.t3.text">"Индивидуальный подход к заказу декором. Очень довольны результатом!"</p>
-        <h4 data-i18n="testimonials.t3.author">Олег Коваленко, Одесса</h4>
+        <div class="testimonial-card">
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p data-i18n="testimonials.t4.text">"Надежный партнер для нашего бизнеса. Всегда вовремя и качественно!"</p>
+          <h4 data-i18n="testimonials.t4.author">Мария Иванова, Харьков</h4>
+        </div>
+        <div class="testimonial-card">
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p data-i18n="testimonials.t5.text">"Пенопластовые плиты превзошли ожидания. Отличная теплоизоляция!"</p>
+          <h4 data-i18n="testimonials.t5.author">Сергей Михайлов, Днепр</h4>
+        </div>
+        <div class="testimonial-card">
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p data-i18n="testimonials.t6.text">"Декоративные элементы добавили уникальности нашему проекту!"</p>
+          <h4 data-i18n="testimonials.t6.author">Елена Смирнова, Запорожье</h4>
+        </div>
+        <div class="testimonial-card">
+          <div class="rating">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p data-i18n="testimonials.t7.text">"Профессиональная команда и отличный сервис. Рекомендую!"</p>
+          <h4 data-i18n="testimonials.t7.author">Алексей Кузнецов, Винница</h4>
+        </div>
       </div>
     </div>
   </section>
@@ -1201,10 +1246,9 @@
   <script>
     const translations = {
       ua: {
-        title: "Завод пенопластових виробів",
+        title: "Завод пінопластових виробів",
         "header.tagline": "Якісні пінопластові рішення",
         "nav.products": "Продукція",
-        "nav.applications": "Застосування",
         "nav.why-choose-us": "Чому ми",
         "nav.testimonials": "Відгуки",
         "nav.case-studies": "Кейси",
@@ -1267,6 +1311,14 @@
         "testimonials.t2.author": "Анна Сидорова, Львів",
         "testimonials.t3.text": "Індивідуальний підхід до замовлення декору. Дуже задоволені результатом!",
         "testimonials.t3.author": "Олег Коваленко, Одеса",
+        "testimonials.t4.text": "Надійний партнер для нашого бізнесу. Завжди вчасно і якісно!",
+        "testimonials.t4.author": "Марія Іванова, Харків",
+        "testimonials.t5.text": "Пінопластові плити перевершили очікування. Відмінна теплоізоляція!",
+        "testimonials.t5.author": "Сергій Михайлов, Дніпро",
+        "testimonials.t6.text": "Декоративні елементи додали унікальності нашому проекту!",
+        "testimonials.t6.author": "Олена Смірнова, Запоріжжя",
+        "testimonials.t7.text": "Професійна команда і відмінний сервіс. Рекомендую!",
+        "testimonials.t7.author": "Олексій Кузнецов, Вінниця",
         "case-studies.title": "Наші проекти",
         "case-studies.office.title": "Утеплення офісу",
         "case-studies.office.desc": "Встановлення пінопластових плит для енергоефективності офісної будівлі в Києві.",
@@ -1275,4 +1327,88 @@
         "case-studies.decor.title": "Декор для події",
         "case-studies.decor.desc": "Виготовлення 3D-декорацій для виставки в Одесі.",
         "about-us.title": "Про нас",
-        "about-us.desc": "Ми — провідний виробник пінопластових виробів в
+        "about-us.desc": "Ми — провідний виробник пінопластових виробів в Україні з 19-річним досвідом, що виробляє понад 10,000 м³ продукції щомісяця на сучасному європейському обладнанні, використовуючи якісну сировину для створення сертифікованої за стандартами ISO, екологічної та довговічної продукції (термін служби до 50 років), обслуговуючи понад 500 компаній в Україні та Європі, з швидкою та надійною доставкою по всій країні завдяки автопарку з більш ніж 25 вантажівок.",
+        "contacts.title": "Контакти",
+        "contacts.phone.label": "Телефон:",
+        "contacts.whatsapp.label": "WhatsApp/Viber:",
+        "contacts.email.label": "Email:",
+        "contacts.address.label": "Адреса:",
+        "contacts.address": "Одеса, вул. Моторна, 1",
+        "contacts.hours.label": "Години роботи:",
+        "contacts.hours": "Пн-Пт, 9:00-18:00",
+        "addresses.title": "Наші адреси",
+        "addresses.desc": "Основний офіс та виробнича база — Одеса, вул. Моторна, 1. Деталі уточнюйте за телефоном.",
+        "faq.title": "Часто задавані питання",
+        "faq.q1.question": "Який термін виготовлення замовлення?",
+        "faq.q1.answer": "Зазвичай термін становить від 2 до 5 робочих днів залежно від обсягу замовлення.",
+        "faq.q2.question": "Чи можна зробити індивідуальне замовлення?",
+        "faq.q2.answer": "Так, ми приймаємо індивідуальні замовлення. Зв’яжіться з нами для уточнення деталей.",
+        "faq.q3.question": "Що впливає на вартість продукції?",
+        "faq.q3.answer": "Ціна залежить від обсягу замовлення, типу матеріалу, складності виробу та терміновості виконання.",
+        "faq.q4.question": "Чи здійснюєте ви міжнародну доставку?",
+        "faq.q4.answer": "Так, ми доставляємо продукцію до країн Європи. Умови доставки уточнюйте у менеджерів.",
+        "footer.contacts": "Контакти",
+        "footer.contact": "Тел: +380 12 779 96 | Email: info@navekodessa.com",
+        "footer.navigation": "Навігація",
+        "footer.products": "Продукція",
+        "footer.about-us": "Про нас",
+        "footer.social": "Соціальні мережі",
+        "footer.newsletter": "Підписка",
+        "newsletter.placeholder": "Ваш email",
+        "newsletter.subscribe": "Підписатися",
+        "back-to-top": "Вгору",
+        "footer.copyright": "© 2025 Завод пінопластових виробів. Усі права захищені.",
+        "calculator.title": "Калькулятор об’єму",
+        "calculator.unit": "Одиниці вимірювання:",
+        "calculator.unit.meters": "Метри",
+        "calculator.unit.centimeters": "Сантиметри",
+        "calculator.unit.millimeters": "Міліметри",
+        "calculator.unit.tooltip": "Виберіть одиниці вимірювання",
+        "calculator.length": "Довжина:",
+        "calculator.length.tooltip": "Введіть довжину в обраних одиницях",
+        "calculator.width": "Ширина:",
+        "calculator.width.tooltip": "Введіть ширину в обраних одиницях",
+        "calculator.height": "Висота:",
+        "calculator.height.tooltip": "Введіть висоту в обраних одиницях",
+        "calculator.calculate": "Розрахувати",
+        "calculator.reset": "Скинути"
+      },
+      en: {
+        title: "Foam Products Factory",
+        "header.tagline": "Quality Foam Solutions",
+        "nav.products": "Products",
+        "nav.why-choose-us": "Why Choose Us",
+        "nav.testimonials": "Testimonials",
+        "nav.case-studies": "Case Studies",
+        "nav.about-us": "About Us",
+        "nav.contacts": "Contacts",
+        "nav.addresses": "Addresses",
+        "nav.faq": "FAQ",
+        "hero.title": "Quality Foam Products",
+        "hero.cta": "Contact Us",
+        "cta-banner.title": "Request a Cost Estimate Today!",
+        "cta-banner.cta": "Get a Consultation",
+        "products.title": "Our Products",
+        "filter.all": "All",
+        "filter.insulation": "Insulation",
+        "filter.packaging": "Packaging",
+        "filter.decor": "Decor",
+        "products.foam.title": "Foam",
+        "products.foam.desc": "High-quality foam for insulating facades, roofs, and floors, with excellent thermal insulation and durability.",
+        "products.foam.details": "Density: 15-35 kg/m³<br>Thickness: 20-100 mm<br>Application: Facades, roofing",
+        "products.foam.badge": "Eco-friendly",
+        "products.packaging.title": "Packaging",
+        "products.packaging.desc": "Strong and lightweight packaging solutions to protect goods during transportation.",
+        "products.packaging.details": "Density: 10-25 kg/m³<br>Format: Sheets, molds<br>Application: Logistics",
+        "products.packaging.badge": "Certified",
+        "products.art-decor.title": "Art Decor",
+        "products.art-decor.desc": "Unique foam decorative elements for interiors and facades.",
+        "products.art-decor.details": "Density: 20 kg/m³<br>Type: 3D elements<br>Application: Decor",
+        "products.art-decor.badge": "Custom Design",
+        "products.insulation-boards.title": "Insulation Boards",
+        "products.insulation-boards.desc": "High-density boards for effective insulation of buildings and structures.",
+        "products.insulation-boards.details": "Density: 25-50 kg/m³<br>Thickness: 50-200 mm<br>Application: Walls, floors",
+        "products.insulation-boards.badge": "High Density",
+        "products.custom-shapes.title": "Custom Shapes",
+        "products.custom-shapes.desc": "Custom foam shapes for advertising, decor, and industry.",
+        "products.custom-shapes.details": "Density: 15-30 kg/m³<br>Type: Custom<br>Application: Advertising
