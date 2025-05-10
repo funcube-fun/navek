@@ -4,145 +4,352 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Завод пенопластовых изделий</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: linear-gradient(to right, #f0f8ff, #e6f0ff);
-      font-family: Arial, sans-serif;
-      background-color: #fff;
+      font-family: 'Roboto', Arial, sans-serif;
+      background-color: #f5f7fa;
+      min-height: 100vh;
+      color: #333;
     }
     html { scroll-behavior: smooth; }
+
+    /* Header */
     header {
-      background-color: #fff;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      padding: 10px 0;
-      position: relative;
+      background: linear-gradient(to bottom, #fff, #f9f9f9);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid #003087;
     }
     .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 15px 20px;
-      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
     }
     .logo img {
-      width: 200px;
+      width: 150px;
       height: auto;
+      transition: transform 0.2s;
     }
-    .site-title {
-      flex: 1;
-      text-align: center;
+    .logo img:hover {
+      transform: scale(1.05);
     }
-    .site-title h1 {
-      font-size: 3.5rem;
-      color: #0000FF;
-      text-align: center;
-    }
-
-    .text-field {
-      flex-shrink: 0;
-      text-align: center;
+    .nav-menu {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-menu a {
+      color: #003087;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      background: transparent;
+      border: 2px solid #003087;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    }
+    .nav-menu a:hover {
+      background-color: #e6f0ff;
+      color: #00205b;
+      transform: scale(1.05);
+    }
+    .line-container {
+      border-top: 1px solid #ddd;
+      width: 100%;
+      animation: expandLine 1s ease-in-out;
+    }
+    .email-container {
+      text-align: center;
+      padding: 10px 0;
+      width: 100%;
+    }
+    .email-container a {
+      color: #003087;
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
       align-items: center;
       gap: 5px;
     }
-
-    .call-label {
-      font-size: 1.2rem;
-      color: red;
-      font-weight: bold;
-      line-height: 1.2;
-      text-align: center;
-      white-space: nowrap;
+    .email-container a:hover {
+      text-decoration: underline;
     }
-
-    .text-field span {
-      padding: 10px;
-      font-size: 1.1rem;
-      width: 200px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      text-align: center;
-      display: inline-block;
+    .contact-info {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
-
+    .contact-info .phone {
+      color: #e30613;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .contact-info .social {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .contact-info .social a {
+      color: #003087;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    .contact-info .social a:hover {
+      color: #00205b;
+    }
+    .contact-info .lang-toggle {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+    .contact-info .lang-toggle a {
+      color: #003087;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .contact-info .lang-toggle a:hover {
+      text-decoration: underline;
+    }
+    .contact-info .lang-toggle a.active {
+      font-weight: 700;
+    }
     .menu-toggle {
       display: none;
       flex-direction: column;
-      justify-content: center;
       cursor: pointer;
       padding: 10px;
+      transition: all 0.3s;
     }
     .menu-toggle div {
       width: 25px;
       height: 3px;
       background-color: #333;
       margin: 4px 0;
+      transition: all 0.3s;
     }
-    .text-menu {
-      background-image: url('https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png?ex=68203ed4&is=681eed54&hm=949aad02e3b5b85e40c0e3c5eab307a147e4bb5591e84c875fc49a12090ce88c&');
+    .menu-toggle.active div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active div:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active div:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Line Animation */
+    @keyframes expandLine {
+      0% { width: 0; }
+      100% { width: 100%; }
+    }
+
+    /* Hero Section */
+    .hero-image {
+      background-image: url('https://img.freepik.com/free-vector/gradient-purple-color-background-modern-wave-abstract-designs_343694-2361.jpg?semt=ais_hybrid&w=740');
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      background-color: rgba(255, 255, 255, 0.9);
-      border-top: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
+      height: 400px;
+      width: 100%;
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
-      gap: 15px;
-      padding: 20px 10px;
-      border-radius: 10px;
-    }
-    .text-menu a {
-      flex: 1 1 200px;
-      max-width: 220px;
       text-align: center;
-      padding: 20px 30px;
-      font-size: 1.2rem;
-      border-radius: 15px;
-      background-color: #007bff;
+      color: white;
+      margin-top: 140px; /* Adjusted for header height */
+      margin-bottom: 20px;
+    }
+    .hero-image h2 {
+      font-size: 2.5rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+    .hero-image .cta-button {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: #e30613;
       color: white;
       text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      font-weight: 700;
+      border-radius: 5px;
       transition: background-color 0.3s, transform 0.2s;
     }
-    .text-menu a:hover {
-      background-color: #0056b3;
-      transform: translateY(-3px);
+    .hero-image .cta-button:hover {
+      background-color: #b50510;
+      transform: scale(1.05);
     }
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: flex;
-      }
-      .text-menu {
-        flex-direction: column;
-        align-items: center;
-        display: none;
-      }
-      .text-menu.active {
-        display: flex;
-      }
-      .text-menu a {
-        width: 100%;
-        max-width: none;
-        font-size: 1rem;
-        padding: 15px;
-      }
-    }
+
+    /* Main Content */
     section {
-      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
     h2 {
       text-align: center;
       margin-bottom: 20px;
+      color: #003087;
+      font-size: 2rem;
     }
     p {
-      max-width: 800px;
-      margin: 0 auto;
       line-height: 1.6;
+      margin-bottom: 15px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .product-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+    .product-card img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    .product-card h3 {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    /* Calculator Section */
+    .calculator {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .calculator label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    .calculator input, .calculator select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .calculator button {
+      width: 100%;
+      padding: 12px;
+      background-color: #e30613;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .calculator button:hover {
+      background-color: #b50510;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #003087;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    footer a {
+      color: #f5f7fa;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+    footer p {
+      margin: 10px 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: #fff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .nav-menu.active {
+        display: flex;
+      }
+      .nav-menu a {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+        font-size: 1.1rem;
+      }
+      .line-container {
+        display: none; /* Hide line on mobile */
+      }
+      .email-container {
+        padding: 10px;
+      }
+      .contact-info {
+        text-align: center;
+        margin-top: 10px;
+      }
+      .contact-info .social {
+        justify-content: center;
+      }
+      .contact-info .lang-toggle {
+        justify-content: center;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .hero-image {
+        margin-top: 100px; /* Adjust for smaller header */
+      }
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -150,61 +357,94 @@
   <header>
     <div class="header-container">
       <div class="logo">
-        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png?ex=68203ed4&is=681eed54&hm=949aad02e3b5b85e40c0e3c5eab307a147e4bb5591e84c875fc49a12090ce88c&" alt="Логотип" />
+        <a href="#">
+          <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png?ex=68203ed4&is=681eed54&hm=949aad02e3b5b85e40c0e3c5eab307a147e4bb5591e84c875fc49a12090ce88c&" alt="Логотип" />
+        </a>
       </div>
-      <div class="site-title">
-        <h1>Завод пенопластовых изделий</h1>
+      <nav class="nav-menu" id="menu">
+        <a href="#products">Продукція</a>
+        <a href="#about-us">О нас</a>
+        <a href="#calculator">Калькулятор</a>
+        <a href="#contacts">Контакты</a>
+        <a href="#addresses">Адреса</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="contact-info">
+        <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
+        <div class="social">
+          <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="lang-toggle">
+          <a href="#" class="active">UA</a>
+          <a href="#">EN</a>
+          <a href="#">RU</a>
+        </div>
       </div>
-
-      <div class="text-field">
-        <div class="call-label">CALL center</div>
-        <span>+380 12 779 96</span>
-      </div>
-
       <div class="menu-toggle" onclick="toggleMenu()">
         <div></div>
         <div></div>
         <div></div>
       </div>
     </div>
+    <div class="line-container"></div>
+    <div class="email-container">
+      <a href="mailto:info@navekodessa.com"><i class="fas fa-envelope"></i> info@navekodessa.com</a>
+    </div>
   </header>
 
-  <div class="text-menu" id="menu">
-    <a href="#calculator">Калькулятор</a>
-    <a href="#about-us">О нас</a>
-    <a href="#penoplast-products">Товары</a>
-    <a href="#contacts">Контакты</a>
-    <a href="#addresses">Адреса</a>
-    <a href="#faq">FAQ</a>
+  <div class="hero-image">
+    <div>
+      <h2>Качественные пенопластовые изделия</h2>
+      <a href="#contacts" class="cta-button">Связаться с нами</a>
+    </div>
   </div>
 
-  <div style="background-image: url('https://cdn.discordapp.com/attachments/1251956990842900563/1362525097398894733/image.png?ex=6802b5e1&is=68016461&hm=f6c4b54a1f9607d1ee228d0f3ca86de326636dd4be075482b1c13a00828c388f& F'); background-size: cover; background-repeat: no-repeat; background-position: center; height: 500px; width: 100%; margin-top: 20px;"></div>
+  <section id="products">
+    <h2>Наша продукция</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200x150?text=Пенопласт" alt="Пенопласт" />
+        <h3>Пенопласт</h3>
+        <p>Высококачественный пенопласт для утепления фасадов, крыш и полов.</p>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200x150?text=Упаковка" alt="Упаковка" />
+        <h3>Упаковка</h3>
+        <p>Прочные и легкие упаковочные решения для любых нужд.</p>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200x150?text=АРТ-декор" alt="АРТ-декор" />
+        <h3>АРТ-декор</h3>
+        <p>Уникальные декоративные элементы из пенопласта.</p>
+      </div>
+    </div>
+  </section>
 
   <section id="about-us">
     <h2>О нас</h2>
-    <p>Мы предлагаем качественные изделия из пенопласта и упаковку для любых нужд.</p>
-  </section>
-
-  <section id="penoplast-products">
-    <h2>Наши товары</h2>
-    <p>Пенопласт, упаковка, АРТ-декор и многое другое.</p>
+    <p>Мы — ведущий производитель пенопластовых изделий в Украине с 19-летним опытом. Наша продукция сертифицирована, экологична и долговечна (срок службы до 50 лет). Мы используем современное европейское оборудование и качественное сырье, обеспечивая высочайшие стандарты.</p>
+    <p>Наша цель — быстрая и надежная доставка продукции по всей Украине благодаря собственному автопарку из более чем 25 грузовиков.</p>
   </section>
 
   <section id="calculator">
     <h2>Калькулятор объёма</h2>
-    <div style="max-width: 400px; margin: 0 auto; text-align: left;">
+    <div class="calculator">
       <label for="unit">Единицы измерения:</label>
-      <select id="unit" style="width:100%; padding:8px; margin:10px 0;">
+      <select id="unit">
         <option value="1">Метры</option>
         <option value="0.01">Сантиметры</option>
         <option value="0.001">Миллиметры</option>
       </select>
-      <label>Длина: <input type="number" id="length" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
-      <label>Ширина: <input type="number" id="width" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
-      <label>Высота: <input type="number" id="height" step="0.01" style="width:100%; padding:8px; margin:5px 0;"></label>
-      <button onclick="calculateVolume()" style="margin-top:10px; padding:10px 20px; background-color:#007bff; color:white; border:none; border-radius:8px; cursor:pointer;">Рассчитать</button>
-      <p id="volumeResult" style="margin-top:10px; font-weight: bold;"></p>
-      <p id="areaResult" style="font-weight: bold;"></p>
+      <label for="length">Длина:</label>
+      <input type="number" id="length" step="0.01">
+      <label for="width">Ширина:</label>
+      <input type="number" id="width" step="0.01">
+      <label for="height">Высота:</label>
+      <input type="number" id="height" step="0.01">
+      <button onclick="calculateVolume()">Рассчитать</button>
+      <p id="volumeResult"></p>
+      <p id="areaResult"></p>
     </div>
   </section>
 
@@ -226,10 +466,22 @@
     <p><strong>Можно ли сделать индивидуальный заказ?</strong><br> Да, мы принимаем индивидуальные заказы. Свяжитесь с нами для уточнения деталей.</p>
   </section>
 
+  <footer>
+    <p>© 2025 Завод пенопластовых изделий. Все права защищены.</p>
+    <p>
+      <a href="#contacts">Контакты</a> |
+      <a href="#products">Продукция</a> |
+      <a href="#about-us">О нас</a>
+    </p>
+    <p>Тел: +380 12 779 96 | Email: info@navekodessa.com</p>
+  </footer>
+
   <script>
     function toggleMenu() {
       const menu = document.getElementById('menu');
+      const toggle = document.querySelector('.menu-toggle');
       menu.classList.toggle('active');
+      toggle.classList.toggle('active');
     }
 
     function calculateVolume() {
