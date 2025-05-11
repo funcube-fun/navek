@@ -313,6 +313,23 @@
       font-size: 0.8rem;
       margin-top: 10px;
     }
+    .product-card .view-products {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: linear-gradient(to right, #e30613, #b50510);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    .product-card .view-products:hover {
+      background: linear-gradient(to right, #b50510, #e30613);
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
 
     /* Reviews Section */
     .reviews-section {
@@ -493,44 +510,79 @@
     footer {
       background: linear-gradient(to bottom, #00205b, #0033A0);
       color: white;
-      padding: 40px 20px;
+      padding: 60px 20px;
       text-align: center;
       box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+      z-index: 0;
     }
     .footer-container {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      gap: 30px;
       text-align: left;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-container > div {
+      padding: 20px;
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .footer-container > div:last-child {
+      border-right: none;
     }
     .footer-container h3 {
-      font-size: 1.2rem;
-      margin-bottom: 15px;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
       font-weight: 700;
+      color: #f5f7fa;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
     .footer-container a {
       color: #f5f7fa;
       text-decoration: none;
       font-size: 1rem;
       display: block;
-      margin: 8px 0;
-      transition: color 0.3s, transform 0.2s;
+      margin: 12px 0;
+      transition: color 0.3s, transform 0.2s, padding-left 0.2s;
     }
     .footer-container a:hover {
       color: #e30613;
-      transform: translateX(5px);
+      transform: translateX(8px);
+      padding-left: 5px;
     }
     .footer-container .social a {
       display: inline-block;
-      font-size: 1.2rem;
-      margin: 0 10px 0 0;
+      font-size: 1.4rem;
+      margin: 0 15px 0 0;
+      color: #f5f7fa;
+      transition: color 0.3s, transform 0.2s;
+    }
+    .footer-container .social a:hover {
+      color: #e30613;
+      transform: scale(1.2);
     }
     footer .copyright {
-      margin-top: 20px;
-      font-size: 0.9rem;
+      margin-top: 30px;
+      font-size: 0.95rem;
       text-align: center;
+      color: #f5f7fa;
+      opacity: 0.8;
+      position: relative;
+      z-index: 1;
     }
 
     /* Responsive Design */
@@ -599,8 +651,19 @@
         grid-template-columns: 1fr;
         text-align: center;
       }
+      .footer-container > div {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 20px 0;
+      }
+      .footer-container > div:last-child {
+        border-bottom: none;
+      }
       .footer-container a {
         display: inline-block;
+      }
+      .footer-container .social a {
+        margin: 0 10px;
       }
       .sticky-contact {
         padding: 12px;
@@ -679,30 +742,35 @@
         <h3 data-i18n="products.foam.title">Пенопласт</h3>
         <p data-i18n="products.foam.desc">Высококачественный пенопласт для утепления фасадов, крыш и полов, с отличной теплоизоляцией и долговечностью.</p>
         <span class="badge" data-i18n="products.foam.badge">Экологичный</span>
+        <a href="#foam-products" class="view-products" data-i18n="products.view">Посмотреть товары</a>
       </div>
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=Упаковка" alt="Упаковка" />
         <h3 data-i18n="products.packaging.title">Упаковка</h3>
         <p data-i18n="products.packaging.desc">Прочные и легкие упаковочные решения для защиты товаров во время транспортировки.</p>
         <span class="badge" data-i18n="products.packaging.badge">Сертифицировано</span>
+        <a href="#packaging-products" class="view-products" data-i18n="products.view">Посмотреть товары</a>
       </div>
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=АРТ-декор" alt="АРТ-декор" />
         <h3 data-i18n="products.art-decor.title">АРТ-декор</h3>
         <p data-i18n="products.art-decor.desc">Уникальные декоративные элементы из пенопласта для интерьеров и фасадов.</p>
         <span class="badge" data-i18n="products.art-decor.badge">Индивидуальный дизайн</span>
+        <a href="#art-decor-products" class="view-products" data-i18n="products.view">Посмотреть товары</a>
       </div>
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=Плиты" alt="Плиты" />
         <h3 data-i18n="products.insulation-boards.title">Утеплительные плиты</h3>
         <p data-i18n="products.insulation-boards.desc">Плиты высокой плотности для эффективного утепления зданий и сооружений.</p>
         <span class="badge" data-i18n="products.insulation-boards.badge">Высокая плотность</span>
+        <a href="#insulation-boards-products" class="view-products" data-i18n="products.view">Посмотреть товары</a>
       </div>
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=Фигуры" alt="Фигуры" />
         <h3 data-i18n="products.custom-shapes.title">Фигуры на заказ</h3>
         <p data-i18n="products.custom-shapes.desc">Индивидуальные пенопластовые формы для рекламы, декора и промышленности.</p>
         <span class="badge" data-i18n="products.custom-shapes.badge">На заказ</span>
+        <a href="#custom-shapes-products" class="view-products" data-i18n="products.view">Посмотреть товары</a>
       </div>
     </div>
   </section>
@@ -833,6 +901,7 @@
         "products.custom-shapes.title": "Фігури на замовлення",
         "products.custom-shapes.desc": "Індивідуальні пінопластові форми для реклами, декору та промисловості.",
         "products.custom-shapes.badge": "На замовлення",
+        "products.view": "Переглянути товари",
         "about-us.title": "Про нас",
         "about-us.desc": "Ми — провідний виробник пінопластових виробів в Україні з 19-річним досвідом, що виробляє понад 10,000 м³ продукції щомісячно на сучасному європейському обладнанні, використовуючи якісну сировину для створення сертифікованої за стандартами ISO, екологічної та довговічної продукції (термін служби до 50 років), обслуговуючи понад 500 компаній в Україні та Європі, з швидкою та надійною доставкою по всій країні завдяки автопарку з більш ніж 25 вантажівок.",
         "calculator.title": "Калькулятор об'єму",
@@ -908,6 +977,7 @@
         "products.custom-shapes.title": "Custom Shapes",
         "products.custom-shapes.desc": "Custom foam shapes for advertising, decor, and industrial applications.",
         "products.custom-shapes.badge": "Made to Order",
+        "products.view": "View Products",
         "about-us.title": "About Us",
         "about-us.desc": "We are a leading foam products manufacturer in Ukraine with 19 years of experience, producing over 10,000 m³ of products monthly using modern European equipment and high-quality raw materials to create ISO-certified, eco-friendly, and durable products (up to 50 years of service life), serving over 500 companies in Ukraine and Europe, with fast and reliable delivery nationwide thanks to a fleet of over 25 trucks.",
         "calculator.title": "Volume Calculator",
@@ -983,6 +1053,7 @@
         "products.custom-shapes.title": "Фигуры на заказ",
         "products.custom-shapes.desc": "Индивидуальные пенопластовые формы для рекламы, декора и промышленности.",
         "products.custom-shapes.badge": "На заказ",
+        "products.view": "Посмотреть товары",
         "about-us.title": "О нас",
         "about-us.desc": "Мы — ведущий производитель пенопластовых изделий в Украине с 19-летним опытом, производящий более 10,000 м³ продукции ежемесячно на современном европейском оборудовании, используя качественное сырье для создания сертифицированной по ISO стандартам, экологичной и долговечной продукции (срок службы до 50 лет), обслуживающий более 500 компаний в Украине и Европе, с быстрой и надежной доставкой по всей стране благодаря автопарку из более чем 25 грузовиков.",
         "calculator.title": "Калькулятор объёма",
