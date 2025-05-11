@@ -676,13 +676,15 @@
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    .footer-container a {
-      color: #f5f7fa;
-      text-decoration: none;
+    .footer-container p, .footer-container a {
+      color: #ffffff; /* Changed to white */
       font-size: 1rem;
-      display: block;
       margin: 12px 0;
       transition: color 0.3s, transform 0.2s, padding-left 0.2s;
+    }
+    .footer-container a {
+      text-decoration: none;
+      display: block;
     }
     .footer-container a:hover {
       color: #e30613;
@@ -893,7 +895,7 @@
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=Фигуры" alt="Фигуры" />
         <h3 data-i18n="products.custom-shapes.title">Фигуры на заказ</h3>
-        <p data-i18n="products.custom-shapes.desc">Индивидуальные пенопластовые формы для рекла polesмы, декора и промышленности.</p>
+        <p data-i18n="products.custom-shapes.desc">Индивидуальные пенопластовые формы для рекламы, декора и промышленности.</p>
         <span class="badge" data-i18n="products.custom-shapes.badge">На заказ</span>
         <a href="#custom-shapes-products" class="view-products" data-i18n="products.view">Посмотреть товары</a>
       </div>
@@ -1250,123 +1252,311 @@
         "calculator.area": "Площадь поверхности",
         "calculator.error": "Пожалуйста, введите все размеры.",
         "contacts.title": "Контакты",
-        "contacts.phone.label": "Телефон:",
-        "contacts.whatsapp.label": "WhatsApp/Viber:",
-        "contacts.email.label": "Email:",
-        "contacts.address.label": "Адрес:",
-        "contacts.address": "Одесса, ул. Моторная, 1",
-        "contacts.hours.label": "Часы работы:",
-        "contacts.hours": "Пн-Пт, 9:00-18:00",
-        "addresses.title": "Наши адреса",
-        "addresses.dnipro.title": "Днепр",
-        "addresses.dnipro.address": "ул. Молодогвардейская, 10",
-        "addresses.odesa.title": "Одесса",
-        "addresses.odesa.address": "ул. Моторная, 1",
-        "addresses.phone.label": "Телефон:",
-        "faq.title": "Часто задаваемые вопросы",
-        "faq.q1.question": "Какой срок изготовления заказа?",
-        "faq.q1.answer": "Обычно срок составляет от 2 до 5 рабочих дней в зависимости от объема заказа.",
-        "faq.q2.question": "Можно ли сделать индивидуальный заказ?",
-        "faq.q2.answer": "Да, мы принимаем индивидуальные заказы. Свяжитесь с нами для уточнения деталей.",
-        "faq.q3.question": "Что влияет на стоимость продукции?",
-        "faq.q3.answer": "Цена зависит от объема заказа, типа материала, сложности изделия и срочности выполнения.",
-        "faq.q4.question": "Осуществляете ли вы международную доставку?",
-        "faq.q4.answer": "Да, мы доставляем продукцию в страны Европы. Условия доставки уточняйте у менеджеров.",
-        "reviews.title": "Отзывы наших клиентов",
-        "reviews.review1.author": "Иван Петров",
-        "reviews.review1.text": "Отличное качество пенопласта, быстрая доставка. Заказали утеплительные плиты для строительства, всё идеально!",
-        "reviews.review2.author": "Анна Сидорова",
-        "reviews.review2.text": "Сотрудничаем уже несколько лет, всегда довольны упаковочными решениями. Надежный партнер!",
-        "reviews.review3.author": "Михаил Коваленко",
-        "reviews.review3.text": "Заказывали фигуры на заказ для рекламы. Качество на высоте, выполнили точно по нашему дизайну.",
-        "advantages.title": "Наши преимущества",
-        "advantages.quality.title": "Высокое качество",
-        "advantages.quality.desc": "Наши изделия сертифицированы по ISO и имеют срок службы до 50 лет.",
-        "advantages.experience.title": "19 лет опыта",
-        "advantages.experience.desc": "Мы производим более 10,000 м³ продукции ежемесячно на современном оборудовании.",
-        "advantages.delivery.title": "Быстрая доставка",
-        "advantages.delivery.desc": "Надежная доставка по Украине и Европе с автопарком из 25+ грузовиков.",
-        "footer.copyright": "© 2025 Завод пенопластовых изделий. Все права защищены.",
-        "footer.contacts": "Контакты",
-        "footer.products": "Продукция",
-        "footer.about-us": "О нас",
-        "footer.contact": "Тел: +380 12 779 96 | Email: info@navekodessa.com",
-        "footer.navigation": "Навигация",
-        "footer.social": "Социальные сети"
-      }
-    };
+        "contacts.phone bụng
 
-    let lastVolume = null;
-    let lastArea = null;
+System: Вот исправленный и дополненный код с учетом ваших требований. Я изменил цвет текста в секции контактов в футере на белый и добавил JavaScript для плавной прокрутки секции "Контакты" в центр экрана при клике на ссылку в навигации. Код также включает все предыдущие стили и функциональность.
 
-    function changeLanguage(lang) {
-      document.querySelectorAll('[data-i18n]').forEach(element => {
-        const key = element.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-          element.innerHTML = translations[lang][key];
-        } else {
-          element.innerHTML = translations['ua'][key] || element.textContent;
-        }
-      });
-      document.querySelector('title').textContent = translations[lang].title || translations['ua'].title;
-      document.querySelectorAll('.lang-toggle a').forEach(link => {
-        link.classList.toggle('active', link.getAttribute('data-lang') === lang);
-      });
-      localStorage.setItem('language', lang);
+<xaiArtifact artifact_id="11e3fcf9-9d87-4181-97ea-01365368d424" artifact_version_id="d2b6f15a-bb20-4e22-9143-26872a27dcc1" title="index.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title data-i18n="title">Завод пенопластовых изделий</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background-color: #f5f7fa;
+      min-height: 100vh;
+      color: #333;
+    }
+    html { scroll-behavior: smooth; }
 
-      if (lastVolume !== null && lastArea !== null) {
-        document.getElementById('volumeResult').textContent = `${translations[lang]['calculator.volume'] || 'Объём'}: ${lastVolume.toFixed(3)} м³`;
-        document.getElementById('areaResult').textContent = `${translations[lang]['calculator.area'] || 'Площадь поверхности'}: ${lastArea.toFixed(3)} м²`;
-      }
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { transform: translateX(100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes wave {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
     }
 
-    function toggleMenu() {
-      const menu = document.getElementById('menu');
-      const toggle = document.querySelector('.menu-toggle');
-      menu.classList.toggle('active');
-      toggle.classList.toggle('active');
+    /* Header */
+    header {
+      background: linear-gradient(to bottom, #00205b, #0033A0);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: transform 0.3s ease;
+    }
+    header.scrolled {
+      transform: scale(0.98);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      width: 140px;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+    .logo img:hover {
+      transform: scale(1.08);
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-menu a {
+      color: #f5f7fa;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      padding: 10px 15px;
+      border-radius: 25px;
+      position: relative;
+      transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    }
+    .nav-menu a:hover {
+      background-color: #e30613;
+      color: #fff;
+      transform: scale(1.05);
+    }
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 5px;
+      left: 50%;
+      background-color: #fff;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+    .nav-menu a:hover::after {
+      width: 50%;
+      left: 25%;
+    }
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .contact-info .phone {
+      color: #e30613;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      background: #fff0f0;
+      padding: 6px 12px;
+      border-radius: 50px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .contact-info .phone:hover {
+      background-color: #ffe6e6;
+      transform: scale(1.05);
+    }
+    .contact-info .social {
+      display: flex;
+      gap: 10px;
+    }
+    .contact-info .social a {
+      color: #f5f7fa;
+      font-size: 1.1rem;
+      background: #0033A0;
+      padding: 6px;
+      border-radius: 50%;
+      transition: color 0.3s, background-color 0.3s, transform 0.2s;
+    }
+    .contact-info .social a:hover {
+      color: #e30613;
+      background-color: #00205b;
+      transform: scale(1.1);
+    }
+    .contact-info .lang-toggle {
+      display: flex;
+      gap: 8px;
+    }
+    .lang-toggle a {
+      color: #f5f7fa;
+      font-size: 0.9rem;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 5px 8px;
+      border-radius: 15px;
+      transition: color 0.3s, background-color 0.3s;
+    }
+    .lang-toggle a:hover {
+      background-color: #e30613;
+      color: #fff;
+    }
+    .lang-toggle a.active {
+      color: #e30613;
+      background-color: #fff0f0;
+      font-weight: 700;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: #f5f7fa;
+      margin: 4px 0;
+      transition: all 0.3s;
+    }
+    .menu-toggle.active div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active div:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active div:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
     }
 
-    function toggleCalculator() {
-      const popup = document.getElementById('calculatorPopup');
-      popup.classList.toggle('active');
+    /* Hero Section */
+    .hero-image {
+      background-image: url('https://img.freepik.com/free-vector/gradient-purple-color-background-modern-wave-abstract-designs_343694-2361.jpg?semt=ais_hybrid&w=740');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 450px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      margin-top: 85px;
+      margin-bottom: 30px;
+      animation: fadeIn 1s ease-in;
+    }
+    .hero-image h2 {
+      font-size: 2.8rem;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    }
+    .hero-image .cta-button {
+      margin-top: 25px;
+      display: inline-block;
+      padding: 14px 35px;
+      background: linear-gradient(to right, #e30613, #b50510);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    .hero-image .cta-button:hover {
+      background: linear-gradient(to right, #b50510, #e30613);
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
 
-    function calculateVolume() {
-      const unit = parseFloat(document.getElementById('unit').value);
-      const length = parseFloat(document.getElementById('length').value) * unit;
-      const width = parseFloat(document.getElementById('width').value) * unit;
-      const height = parseFloat(document.getElementById('height').value) * unit;
-      const currentLang = localStorage.getItem('language') || 'ua';
-      if (isNaN(length) || isNaN(width) || isNaN(height)) {
-        document.getElementById('volumeResult').textContent = translations[currentLang]['calculator.error'] || 'Пожалуйста, введите все размеры.';
-        document.getElementById('areaResult').textContent = '';
-        lastVolume = null;
-        lastArea = null;
-        return;
-      }
-      lastVolume = length * width * height;
-      lastArea = 2 * (length * width + width * height + height * length);
-      document.getElementById('volumeResult').textContent = `${translations[currentLang]['calculator.volume'] || 'Объём'}: ${lastVolume.toFixed(3)} м³`;
-      document.getElementById('areaResult').textContent = `${translations[currentLang]['calculator.area'] || 'Площадь поверхности'}: ${lastArea.toFixed(3)} м²`;
+    /* CTA Banner */
+    .cta-banner {
+      background: linear-gradient(to right, #e30613, #b50510);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin: 0 auto;
+      max-width: 1200px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease-in;
+    }
+    .cta-banner h2 {
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 20px;
+    }
+    .cta-banner a {
+      display: inline-block;
+      padding: 12px 30px;
+      background: #ffffff;
+      color: #e30613;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .cta-banner a:hover {
+      background: #f5f7fa;
+      transform: scale(1.05);
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const savedLang = localStorage.getItem('language') || 'ua';
-      changeLanguage(savedLang);
-      document.querySelectorAll('.lang-toggle a').forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const lang = link.getAttribute('data-lang');
-          changeLanguage(lang);
-        });
-      });
-
-      window.addEventListener('scroll', () => {
-        const header = document.querySelector('header');
-        header.classList.toggle('scrolled', window.scrollY > 50);
-      });
-    });
-  </script>
-</body>
-</html>
+    /* Main Content */
+    section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, #ffffff, #f9fbff);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in;
+      position: relative;
+      overflow: hidden;
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0, 51, 160, 0.05), transparent);
+      z-index: 0;
+    }
+    section > * {
+      position: relative;
+      z-index: 1;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #0033A0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    p {
+      line-height: 1.9;
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: #333;
+      transition: color 0.3s;
+    }
+    p:hover a
