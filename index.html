@@ -29,6 +29,11 @@
       from { transform: translateX(100%); opacity: 0; }
       to { transform: translateX(0); opacity: 1; }
     }
+    @keyframes wave {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
 
     /* Header */
     header {
@@ -258,10 +263,27 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 60px 20px;
-      background: linear-gradient(to bottom, #ffffff, #f5f7fa);
-      border-bottom: 1px solid #e6f0ff;
+      background: linear-gradient(to bottom, #ffffff, #f9fbff);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       margin-bottom: 40px;
       animation: fadeIn 1s ease-in;
+      position: relative;
+      overflow: hidden;
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(0, 51, 160, 0.05), transparent);
+      z-index: 0;
+    }
+    section > * {
+      position: relative;
+      z-index: 1;
     }
     h2 {
       text-align: center;
@@ -269,11 +291,18 @@
       color: #0033A0;
       font-size: 2.2rem;
       font-weight: 700;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     p {
-      line-height: 1.8;
+      line-height: 1.9;
       margin-bottom: 20px;
       font-size: 1.1rem;
+      color: #333;
+      transition: color 0.3s;
+    }
+    p:hover a {
+      color: #e30613;
+      text-decoration: underline;
     }
     .product-grid {
       display: grid;
@@ -336,8 +365,9 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 60px 20px;
-      background: linear-gradient(to bottom, #ffffff, #f5f7fa);
-      border-bottom: 1px solid #e6f0ff;
+      background: linear-gradient(to bottom, #ffffff, #f9fbff);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       margin-bottom: 40px;
       animation: fadeIn 1s ease-in;
     }
@@ -380,6 +410,100 @@
       .review-grid {
         grid-template-columns: 1fr;
       }
+    }
+
+    /* Addresses Section */
+    .addresses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    .address-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 25px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: slideIn 0.5s ease-in;
+    }
+    .address-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+    .address-card i {
+      font-size: 2rem;
+      color: #0033A0;
+      margin-bottom: 15px;
+    }
+    .address-card h3 {
+      font-size: 1.4rem;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .address-card p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+    .address-card a {
+      color: #e30613;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    .address-card a:hover {
+      color: #b50510;
+      text-decoration: underline;
+    }
+
+    /* Advantages Section */
+    .advantages-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, #ffffff, #f9fbff);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in;
+    }
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    .advantage-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: slideIn 0.5s ease-in;
+    }
+    .advantage-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+    .advantage-card i {
+      font-size: 2.5rem;
+      color: #e30613;
+      margin-bottom: 15px;
+    }
+    .advantage-card h3 {
+      font-size: 1.3rem;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .advantage-card p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
     }
 
     /* Calculator Popup */
@@ -519,11 +643,12 @@
     footer::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: -20px;
       left: 0;
       width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+      height: 40px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path fill="rgba(255,255,255,0.1)" d="M0,0C240,50,480,100,720,80C960,60,1200,20,1440,40V100H0V0Z"/></svg>') no-repeat center;
+      background-size: cover;
       z-index: 0;
     }
     .footer-container {
@@ -644,7 +769,7 @@
       .cta-banner h2 {
         font-size: 1.5rem;
       }
-      .product-grid {
+      .product-grid, .addresses-grid, .advantages-grid {
         grid-template-columns: 1fr;
       }
       .footer-container {
@@ -768,7 +893,7 @@
       <div class="product-card">
         <img src="https://via.placeholder.com/200x150?text=Фигуры" alt="Фигуры" />
         <h3 data-i18n="products.custom-shapes.title">Фигуры на заказ</h3>
-        <p data-i18n="products.custom-shapes.desc">Индивидуальные пенопластовые формы для рекламы, декора и промышленности.</p>
+        <p data-i18n="products.custom-shapes.desc">Индивидуальные пенопластовые формы для рекла polesмы, декора и промышленности.</p>
         <span class="badge" data-i18n="products.custom-shapes.badge">На заказ</span>
         <a href="#custom-shapes-products" class="view-products" data-i18n="products.view">Посмотреть товары</a>
       </div>
@@ -784,14 +909,27 @@
     <h2 data-i18n="contacts.title">Контакты</h2>
     <p><strong data-i18n="contacts.phone.label">Телефон:</strong> +380 (44) 123-45-67</p>
     <p><strong data-i18n="contacts.whatsapp.label">WhatsApp/Viber:</strong> +380 12 779 96</p>
-    <p><strong data-i18n="contacts.email.label">Email:</strong> info@navekodessa.com</p>
+    <p><strong data-i18n="contacts.email.label">Email:</strong> <a href="mailto:info@navekodessa.com">info@navekodessa.com</a></p>
     <p><strong data-i18n="contacts.address.label">Адрес:</strong> <span data-i18n="contacts.address">Одесса, ул. Моторная, 1</span></p>
     <p><strong data-i18n="contacts.hours.label">Часы работы:</strong> <span data-i18n="contacts.hours">Пн-Пт, 9:00-18:00</span></p>
   </section>
 
   <section id="addresses">
     <h2 data-i18n="addresses.title">Наши адреса</h2>
-    <p data-i18n="addresses.desc">Основной офис и производственная база — Одесса, ул. Моторная, 1. Подробности уточняйте по телефону.</p>
+    <div class="addresses-grid">
+      <div class="address-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3 data-i18n="addresses.dnipro.title">Днепр</h3>
+        <p data-i18n="addresses.dnipro.address">ул. Молодогвардейская, 10</p>
+        <p><strong data-i18n="addresses.phone.label">Телефон:</strong> <a href="tel:+380441234567">+380 (44) 123-45-67</a></p>
+      </div>
+      <div class="address-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3 data-i18n="addresses.odesa.title">Одесса</h3>
+        <p data-i18n="addresses.odesa.address">ул. Моторная, 1</p>
+        <p><strong data-i18n="addresses.phone.label">Телефон:</strong> <a href="tel:+380441234567">+380 (44) 123-45-67</a></p>
+      </div>
+    </div>
   </section>
 
   <section id="faq">
@@ -823,11 +961,32 @@
     </div>
   </section>
 
+  <section id="advantages" class="advantages-section">
+    <h2 data-i18n="advantages.title">Наши преимущества</h2>
+    <div class="advantages-grid">
+      <div class="advantage-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3 data-i18n="advantages.quality.title">Высокое качество</h3>
+        <p data-i18n="advantages.quality.desc">Наши изделия сертифицированы по ISO и имеют срок службы до 50 лет.</p>
+      </div>
+      <div class="advantage-card">
+        <i class="fas fa-clock"></i>
+        <h3 data-i18n="advantages.experience.title">19 лет опыта</h3>
+        <p data-i18n="advantages.experience.desc">Мы производим более 10,000 м³ продукции ежемесячно на современном оборудовании.</p>
+      </div>
+      <div class="advantage-card">
+        <i class="fas fa-truck"></i>
+        <h3 data-i18n="advantages.delivery.title">Быстрая доставка</h3>
+        <p data-i18n="advantages.delivery.desc">Надежная доставка по Украине и Европе с автопарком из 25+ грузовиков.</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-container">
       <div>
         <h3 data-i18n="footer.contacts">Контакты</h3>
-        <p class="contact" data-i18n="footer.contact">Тел: +380 12 779 96 | Email: info@navekodessa.com</p>
+        <p class="contact" data-i18n="footer.contact">Тел: +380 12 779 96 | Email: <a href="mailto:info@navekodessa.com">info@navekodessa.com</a></p>
         <p data-i18n="contacts.address">Одесса, ул. Моторная, 1</p>
         <p data-i18n="contacts.hours">Пн-Пт, 9:00-18:00</p>
       </div>
@@ -925,7 +1084,11 @@
         "contacts.hours.label": "Години роботи:",
         "contacts.hours": "Пн-Пт, 9:00-18:00",
         "addresses.title": "Наші адреси",
-        "addresses.desc": "Основний офіс та виробнича база — Одеса, вул. Моторна, 1. Подробиці уточнюйте за телефоном.",
+        "addresses.dnipro.title": "Дніпро",
+        "addresses.dnipro.address": "вул. Молодогвардійська, 10",
+        "addresses.odesa.title": "Одеса",
+        "addresses.odesa.address": "вул. Моторна, 1",
+        "addresses.phone.label": "Телефон:",
         "faq.title": "Часто задавані питання",
         "faq.q1.question": "Який термін виготовлення замовлення?",
         "faq.q1.answer": "Зазвичай термін становить від 2 до 5 робочих днів залежно від обсягу замовлення.",
@@ -942,6 +1105,13 @@
         "reviews.review2.text": "Співпрацюємо вже кілька років, завжди задоволені пакувальними рішеннями. Надійний партнер!",
         "reviews.review3.author": "Михайло Коваленко",
         "reviews.review3.text": "Замовляли фігури на замовлення для реклами. Якість на висоті, виконали точно за нашим дизайном.",
+        "advantages.title": "Наші переваги",
+        "advantages.quality.title": "Висока якість",
+        "advantages.quality.desc": "Наші вироби сертифіковані за ISO та мають термін служби до 50 років.",
+        "advantages.experience.title": "19 років досвіду",
+        "advantages.experience.desc": "Ми виробляємо понад 10,000 м³ продукції щомісячно на сучасному обладнанні.",
+        "advantages.delivery.title": "Швидка доставка",
+        "advantages.delivery.desc": "Надійна доставка по Україні та Європі з автопарком із 25+ вантажівок.",
         "footer.copyright": "© 2025 Завод пенопластових виробів. Всі права захищені.",
         "footer.contacts": "Контакти",
         "footer.products": "Продукція",
@@ -1001,7 +1171,11 @@
         "contacts.hours.label": "Working Hours:",
         "contacts.hours": "Mon-Fri, 9:00-18:00",
         "addresses.title": "Our Addresses",
-        "addresses.desc": "Main office and production base — Odesa, Motorna St, 1. Please contact us for details.",
+        "addresses.dnipro.title": "Dnipro",
+        "addresses.dnipro.address": "Molodohvardiyska St, 10",
+        "addresses.odesa.title": "Odesa",
+        "addresses.odesa.address": "Motorna St, 1",
+        "addresses.phone.label": "Phone:",
         "faq.title": "Frequently Asked Questions",
         "faq.q1.question": "What is the production time for an order?",
         "faq.q1.answer": "The production time is usually 2 to 5 working days, depending on the order volume.",
@@ -1018,6 +1192,13 @@
         "reviews.review2.text": "We’ve been cooperating for several years, always satisfied with packaging solutions. Reliable partner!",
         "reviews.review3.author": "Mykhailo Kovalenko",
         "reviews.review3.text": "Ordered custom shapes for advertising. Top-notch quality, executed exactly per our design.",
+        "advantages.title": "Our Advantages",
+        "advantages.quality.title": "High Quality",
+        "advantages.quality.desc": "Our products are ISO-certified and have a service life of up to 50 years.",
+        "advantages.experience.title": "19 Years of Experience",
+        "advantages.experience.desc": "We produce over 10,000 m³ of products monthly using modern equipment.",
+        "advantages.delivery.title": "Fast Delivery",
+        "advantages.delivery.desc": "Reliable delivery across Ukraine and Europe with a fleet of over 25 trucks.",
         "footer.copyright": "© 2025 Foam Products Factory. All rights reserved.",
         "footer.contacts": "Contacts",
         "footer.products": "Products",
@@ -1077,7 +1258,11 @@
         "contacts.hours.label": "Часы работы:",
         "contacts.hours": "Пн-Пт, 9:00-18:00",
         "addresses.title": "Наши адреса",
-        "addresses.desc": "Основной офис и производственная база — Одесса, ул. Моторная, 1. Подробности уточняйте по телефону.",
+        "addresses.dnipro.title": "Днепр",
+        "addresses.dnipro.address": "ул. Молодогвардейская, 10",
+        "addresses.odesa.title": "Одесса",
+        "addresses.odesa.address": "ул. Моторная, 1",
+        "addresses.phone.label": "Телефон:",
         "faq.title": "Часто задаваемые вопросы",
         "faq.q1.question": "Какой срок изготовления заказа?",
         "faq.q1.answer": "Обычно срок составляет от 2 до 5 рабочих дней в зависимости от объема заказа.",
@@ -1094,6 +1279,13 @@
         "reviews.review2.text": "Сотрудничаем уже несколько лет, всегда довольны упаковочными решениями. Надежный партнер!",
         "reviews.review3.author": "Михаил Коваленко",
         "reviews.review3.text": "Заказывали фигуры на заказ для рекламы. Качество на высоте, выполнили точно по нашему дизайну.",
+        "advantages.title": "Наши преимущества",
+        "advantages.quality.title": "Высокое качество",
+        "advantages.quality.desc": "Наши изделия сертифицированы по ISO и имеют срок службы до 50 лет.",
+        "advantages.experience.title": "19 лет опыта",
+        "advantages.experience.desc": "Мы производим более 10,000 м³ продукции ежемесячно на современном оборудовании.",
+        "advantages.delivery.title": "Быстрая доставка",
+        "advantages.delivery.desc": "Надежная доставка по Украине и Европе с автопарком из 25+ грузовиков.",
         "footer.copyright": "© 2025 Завод пенопластовых изделий. Все права защищены.",
         "footer.contacts": "Контакты",
         "footer.products": "Продукция",
