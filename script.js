@@ -117,7 +117,7 @@ const translations = {
     "calculator.length.tooltip": "Введите длину в выбранных единицах",
     "calculator.width": "Ширина:",
     "calculator.width.tooltip": "Введите ширину в выбранных единицах",
-    "calculator.height": "Высота:",
+    "calculator.height": "Висота:",
     "calculator.height.tooltip": "Введите высоту в выбранных единицах",
     "calculator.calculate": "Рассчитать",
     "calculator.reset": "Сбросить",
@@ -163,8 +163,13 @@ function toggleMenu() {
 }
 
 function toggleCalculator() {
+  console.log('Calculator toggle clicked'); // Отладка
   const modal = document.getElementById('calculatorModal');
-  modal.classList.toggle('active');
+  if (modal) {
+    modal.classList.toggle('active');
+  } else {
+    console.error('Element with ID calculatorModal not found');
+  }
 }
 
 function calculateVolume() {
