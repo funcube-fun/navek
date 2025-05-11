@@ -142,7 +142,7 @@
       display: flex;
       gap: 8px;
     }
-    .contact-info .lang-toggle a {
+    .lang-toggle a {
       color: #f5f7fa;
       font-size: 0.9rem;
       text-decoration: none;
@@ -151,11 +151,11 @@
       border-radius: 15px;
       transition: color 0.3s, background-color 0.3s;
     }
-    .contact-info .lang-toggle a:hover {
+    .lang-toggle a:hover {
       background-color: #e30613;
       color: #fff;
     }
-    .contact-info .lang-toggle a.active {
+    .lang-toggle a.active {
       color: #e30613;
       background-color: #fff0f0;
       font-weight: 700;
@@ -312,6 +312,57 @@
       border-radius: 12px;
       font-size: 0.8rem;
       margin-top: 10px;
+    }
+
+    /* Reviews Section */
+    .reviews-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, #ffffff, #f5f7fa);
+      border-bottom: 1px solid #e6f0ff;
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in;
+    }
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    .review-card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: slideIn 0.5s ease-in;
+    }
+    .review-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+    .review-card .review-author {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #0033A0;
+      margin-bottom: 10px;
+    }
+    .review-card .review-text {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+    .review-card .review-rating {
+      color: #f1c40f;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 768px) {
+      .review-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Calculator Popup */
@@ -683,6 +734,27 @@
     <p><strong data-i18n="faq.q4.question">Осуществляете ли вы международную доставку?</strong><br><span data-i18n="faq.q4.answer">Да, мы доставляем продукцию в страны Европы. Условия доставки уточняйте у менеджеров.</span></p>
   </section>
 
+  <section id="reviews" class="reviews-section">
+    <h2 data-i18n="reviews.title">Отзывы наших клиентов</h2>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="review-author" data-i18n="reviews.review1.author">Иван Петров</div>
+        <div class="review-text" data-i18n="reviews.review1.text">Отличное качество пенопласта, быстрая доставка. Заказали утеплительные плиты для строительства, всё идеально!</div>
+        <div class="review-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+      <div class="review-card">
+        <div class="review-author" data-i18n="reviews.review2.author">Анна Сидорова</div>
+        <div class="review-text" data-i18n="reviews.review2.text">Сотрудничаем уже несколько лет, всегда довольны упаковочными решениями. Надежный партнер!</div>
+        <div class="review-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+      </div>
+      <div class="review-card">
+        <div class="review-author" data-i18n="reviews.review3.author">Михаил Коваленко</div>
+        <div class="review-text" data-i18n="reviews.review3.text">Заказывали фигуры на заказ для рекламы. Качество на высоте, выполнили точно по нашему дизайну.</div>
+        <div class="review-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-container">
       <div>
@@ -794,6 +866,13 @@
         "faq.q3.answer": "Ціна залежить від обсягу замовлення, типу матеріалу, складності виробу та терміновості виконання.",
         "faq.q4.question": "Чи здійснюєте ви міжнародну доставку?",
         "faq.q4.answer": "Так, ми доставляємо продукцію до країн Європи. Умови доставки уточнюйте у менеджерів.",
+        "reviews.title": "Відгуки наших клієнтів",
+        "reviews.review1.author": "Іван Петров",
+        "reviews.review1.text": "Відмінна якість пінопласту, швидка доставка. Замовили утеплювальні плити для будівництва, все ідеально!",
+        "reviews.review2.author": "Анна Сидорова",
+        "reviews.review2.text": "Співпрацюємо вже кілька років, завжди задоволені пакувальними рішеннями. Надійний партнер!",
+        "reviews.review3.author": "Михайло Коваленко",
+        "reviews.review3.text": "Замовляли фігури на замовлення для реклами. Якість на висоті, виконали точно за нашим дизайном.",
         "footer.copyright": "© 2025 Завод пенопластових виробів. Всі права захищені.",
         "footer.contacts": "Контакти",
         "footer.products": "Продукція",
@@ -862,6 +941,13 @@
         "faq.q3.answer": "Pricing depends on order volume, material type, product complexity, and production urgency.",
         "faq.q4.question": "Do you offer international delivery?",
         "faq.q4.answer": "Yes, we deliver to European countries. Contact our managers for delivery terms.",
+        "reviews.title": "Our Clients' Reviews",
+        "reviews.review1.author": "Ivan Petrov",
+        "reviews.review1.text": "Excellent foam quality, fast delivery. Ordered insulation boards for construction, everything is perfect!",
+        "reviews.review2.author": "Anna Sidorova",
+        "reviews.review2.text": "We’ve been cooperating for several years, always satisfied with packaging solutions. Reliable partner!",
+        "reviews.review3.author": "Mykhailo Kovalenko",
+        "reviews.review3.text": "Ordered custom shapes for advertising. Top-notch quality, executed exactly per our design.",
         "footer.copyright": "© 2025 Foam Products Factory. All rights reserved.",
         "footer.contacts": "Contacts",
         "footer.products": "Products",
@@ -930,6 +1016,13 @@
         "faq.q3.answer": "Цена зависит от объема заказа, типа материала, сложности изделия и срочности выполнения.",
         "faq.q4.question": "Осуществляете ли вы международную доставку?",
         "faq.q4.answer": "Да, мы доставляем продукцию в страны Европы. Условия доставки уточняйте у менеджеров.",
+        "reviews.title": "Отзывы наших клиентов",
+        "reviews.review1.author": "Иван Петров",
+        "reviews.review1.text": "Отличное качество пенопласта, быстрая доставка. Заказали утеплительные плиты для строительства, всё идеально!",
+        "reviews.review2.author": "Анна Сидорова",
+        "reviews.review2.text": "Сотрудничаем уже несколько лет, всегда довольны упаковочными решениями. Надежный партнер!",
+        "reviews.review3.author": "Михаил Коваленко",
+        "reviews.review3.text": "Заказывали фигуры на заказ для рекламы. Качество на высоте, выполнили точно по нашему дизайну.",
         "footer.copyright": "© 2025 Завод пенопластовых изделий. Все права защищены.",
         "footer.contacts": "Контакты",
         "footer.products": "Продукция",
