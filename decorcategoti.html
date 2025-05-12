@@ -1,1 +1,980 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Категории товаров - Магазин декоративных товаров</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(to bottom, #00205b, #0033A0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        header.scrolled {
+            transform: scale(0.98);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 140px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.08);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-menu a {
+            color: #f5f7fa;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 25px;
+            position: relative;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .nav-menu a:hover {
+            background-color: #e30613;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 5px;
+            left: 50%;
+            background-color: #fff;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 50%;
+            left: 25%;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-info .phone {
+            color: #e30613;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            background: #fff0f0;
+            padding: 6px 12px;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .contact-info .phone:hover {
+            background-color: #ffe6e6;
+            transform: scale(1.05);
+        }
+
+        .contact-info .social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .contact-info .social a {
+            color: #f5f7fa;
+            font-size: 1.1rem;
+            background: #0033A0;
+            padding: 6px;
+            border-radius: 50%;
+            transition: color 0.3s, background-color 0.3s, transform 0.2s;
+        }
+
+        .contact-info .social a:hover {
+            color: #e30613;
+            background-color: #00205b;
+            transform: scale(1.1);
+        }
+
+        .contact-info .lang-toggle {
+            display: flex;
+            gap: 8px;
+        }
+
+        .contact-info .lang-toggle a {
+            color: #f5f7fa;
+            font-size: 0.9rem;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 8px;
+            border-radius: 15px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .contact-info .lang-toggle a:hover {
+            background-color: #e30613;
+            color: #fff;
+        }
+
+        .contact-info .lang-toggle a.active {
+            color: #e30613;
+            background-color: #fff0f0;
+            font-weight: 700;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-toggle div {
+            width: 25px;
+            height: 3px;
+            background-color: #f5f7fa;
+            margin: 4px 0;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle.active div:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active div:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Categories Section */
+        #categories {
+            padding: 100px 0 50px;
+        }
+
+        #categories h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .category {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s;
+            width: 100%;
+            max-width: 350px;
+            min-height: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .category img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            width: 300px;
+            object-fit: cover;
+        }
+
+        .category h3 {
+            font-size: 1.8rem;
+            margin: 20px 0;
+        }
+
+        .category p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .category a {
+            display: inline-block;
+            background: linear-gradient(to right, #e30613, #b50510);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .category a:hover {
+            background: linear-gradient(to right, #b50510, #e30613);
+            transform: scale(1.05);
+        }
+
+        /* Calculator Popup */
+        .calculator-popup {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .calculator-popup.active {
+            right: 0;
+            animation: slideInRight 0.3s ease;
+        }
+
+        .calculator-popup .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e30613;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .calculator-popup .close-btn:hover {
+            background: #b50510;
+            transform: scale(1.1);
+        }
+
+        .calculator {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e6f0ff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .calculator h2 {
+            font-size: 1.8rem;
+            color: #0033A0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .calculator label {
+            display: block;
+            margin: 12px 0 6px;
+            font-weight: 600;
+            color: #0033A0;
+        }
+
+        .calculator input,
+        .calculator select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            transition: border-color 0.3s;
+        }
+
+        .calculator input:focus,
+        .calculator select:focus {
+            border-color: #0033A0;
+            outline: none;
+        }
+
+        .calculator button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(to right, #e30613, #b50510);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+
+        .calculator button:hover {
+            background: linear-gradient(to right, #b50510, #e30613);
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .calculator p {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #333;
+            text-align: center;
+        }
+
+        /* Calculator Toggle */
+        .calculator-toggle {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: linear-gradient(to right, #0033A0, #00205b);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .calculator-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .calculator-toggle i {
+            font-size: 1.5rem;
+        }
+
+        /* Sticky Contact */
+        .sticky-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #e30613, #b50510);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .sticky-contact:hover {
+            transform: scale(1.1);
+        }
+
+        .sticky-contact i {
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to bottom, #00205b, #0033A0);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 100"><path fill="rgba(255,255,255,0.1)" d="M0,0C240,50,480,100,720,80C960,60,1200,20,1440,40V100H0V0Z"/></svg>') no-repeat center;
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-container > div {
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-container > div:last-child {
+            border-right: none;
+        }
+
+        .footer-container h3,
+        .footer-container a,
+        .footer-container p {
+            color: white !important;
+        }
+
+        .footer-container h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-container a {
+            text-decoration: none;
+            font-size: 1rem;
+            display: block;
+            margin: 12px 0;
+            transition: color 0.3s, transform 0.2s, padding-left 0.2s;
+        }
+
+        .footer-container a:hover {
+            color: #e30613 !important;
+            transform: translateX(8px);
+            padding-left: 5px;
+        }
+
+        .footer-container .social a {
+            display: inline-block;
+            font-size: 1.4rem;
+            margin: 0 15px 0 0;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .footer-container .social a:hover {
+            color: #e30613 !important;
+            transform: scale(1.2);
+        }
+
+        footer .copyright {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: linear-gradient(to bottom, #00205b, #0033A0);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                width: 100%;
+                text-align: center;
+                padding: 12px;
+                font-size: 1.1rem;
+            }
+
+            .contact-info {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                padding: 10px 20px;
+                background: linear-gradient(to bottom, #00205b, #0033A0);
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .contact-info.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            #categories h2 {
+                font-size: 1.8rem;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+
+            .category {
+                max-width: 100%;
+                min-height: 350px;
+            }
+
+            .category img {
+                width: 250px;
+            }
+
+            .category h3 {
+                font-size: 1.6rem;
+            }
+
+            .category p {
+                font-size: 1rem;
+            }
+
+            .category a {
+                font-size: 0.95rem;
+                padding: 10px 20px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-container > div {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 20px 0;
+            }
+
+            .footer-container > div:last-child {
+                border-bottom: none;
+            }
+
+            .footer-container a {
+                display: inline-block;
+            }
+
+            .footer-container .social a {
+                margin: 0 10px;
+            }
+
+            .calculator-popup {
+                width: 100%;
+                right: -100%;
+            }
+
+            .calculator {
+                max-width: 100%;
+            }
+
+            .sticky-contact {
+                padding: 12px;
+            }
+
+            .sticky-contact i {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="#">
+                    <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1359590774915989544/images.png?ex=67f80914&is=67f6b794&hm=959258616c382d03abc8eba06e02703ca23e0fd4fbe036c7a07a789bf0e97ed4&" alt="Логотип" />
+                </a>
+            </div>
+            <nav class="nav-menu" id="menu">
+                <a href="index.html" class="translate" data-key="home">Вернуться на главную</a>
+                <a href="#footer-info" class="translate" data-key="info">Информация</a>
+            </nav>
+            <div class="contact-info" id="contact-info">
+                <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
+                <div class="social">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="lang-toggle">
+                    <a href="#" data-lang="ru" class="lang active">RU</a>
+                    <a href="#" data-lang="en" class="lang">EN</a>
+                    <a href="#" data-lang="ua" class="lang">UA</a>
+                </div>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Секция категорий -->
+    <section id="categories">
+        <div class="container">
+            <h2 class="translate" data-key="categories_title">Категории товаров</h2>
+            <div class="categories">
+                <!-- Категория: Молдинги -->
+                <div class="category">
+                    <img src="https://via.placeholder.com/300x200?text=Moldings" alt="Молдинги">
+                    <h3 class="translate" data-key="category_moldings_name">Молдинги</h3>
+                    <p class="translate" data-key="category_moldings_desc">Декоративные элементы для украшения стен и потолков, придающие интерьеру изысканность.</p>
+                    <a href="#" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+
+                <!-- Категория: Підвіконня -->
+                <div class="category">
+                    <img src="https://via.placeholder.com/300x200?text=Window+Sills" alt="Підвіконня">
+                    <h3 class="translate" data-key="category_sills_name">Підвіконня</h3>
+                    <p class="translate" data-key="category_sills_desc">Прочные и стильные подоконники для окон, устойчивые к внешним воздействиям.</p>
+                    <a href="#" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+
+                <!-- Категория: Віконні Обрамлення -->
+                <div class="category">
+                    <img src="https://via.placeholder.com/300x200?text=Window+Frames" alt="Віконні Обрамлення">
+                    <h3 class="translate" data-key="category_window_frames_name">Віконні Обрамлення</h3>
+                    <p class="translate" data-key="category_window_frames_desc">Декоративные элементы для оформления окон, добавляющие элегантности фасаду.</p>
+                    <a href="#" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+
+                <!-- Категория: Карнизы -->
+                <div class="category">
+                    <img src="https://via.placeholder.com/300x200?text=Cornices" alt="Карнизи">
+                    <h3 class="translate" data-key="category_cornices_name">Карнизи</h3>
+                    <p class="translate" data-key="category_cornices_desc">Фасадные карнизы для украшения зданий, устойчивые к погодным условиям.</p>
+                    <a href="#" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+
+                <!-- Категория: Пілястри -->
+                <div class="category">
+                    <img src="https://via.placeholder.com/300x200?text=Pilasters" alt="Пілястри">
+                    <h3 class="translate" data-key="category_pilasters_name">Пілястри</h3>
+                    <p class="translate" data-key="category_pilasters_desc">Архитектурные элементы для придания фасаду классического стиля.</p>
+                    <a href="#" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+
+                <!-- Категория: Колони -->
+                <div class="category">
+                    <img src="https://via.placeholder.com/300x200?text=Columns" alt="Колони">
+                    <h3 class="translate" data-key="category_columns_name">Колони</h3>
+                    <p class="translate" data-key="category_columns_desc">Декоративные колонны для создания величественного облика здания.</p>
+                    <a href="#" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+
+                <!-- Категория: Консолі -->
+                <div class="category">
+                    <img src="https://via.placeholder.com/300x200?text=Consoles" alt="Консолі">
+                    <h3 class="translate" data-key="category_consoles_name">Консолі</h3>
+                    <p class="translate" data-key="category_consoles_desc">Опорные элементы для декоративных и функциональных решений фасада.</p>
+                    <a href="#" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+
+                <!-- Категория: Замкові панелі -->
+                <div class="category">
+                    <img src="https://via.placeholder.com/300x200?text=Keystone+Panels" alt="Замкові панелі">
+                    <h3 class="translate" data-key="category_keystone_panels_name">Замкові панелі</h3>
+                    <p class="translate" data-key="category_keystone_panels_desc">Декоративные панели для акцента на арках и проемах.</p>
+                    <a href="#" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+
+                <!-- Категория: Русти -->
+                <div class="category">
+                    <img src="https://via.placeholder.com/300x200?text=Rustication" alt="Русти">
+                    <h3 class="translate" data-key="category_rustication_name">Русти</h3>
+                    <p class="translate" data-key="category_rustication_desc">Элементы для создания текстурного оформления фасадов.</p>
+                    <a href="#" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer id="footer-info">
+        <div class="footer-container">
+            <div>
+                <h3 class="translate" data-key="footer_contacts">Контакты</h3>
+                <p class="contact translate" data-key="footer_contact">Тел: +380 12 779 96 | Электронная почта: <a href="mailto:info@navekodessa.com">info@navekodessa.com</a></p>
+                <p class="translate" data-key="footer_address">Одесса, ул. Моторная, 1</p>
+                <p class="translate" data-key="footer_hours">Пн-Пт, 9:00-18:00</p>
+            </div>
+            <div>
+                <h3 class="translate" data-key="footer_navigation">Навигация</h3>
+                <a href="index.html" class="translate" data-key="home">Вернуться на главную</a>
+                <a href="#footer-info" class="translate" data-key="info">Информация</a>
+            </div>
+            <div>
+                <h3 class="translate" data-key="footer_social">Социальные сети</h3>
+                <div class="social">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="copyright translate" data-key="footer_copyright">© 2025 Магазин декоративных товаров. Все права защищены.</p>
+    </footer>
+
+    <!-- Калькулятор -->
+    <div class="calculator-toggle" onclick="toggleCalculator()"><i class="fas fa-calculator"></i></div>
+    <div class="calculator-popup" id="calculatorPopup">
+        <button class="close-btn" onclick="toggleCalculator()">×</button>
+        <div class="calculator">
+            <h2 class="translate" data-key="calculator_title">Калькулятор объёма</h2>
+            <label for="unit" class="translate" data-key="calculator_unit">Единицы измерения:</label>
+            <select id="unit">
+                <option value="1" class="translate" data-key="calculator_unit_meters">Метры</option>
+                <option value="0.01" class="translate" data-key="calculator_unit_centimeters">Сантиметры</option>
+                <option value="0.001" class="translate" data-key="calculator_unit_millimeters">Миллиметры</option>
+            </select>
+            <label for="length" class="translate" data-key="calculator_length">Длина:</label>
+            <input type="number" id="length" step="0.01">
+            <label for="width" class="translate" data-key="calculator_width">Ширина:</label>
+            <input type="number" id="width" step="0.01">
+            <label for="height" class="translate" data-key="calculator_height">Высота:</label>
+            <input type="number" id="height" step="0.01">
+            <button onclick="calculateVolume()" class="translate" data-key="calculator_calculate">Рассчитать</button>
+            <p id="volumeResult"></p>
+            <p id="areaResult"></p>
+        </div>
+    </div>
+
+    <!-- Sticky Contact -->
+    <a href="tel:+3801277996" class="sticky-contact"><i class="fas fa-phone"></i></a>
+
+    <script>
+        // Translation data
+        const translations = {
+            ru: {
+                home: "Вернуться на главную",
+                info: "Информация",
+                phone_number: "+380 12 779 96",
+                categories_title: "Категории товаров",
+                category_moldings_name: "Молдинги",
+                category_moldings_desc: "Декоративные элементы для украшения стен и потолков, придающие интерьеру изысканность.",
+                category_sills_name: "Подоконники",
+                category_sills_desc: "Прочные и стильные подоконники для окон, устойчивые к внешним воздействиям.",
+                category_window_frames_name: "Оконные Обрамления",
+                category_window_frames_desc: "Декоративные элементы для оформления окон, добавляющие элегантности фасаду.",
+                category_cornices_name: "Карнизы",
+                category_cornices_desc: "Фасадные карнизы для украшения зданий, устойчивые к погодным условиям.",
+                category_pilasters_name: "Пилястры",
+                category_pilasters_desc: "Архитектурные элементы для придания фасаду классического стиля.",
+                category_columns_name: "Колонны",
+                category_columns_desc: "Декоративные колонны для создания величественного облика здания.",
+                category_consoles_name: "Консоли",
+                category_consoles_desc: "Опорные элементы для декоративных и функциональных решений фасада.",
+                category_keystone_panels_name: "Замковые панели",
+                category_keystone_panels_desc: "Декоративные панели для акцента на арках и проемах.",
+                category_rustication_name: "Русты",
+                category_rustication_desc: "Элементы для создания текстурного оформления фасадов.",
+                view_products: "Посмотреть товары",
+                footer_contacts: "Контакты",
+                footer_contact: "Тел: +380 12 779 96 | Электронная почта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
+                footer_address: "Одесса, ул. Моторная, 1",
+                footer_hours: "Пн-Пт, 9:00-18:00",
+                footer_navigation: "Навигация",
+                footer_social: "Социальные сети",
+                footer_copyright: "© 2025 Магазин декоративных товаров. Все права защищены.",
+                calculator_title: "Калькулятор объёма",
+                calculator_unit: "Единицы измерения:",
+                calculator_unit_meters: "Метры",
+                calculator_unit_centimeters: "Сантиметры",
+                calculator_unit_millimeters: "Миллиметры",
+                calculator_length: "Длина:",
+                calculator_width: "Ширина:",
+                calculator_height: "Высота:",
+                calculator_calculate: "Рассчитать",
+                calculator_volume: "Объём",
+                calculator_area: "Площадь поверхности",
+                calculator_error: "Пожалуйста, введите все размеры."
+            },
+            en: {
+                home: "Return to Home",
+                info: "Information",
+                phone_number: "+380 12 779 96",
+                categories_title: "Product Categories",
+                category_moldings_name: "Facade Moldings",
+                category_moldings_desc: "Decorative elements for walls and ceilings, adding sophistication to interiors.",
+                category_sills_name: "Window Sills",
+                category_sills_desc: "Durable and stylish window sills, resistant to external conditions.",
+                category_window_frames_name: "Window Frames",
+                category_window_frames_desc: "Decorative elements for window framing, enhancing facade elegance.",
+                category_cornices_name: "Cornices",
+                category_cornices_desc: "Facade cornices for building decoration, weather-resistant.",
+                category_pilasters_name: "Pilasters",
+                category_pilasters_desc: "Architectural elements for a classic facade style.",
+                category_columns_name: "Columns",
+                category_columns_desc: "Decorative columns for a majestic building appearance.",
+                category_consoles_name: "Consoles",
+                category_consoles_desc: "Supportive elements for decorative and functional facade solutions.",
+                category_keystone_panels_name: "Keystone Panels",
+                category_keystone_panels_desc: "Decorative panels for accentuating arches and openings.",
+                category_rustication_name: "Rustication",
+                category_rustication_desc: "Elements for textured facade decoration.",
+                view_products: "View Products",
+                footer_contacts: "Contacts",
+                footer_contact: "Tel: +380 12 779 96 | Email: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
+                footer_address: "Odessa, Motorna St, 1",
+                footer_hours: "Mon-Fri, 9:00-18:00",
+                footer_navigation: "Navigation",
+                footer_social: "Social Media",
+                footer_copyright: "© 2025 Decor Store. All rights reserved.",
+                calculator_title: "Volume Calculator",
+                calculator_unit: "Units of Measurement:",
+                calculator_unit_meters: "Meters",
+                calculator_unit_centimeters: "Centimeters",
+                calculator_unit_millimeters: "Millimeters",
+                calculator_length: "Length:",
+                calculator_width: "Width:",
+                calculator_height: "Height:",
+                calculator_calculate: "Calculate",
+                calculator_volume: "Volume",
+                calculator_area: "Surface Area",
+                calculator_error: "Please enter all dimensions."
+            },
+            ua: {
+                home: "Повернутися на головну",
+                info: "Інформація",
+                phone_number: "+380 12 779 96",
+                categories_title: "Категорії товарів",
+                category_moldings_name: "Фасадні молдинги",
+                category_moldings_desc: "Декоративні елементи для стін і стель, що додають вишуканості інтер'єру.",
+                category_sills_name: "Підвіконня",
+                category_sills_desc: "Міцні та стильні підвіконня для вікон, стійкі до зовнішніх впливів.",
+                category_window_frames_name: "Віконні обрамлення",
+                category_window_frames_desc: "Декоративні елементи для оформлення вікон, що додають елегантності фасаду.",
+                category_cornices_name: "Карнизи",
+                category_cornices_desc: "Фасадні карнизи для прикраси будівель, стійкі до погодних умов.",
+                category_pilasters_name: "Пілястри",
+                category_pilasters_desc: "Архітектурні елементи для надання фасаду класичного стилю.",
+                category_columns_name: "Колони",
+                category_columns_desc: "Декоративні колони для створення величного вигляду будівлі.",
+                category_consoles_name: "Консолі",
+                category_consoles_desc: "Опорні елементи для декоративних і функціональних рішень фасаду.",
+                category_keystone_panels_name: "Замкові панелі",
+                category_keystone_panels_desc: "Декоративні панелі для акценту на арках і отворах.",
+                category_rustication_name: "Русти",
+                category_rustication_desc: "Елементи для створення текстурного оформлення фасадів.",
+                view_products: "Переглянути товари",
+                footer_contacts: "Контакти",
+                footer_contact: "Тел: +380 12 779 96 | Електронна пошта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
+                footer_address: "Одеса, вул. Моторна, 1",
+                footer_hours: "Пн-Пт, 9:00-18:00",
+                footer_navigation: "Навігація",
+                footer_social: "Соціальні мережі",
+                footer_copyright: "© 2025 Магазин декоративних товарів. Усі права захищені.",
+                calculator_title: "Калькулятор об'єму",
+                calculator_unit: "Одиниці вимірювання:",
+                calculator_unit_meters: "Метри",
+                calculator_unit_centimeters: "Сантиметри",
+                calculator_unit_millimeters: "Міліметри",
+                calculator_length: "Довжина:",
+                calculator_width: "Ширина:",
+                calculator_height: "Висота:",
+                calculator_calculate: "Розрахувати",
+                calculator_volume: "Об'єм",
+                calculator_area: "Площа поверхні",
+                calculator_error: "Будь ласка, введіть усі розміри."
+            }
+        };
+
+        // Toggle mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            const contactInfo = document.getElementById('contact-info');
+            BaselineException: Unhandled exception in the conversation turn: InvalidOperationException: The conversation turn has already been executed and cannot be re-executed. Ensure that the turn is not being reused or reprocessed after execution.
