@@ -296,8 +296,8 @@
 
         .products {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
             justify-content: center;
         }
 
@@ -305,12 +305,16 @@
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 8px;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
             transition: transform 0.3s;
-            max-width: 300px;
             width: 100%;
+            max-width: 350px;
+            min-height: 500px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .product.hidden {
@@ -333,7 +337,7 @@
             height: auto;
             border-radius: 5px;
             display: none;
-            width: 250px;
+            width: 300px;
             object-fit: cover;
         }
 
@@ -349,9 +353,9 @@
             background: rgba(0, 0, 0, 0.5);
             color: white;
             border: none;
-            padding: 10px;
+            padding: 12px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 1.2rem;
             border-radius: 50%;
             transition: background 0.3s;
         }
@@ -370,13 +374,13 @@
         }
 
         .product h3 {
-            font-size: 1.5rem;
-            margin: 15px 0;
+            font-size: 1.8rem;
+            margin: 20px 0;
         }
 
         .product p {
-            margin: 10px 0;
-            font-size: 1rem;
+            margin: 12px 0;
+            font-size: 1.1rem;
         }
 
         .product p.translate[data-key="product_phone_label"] {
@@ -387,21 +391,22 @@
         .product .price {
             font-weight: bold;
             color: #2c3e50;
+            font-size: 1.3rem;
         }
 
         .product .phone {
             color: #e30613;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             display: inline-flex;
             align-items: center;
             gap: 6px;
             text-decoration: none;
             background: #fff0f0;
-            padding: 6px 12px;
+            padding: 8px 14px;
             border-radius: 50px;
             transition: background-color 0.3s, transform 0.2s;
-            margin-top: 10px;
+            margin-top: 12px;
         }
 
         .product .phone:hover {
@@ -650,12 +655,18 @@
             font-size: 0.95rem;
             text-align: center;
             color: white;
-            opacity: Akismet: Spam detection 0.8;
+            opacity: 0.8;
             position: relative;
             z-index: 1;
         }
 
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .header-container {
                 flex-wrap: wrap;
@@ -736,6 +747,28 @@
 
             .product {
                 max-width: 100%;
+                min-height: 450px;
+            }
+
+            .product .image-slider img {
+                width: 250px;
+            }
+
+            .product h3 {
+                font-size: 1.6rem;
+            }
+
+            .product p {
+                font-size: 1rem;
+            }
+
+            .product .price {
+                font-size: 1.2rem;
+            }
+
+            .product .phone {
+                font-size: 0.95rem;
+                padding: 6px 12px;
             }
 
             .footer-container {
@@ -836,14 +869,14 @@
                 <!-- Продукт 1 -->
                 <div class="product" data-id="1">
                     <div class="image-slider">
-                        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1371441090657517608/karn34-850x850.png?ex=6823258c&is=6821d40c&hm=1e39ce63d82e67c46b10ebe612104a8ca6b4e564cdb27f3e0b0529807decf01c&" alt="Фасадний карниз К 1" class="active">
-                        <img src="https://via.placeholder.com/300x200?text=Decor+1+Alt" alt="Декор 1 Альт">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn34-850x850.jpg" alt="Фасадний карниз К 1" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+1+Alt" alt="Фасадний карниз К 1 Альт">
                         <button class="prev" onclick="changeImage(this, -1)">❮</button>
                         <button class="next" onclick="changeImage(this, 1)">❯</button>
                     </div>
                     <h3 class="translate" data-key="product_1_name">Фасадний карниз К 1</h3>
                     <p class="price translate" data-key="product_1_price">Цена: 697 грн/м.п.</p>
-                    <p class="translate" data-key="product_1_desc">Элегантный декоративный элемент для интерьера. Подходит для гостиной и спальни. Стильный и функциональный аксессуар.</p>
+                    <p class="translate" data-key="product_1_desc">Элегантный фасадный карниз для украшения интерьера и экстерьера. Прочный и стильный.</p>
                     <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
                     <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
@@ -851,14 +884,14 @@
                 <!-- Продукт 2 -->
                 <div class="product" data-id="2">
                     <div class="image-slider">
-                        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1371441742171344927/karn1-850x850.png?ex=68232627&is=6821d4a7&hm=8a67807293b9707848a21bdefc5e4cba789555a56f80b5ce7afda6b7093e9571&" alt="Фасадний карниз К 2" class="active">
-                        <img src="https://via.placeholder.com/300x200?text=Decor+2+Alt" alt="Декор 2 Альт">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn1-850x850.jpg" alt="Фасадний карниз К 2" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+2+Alt" alt="Фасадний карниз К 2 Альт">
                         <button class="prev" onclick="changeImage(this, -1)">❮</button>
                         <button class="next" onclick="changeImage(this, 1)">❯</button>
                     </div>
                     <h3 class="translate" data-key="product_2_name">Фасадний карниз К 2</h3>
                     <p class="price translate" data-key="product_2_price">Цена: 247 грн/м.п.</p>
-                    <p class="translate" data-key="product_2_desc">Современные часы в стиле ретро. Отлично дополнит любой интерьер, привнесет тепло и уют в ваш дом.</p>
+                    <p class="translate" data-key="product_2_desc">Современный фасадный карниз, идеально подходящий для минималистичных интерьеров.</p>
                     <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
                     <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
@@ -866,14 +899,14 @@
                 <!-- Продукт 3 -->
                 <div class="product" data-id="3">
                     <div class="image-slider">
-                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn2-800x800.jpg" alt="Декор 3" class="active">
-                        <img src="https://via.placeholder.com/300x200?text=Mini+Plants+Alt" alt="Декор 3 Альт">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn2-800x800.jpg" alt="Фасадний карниз К 3" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+3+Alt" alt="Фасадний карниз К 3 Альт">
                         <button class="prev" onclick="changeImage(this, -1)">❮</button>
                         <button class="next" onclick="changeImage(this, 1)">❯</button>
                     </div>
-                    <h3 class="translate" data-key="product_3_name">Декор 3</h3>
-                    <p class="price translate" data-key="product_3_price">Цена: 1000 грн.</p>
-                    <p class="translate" data-key="product_3_desc">Миниатюрные растения в декоративных горшках, которые придадут свежести вашему интерьеру. Легкие в уходе и не требуют много света.</p>
+                    <h3 class="translate" data-key="product_3_name">Фасадний карниз К 3</h3>
+                    <p class="price translate" data-key="product_3_price">Цена: 389 грн/м.п.</p>
+                    <p class="translate" data-key="product_3_desc">Классический фасадный карниз, добавляющий элегантности любому помещению.</p>
                     <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
                     <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
@@ -881,14 +914,14 @@
                 <!-- Продукт 4 -->
                 <div class="product" data-id="4">
                     <div class="image-slider">
-                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn5-850x850.jpg" alt="Декор 4" class="active">
-                        <img src="https://via.placeholder.com/300x200?text=Decor+4+Alt" alt="Декор 4 Альт">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn5-850x850.jpg" alt="Фасадний карниз К 5" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+5+Alt" alt="Фасадний карниз К 5 Альт">
                         <button class="prev" onclick="changeImage(this, -1)">❮</button>
                         <button class="next" onclick="changeImage(this, 1)">❯</button>
                     </div>
-                    <h3 class="translate" data-key="product_4_name">Декор 4</h3>
-                    <p class="price translate" data-key="product_4_price">Цена: 800 грн.</p>
-                    <p class="translate" data-key="product_4_desc">Декоративные подушки для диванов и кресел, которые придают уют и тепло вашей гостиной или спальне. В наличии различные цвета.</p>
+                    <h3 class="translate" data-key="product_4_name">Фасадний карниз К 5</h3>
+                    <p class="price translate" data-key="product_4_price">Цена: 766 грн/м.п.</p>
+                    <p class="translate" data-key="product_4_desc">Прочный фасадный карниз для наружного и внутреннего использования.</p>
                     <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
                     <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
@@ -896,14 +929,14 @@
                 <!-- Продукт 5 -->
                 <div class="product" data-id="5">
                     <div class="image-slider">
-                        <img src="https://via.placeholder.com/300x200" alt="Декор 5" class="active">
-                        <img src="https://via.placeholder.com/300x200?text=Decor+5+Alt" alt="Декор 5 Альт">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn6-850x850.jpg" alt="Фасадний карниз К 6" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+6+Alt" alt="Фасадний карниз К 6 Альт">
                         <button class="prev" onclick="changeImage(this, -1)">❮</button>
                         <button class="next" onclick="changeImage(this, 1)">❯</button>
                     </div>
-                    <h3 class="translate" data-key="product_5_name">Декор 5</h3>
-                    <p class="price translate" data-key="product_5_price">Цена: 1800 грн.</p>
-                    <p class="translate" data-key="product_5_desc">Кованая декоративная подставка для цветов, которая станет центром внимания в вашем интерьере. Отлично смотрится в любом уголке дома.</p>
+                    <h3 class="translate" data-key="product_5_name">Фасадний карниз К 6</h3>
+                    <p class="price translate" data-key="product_5_price">Цена: 615 грн/м.п.</p>
+                    <p class="translate" data-key="product_5_desc">Стильный фасадный карниз для современных интерьеров.</p>
                     <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
                     <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
@@ -911,19 +944,19 @@
                 <!-- Продукт 6 -->
                 <div class="product" data-id="6">
                     <div class="image-slider">
-                        <img src="https://via.placeholder.com/300x200" alt="Декор 6" class="active">
-                        <img src="https://via.placeholder.com/300x200?text=Decor+6+Alt" alt="Декор 6 Альт">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn7-850x850.jpg" alt="Фасадний карниз К 7" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+7+Alt" alt="Фасадний карниз К 7 Альт">
                         <button class="prev" onclick="changeImage(this, -1)">❮</button>
                         <button class="next" onclick="changeImage(this, 1)">❯</button>
                     </div>
-                    <h3 class="translate" data-key="product_6_name">Декор 6</h3>
-                    <p class="price translate" data-key="product_6_price">Цена: 1100 грн.</p>
-                    <p class="translate" data-key="product_6_desc">Декоративное зеркало в винтажной раме. Идеально подходит для прихожей или спальни, добавляя изысканности вашему интерьеру.</p>
+                    <h3 class="translate" data-key="product_6_name">Фасадний карниз К 7</h3>
+                    <p class="price translate" data-key="product_6_price">Цена: 615 грн/м.п.</p>
+                    <p class="translate" data-key="product_6_desc">Декоративный фасадный карниз для утонченных интерьеров.</p>
                     <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
                     <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
-                <!-- Продукт 7 -->
+                <!-- Продукт 7 (Placeholder) -->
                 <div class="product" data-id="7">
                     <div class="image-slider">
                         <img src="https://via.placeholder.com/300x200" alt="Декор 7" class="active">
@@ -938,7 +971,7 @@
                     <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
-                <!-- Продукт 8 -->
+                <!-- Продукт 8 (Placeholder) -->
                 <div class="product" data-id="8">
                     <div class="image-slider">
                         <img src="https://via.placeholder.com/300x200" alt="Декор 8" class="active">
@@ -971,7 +1004,7 @@
                 <a href="#footer-info" class="translate" data-key="info">Информация</a>
             </div>
             <div>
-                <h3 class="translate" data-key="footer-social">Социальные сети</h3>
+                <h3 class="translate" data-key="footer_social">Социальные сети</h3>
                 <div class="social">
                     <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -1018,28 +1051,28 @@
                 hero_title: "Декор",
                 hero_text: "Прекрасные декоративные элементы для вашего дома и сада, которые придадут уникальный стиль вашему интерьеру.",
                 products_title: "Наши товары для декора",
-                product_1_name: "Фасадный декор К 1",
+                product_1_name: "Фасадний карниз К 1",
                 product_1_price: "Цена: 697 грн/м.п.",
-                product_1_desc: "Элегантный декоративный элемент для интерьера. Подходит для гостиной и спальни. Стильный и функциональный аксессуар.",
-                product_2_name: "Фасадный декор К 2",
+                product_1_desc: "Элегантный фасадный карниз для украшения интерьера и экстерьера. Прочный и стильный.",
+                product_2_name: "Фасадний карниз К 2",
                 product_2_price: "Цена: 247 грн/м.п.",
-                product_2_desc: "Современные часы в стиле ретро. Отлично дополнит любой интерьер, привнесет тепло и уют в ваш дом.",
-                product_3_name: "Фасадный декор К 3",
-                product_3_price: "Цена: 1000 грн.",
-                product_3_desc: "Миниатюрные растения в декоративных горшках, которые придадут свежести вашему интерьеру. Легкие в уходе и не требуют много света.",
-                product_4_name: "Фасадный декор К 4",
-                product_4_price: "Цена: 800 грн.",
-                product_4_desc: "Декоративные подушки для диванов и кресел, которые придают уют и тепло вашей гостиной или спальне. В наличии различные цвета.",
-                product_5_name: "Фасадный декор К 5",
-                product_5_price: "Цена: 1800 грн.",
-                product_5_desc: "Кованая декоративная подставка для цветов, которая станет центром внимания в вашем интерьере. Отлично смотрится в любом уголке дома.",
-                product_6_name: "Фасадный декор К 6",
-                product_6_price: "Цена: 1100 грн.",
-                product_6_desc: "Декоративное зеркало в винтажной раме. Идеально подходит для прихожей или спальни, добавляя изысканности вашему интерьеру.",
-                product_7_name: "Фасадный декор К 7",
+                product_2_desc: "Современный фасадный карниз, идеально подходящий для минималистичных интерьеров.",
+                product_3_name: "Фасадний карниз К 3",
+                product_3_price: "Цена: 389 грн/м.п.",
+                product_3_desc: "Классический фасадный карниз, добавляющий элегантности любому помещению.",
+                product_4_name: "Фасадний карниз К 5",
+                product_4_price: "Цена: 766 грн/м.п.",
+                product_4_desc: "Прочный фасадный карниз для наружного и внутреннего использования.",
+                product_5_name: "Фасадний карниз К 6",
+                product_5_price: "Цена: 615 грн/м.п.",
+                product_5_desc: "Стильный фасадный карниз для современных интерьеров.",
+                product_6_name: "Фасадний карниз К 7",
+                product_6_price: "Цена: 615 грн/м.п.",
+                product_6_desc: "Декоративный фасадный карниз для утонченных интерьеров.",
+                product_7_name: "Декор 7",
                 product_7_price: "Цена: 900 грн.",
                 product_7_desc: "Набор керамических ваз для цветов. Прекрасно смотрится на журнальном столике или полке, добавляя элегантности.",
-                product_8_name: "Фасадный декор К 8",
+                product_8_name: "Декор 8",
                 product_8_price: "Цена: 1300 грн.",
                 product_8_desc: "Настенный светильник в современном стиле. Создает мягкое освещение и уютную атмосферу в гостиной или спальне.",
                 product_phone_label: "Подробнее по телефону:",
@@ -1071,28 +1104,28 @@
                 hero_title: "Decor",
                 hero_text: "Beautiful decorative elements for your home and garden, adding a unique style to your interior.",
                 products_title: "Our Decor Products",
-                product_1_name: "Facade cornice K 2",
+                product_1_name: "Facade Cornice K 1",
                 product_1_price: "Price: 697 UAH/m.p.",
-                product_1_desc: "Elegant decorative element for the interior. Suitable for living rooms and bedrooms. Stylish and functional accessory.",
-                product_2_name: "Facade cornice K 2",
+                product_1_desc: "Elegant facade cornice for decorating interiors and exteriors. Durable and stylish.",
+                product_2_name: "Facade Cornice K 2",
                 product_2_price: "Price: 247 UAH/m.p.",
-                product_2_desc: "Modern retro-style clock. Perfectly complements any interior, adding warmth and coziness to your home.",
-                product_3_name: "Facade cornice K 2",
-                product_3_price: "Price: 1000 UAH",
-                product_3_desc: "Miniature plants in decorative pots that bring freshness to your interior. Easy to care for and require little light.",
-                product_4_name: "Facade cornice K 2",
-                product_4_price: "Price: 800 UAH",
-                product_4_desc: "Decorative pillows for sofas and armchairs, adding coziness and warmth to your living room or bedroom. Available in various colors.",
-                product_5_name: "Facade cornice K 2",
-                product_5_price: "Price: 1800 UAH",
-                product_5_desc: "Forged decorative flower stand that becomes the centerpiece of your interior. Looks great in any corner of the house.",
-                product_6_name: "Facade cornice K 2",
-                product_6_price: "Price: 1100 UAH",
-                product_6_desc: "Decorative mirror in a vintage frame. Ideal for hallways or bedrooms, adding sophistication to your interior.",
-                product_7_name: "Facade cornice K 2",
+                product_2_desc: "Modern facade cornice, perfect for minimalist interiors.",
+                product_3_name: "Facade Cornice K 3",
+                product_3_price: "Price: 389 UAH/m.p.",
+                product_3_desc: "Classic facade cornice, adding elegance to any space.",
+                product_4_name: "Facade Cornice K 5",
+                product_4_price: "Price: 766 UAH/m.p.",
+                product_4_desc: "Durable facade cornice for indoor and outdoor use.",
+                product_5_name: "Facade Cornice K 6",
+                product_5_price: "Price: 615 UAH/m.p.",
+                product_5_desc: "Stylish facade cornice for modern interiors.",
+                product_6_name: "Facade Cornice K 7",
+                product_6_price: "Price: 615 UAH/m.p.",
+                product_6_desc: "Decorative facade cornice for refined interiors.",
+                product_7_name: "Decor 7",
                 product_7_price: "Price: 900 UAH",
                 product_7_desc: "Set of ceramic vases for flowers. Looks great on a coffee table or shelf, adding elegance.",
-                product_8_name: "Facade cornice K 2",
+                product_8_name: "Decor 8",
                 product_8_price: "Price: 1300 UAH",
                 product_8_desc: "Wall-mounted lamp in a modern style. Creates soft lighting and a cozy atmosphere in the living room or bedroom.",
                 product_phone_label: "More details by phone:",
@@ -1126,26 +1159,26 @@
                 products_title: "Наші товари для декору",
                 product_1_name: "Фасадний карниз К 1",
                 product_1_price: "Ціна: 697 грн/м.п.",
-                product_1_desc: "Елегантний декоративний елемент для інтер'єру. Підходить для вітальні та спальні. Стильний і функціональний аксесуар.",
+                product_1_desc: "Елегантний фасадний карниз для оздоблення інтер'єру та екстер'єру. Міцний і стильний.",
                 product_2_name: "Фасадний карниз К 2",
                 product_2_price: "Ціна: 247 грн/м.п.",
-                product_2_desc: "Сучасний годинник у стилі ретро. Ідеально доповнить будь-який інтер'єр, додасть тепла та затишку вашому дому.",
-                product_3_name: "Фасадний карниз К 2",
-                product_3_price: "Ціна: 1000 грн.",
-                product_3_desc: "Мініатюрні рослини в декоративних горщиках, які додадуть свіжості вашому інтер'єру. Легкі у догляді та не потребують багато світла.",
-                product_4_name: "Фасадний карниз К 2",
-                product_4_price: "Ціна: 800 грн.",
-                product_4_desc: "Декоративні подушки для диванів і крісел, які додають затишку та тепла вашій вітальні чи спальні. Доступні різні кольори.",
-                product_5_name: "Фасадний карниз К 2",
-                product_5_price: "Ціна: 1800 грн.",
-                product_5_desc: "Кована декоративна підставка для квітів, яка стане центром уваги у вашому інтер'єрі. Чудово виглядає в будь-якому куточку дому.",
-                product_6_name: "Фасадний карниз К 2",
-                product_6_price: "Ціна: 1100 грн.",
-                product_6_desc: "Декоративне дзеркало у вінтажній рамі. Ідеально підходить для передпокою або спальні, додаючи вишуканості вашому інтер'єру.",
-                product_7_name: "Фасадний карниз К 2",
+                product_2_desc: "Сучасний фасадний карниз, ідеально підходить для мінімалістичних інтер'єрів.",
+                product_3_name: "Фасадний карниз К 3",
+                product_3_price: "Ціна: 389 грн/м.п.",
+                product_3_desc: "Класичний фасадний карниз, що додає елегантності будь-якому приміщенню.",
+                product_4_name: "Фасадний карниз К 5",
+                product_4_price: "Ціна: 766 грн/м.п.",
+                product_4_desc: "Міцний фасадний карниз для внутрішнього та зовнішнього використання.",
+                product_5_name: "Фасадний карниз К 6",
+                product_5_price: "Ціна: 615 грн/м.п.",
+                product_5_desc: "Стильний фасадний карниз для сучасних інтер'єрів.",
+                product_6_name: "Фасадний карниз К 7",
+                product_6_price: "Ціна: 615 грн/м.п.",
+                product_6_desc: "Декоративний фасадний карниз для вишуканих інтер'єрів.",
+                product_7_name: "Декор 7",
                 product_7_price: "Ціна: 900 грн.",
                 product_7_desc: "Набір керамічних ваз для квітів. Чудово виглядає на журнальному столику або полиці, додаючи елегантності.",
-                product_8_name: "Фасадний карниз К 2",
+                product_8_name: "Декор 8",
                 product_8_price: "Ціна: 1300 грн.",
                 product_8_desc: "Настінний світильник у сучасному стилі. Створює м'яке освітлення та затишну атмосферу у вітальні або спальні.",
                 product_phone_label: "Детальніше за телефоном:",
