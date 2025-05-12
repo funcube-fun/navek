@@ -223,7 +223,6 @@
         /* Hero Section */
         #hero {
             background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-            color: #fff;
             text-align: center;
             padding: 100px 20px;
             margin-top: 85px;
@@ -232,10 +231,12 @@
         .hero-content h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            color: #000;
         }
 
         .hero-content p {
             font-size: 1.2rem;
+            color: #000;
         }
 
         /* Products Section */
@@ -285,29 +286,34 @@
             font-size: 1rem;
         }
 
+        .product p.translate[data-key="product_phone_label"] {
+            color: #e30613;
+            font-weight: 700;
+        }
+
         .product .price {
             font-weight: bold;
             color: #2c3e50;
         }
 
         .product .phone {
-            color: #2980b9;
-            font-weight: bold;
-        }
-
-        .add-to-cart {
-            background: #3498db;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+            color: #e30613;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            background: #fff0f0;
+            padding: 6px 12px;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
             margin-top: 10px;
-            transition: background 0.3s;
         }
 
-        .add-to-cart:hover {
-            background: #2980b9;
+        .product .phone:hover {
+            background-color: #ffe6e6;
+            transform: scale(1.05);
         }
 
         /* Calculator Popup */
@@ -674,7 +680,7 @@
                 </a>
             </div>
             <nav class="nav-menu" id="menu">
-                <a href="index.html" class="translate" data-key="home">Вернуться на главную</a>
+                <a href="#" class="translate" data-key="home">Вернуться на главную</a>
                 <a href="#footer-info" class="translate" data-key="info">Информация</a>
             </nav>
             <div class="contact-info" id="contact-info">
@@ -716,8 +722,8 @@
                     <h3 class="translate" data-key="product_1_name">Декор 1</h3>
                     <p class="price translate" data-key="product_1_price">Цена: 1500 грн.</p>
                     <p class="translate" data-key="product_1_desc">Элегантный декоративный элемент для интерьера. Подходит для гостиной и спальни. Стильный и функциональный аксессуар.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
                 <!-- Продукт 2 -->
@@ -726,8 +732,8 @@
                     <h3 class="translate" data-key="product_2_name">Декор 2</h3>
                     <p class="price translate" data-key="product_2_price">Цена: 1200 грн.</p>
                     <p class="translate" data-key="product_2_desc">Современные часы в стиле ретро. Отлично дополнит любой интерьер, привнесет тепло и уют в ваш дом.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
                 <!-- Продукт 3 -->
@@ -736,8 +742,8 @@
                     <h3 class="translate" data-key="product_3_name">Декор 3</h3>
                     <p class="price translate" data-key="product_3_price">Цена: 1000 грн.</p>
                     <p class="translate" data-key="product_3_desc">Миниатюрные растения в декоративных горшках, которые придадут свежести вашему интерьеру. Легкие в уходе и не требуют много света.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
                 <!-- Продукт 4 -->
@@ -746,8 +752,8 @@
                     <h3 class="translate" data-key="product_4_name">Декор 4</h3>
                     <p class="price translate" data-key="product_4_price">Цена: 800 грн.</p>
                     <p class="translate" data-key="product_4_desc">Декоративные подушки для диванов и кресел, которые придают уют и тепло вашей гостиной или спальне. В наличии различные цвета.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
                 <!-- Продукт 5 -->
@@ -756,15 +762,15 @@
                     <h3 class="translate" data-key="product_5_name">Декор 5</h3>
                     <p class="price translate" data-key="product_5_price">Цена: 1800 грн.</p>
                     <p class="translate" data-key="product_5_desc">Кованая декоративная подставка для цветов, которая станет центром внимания в вашем интерьере. Отлично смотрится в любом уголке дома.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Футер -->
-    <footer>
+    <footer id="footer-info">
         <div class="footer-container">
             <div>
                 <h3 class="translate" data-key="footer_contacts">Контакты</h3>
@@ -840,8 +846,7 @@
                 product_5_name: "Декор 5",
                 product_5_price: "Цена: 1800 грн.",
                 product_5_desc: "Кованая декоративная подставка для цветов, которая станет центром внимания в вашем интерьере. Отлично смотрится в любом уголке дома.",
-                product_phone: "Подробнее по телефону: +380 (99) 123-45-67",
-                add_to_cart: "Добавить в корзину",
+                product_phone_label: "Подробнее по телефону:",
                 footer_contacts: "Контакты",
                 footer_contact: "Тел: +380 12 779 96 | Электронная почта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
                 footer_address: "Одесса, ул. Моторная, 1",
@@ -884,8 +889,7 @@
                 product_5_name: "Decor 5",
                 product_5_price: "Price: 1800 UAH",
                 product_5_desc: "Forged decorative flower stand that becomes the centerpiece of your interior. Looks great in any corner of the house.",
-                product_phone: "More details by phone: +380 (99) 123-45-67",
-                add_to_cart: "Add to Cart",
+                product_phone_label: "More details by phone:",
                 footer_contacts: "Contacts",
                 footer_contact: "Tel: +380 12 779 96 | Email: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
                 footer_address: "Odessa, Motorna St, 1",
@@ -928,8 +932,7 @@
                 product_5_name: "Декор 5",
                 product_5_price: "Ціна: 1800 грн.",
                 product_5_desc: "Кована декоративна підставка для квітів, яка стане центром уваги у вашому інтер'єрі. Чудово виглядає в будь-якому куточку дому.",
-                product_phone: "Детальніше за телефоном: +380 (99) 123-45-67",
-                add_to_cart: "Додати до кошика",
+                product_phone_label: "Детальніше за телефоном:",
                 footer_contacts: "Контакти",
                 footer_contact: "Тел: +380 12 779 96 | Електронна пошта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
                 footer_address: "Одеса, вул. Моторна, 1",
@@ -989,22 +992,6 @@
             document.getElementById('volumeResult').textContent = `${translations[currentLang].calculator_volume}: ${lastVolume.toFixed(3)} м³`;
             document.getElementById('areaResult').textContent = `${translations[currentLang].calculator_area}: ${lastArea.toFixed(3)} м²`;
         }
-
-        // Add event listeners to all "Add to Cart" buttons
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.parentElement;
-                const productId = product.getAttribute('data-id');
-                const productName = product.querySelector('h3').textContent;
-                const productPrice = product.querySelector('.price').textContent;
-
-                // Log to console (can be replaced with actual cart functionality)
-                console.log(`Added to cart: ${productName} (ID: ${productId}) - ${productPrice}`);
-
-                // Show alert to user
-                alert(`${productName} ${translations[currentLang].add_to_cart.toLowerCase()}!`);
-            });
-        });
 
         // Header scroll effect
         window.addEventListener('scroll', () => {
