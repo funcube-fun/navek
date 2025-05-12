@@ -147,6 +147,39 @@
             transform: scale(1.05);
         }
 
+        .contact-info .search-container {
+            display: flex;
+            align-items: center;
+            background: #fff0f0;
+            border-radius: 50px;
+            padding: 6px 12px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .contact-info .search-container:hover {
+            background-color: #ffe6e6;
+            transform: scale(1.05);
+        }
+
+        .contact-info .search-container input {
+            border: none;
+            background: transparent;
+            outline: none;
+            color: #333;
+            font-size: 0.95rem;
+            width: 100px;
+            padding: 0 8px;
+        }
+
+        .contact-info .search-container input::placeholder {
+            color: #666;
+        }
+
+        .contact-info .search-container i {
+            color: #e30613;
+            font-size: 0.95rem;
+        }
+
         .contact-info .social {
             display: flex;
             gap: 10px;
@@ -263,6 +296,10 @@
             padding: 20px;
             text-align: center;
             transition: transform 0.3s;
+        }
+
+        .product.hidden {
+            display: none;
         }
 
         .product:hover {
@@ -611,6 +648,10 @@
                 display: flex;
             }
 
+            .contact-info .search-container input {
+                width: 100%;
+            }
+
             .menu-toggle {
                 display: flex;
             }
@@ -685,6 +726,10 @@
             </nav>
             <div class="contact-info" id="contact-info">
                 <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Поиск товаров..." class="translate" data-key="search_placeholder">
+                </div>
                 <div class="social">
                     <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -718,7 +763,7 @@
             <div class="products">
                 <!-- Продукт 1 -->
                 <div class="product" data-id="1">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 1">
+                    <img src="https://via.placeholder.com/ rushes/300x200" alt="Декор 1">
                     <h3 class="translate" data-key="product_1_name">Декор 1</h3>
                     <p class="price translate" data-key="product_1_price">Цена: 1500 грн.</p>
                     <p class="translate" data-key="product_1_desc">Элегантный декоративный элемент для интерьера. Подходит для гостиной и спальни. Стильный и функциональный аксессуар.</p>
@@ -839,7 +884,7 @@
                 product_2_desc: "Современные часы в стиле ретро. Отлично дополнит любой интерьер, привнесет тепло и уют в ваш дом.",
                 product_3_name: "Декор 3",
                 product_3_price: "Цена: 1000 грн.",
-                product_3_desc: "Миниатюры растений в декоративных горшках, которые придадут свежести вашему интерьеру. Легкие в уходе и не требуют много света.",
+                product_3_desc: "Миниатюрные растения в декоративных горшках, которые придадут свежести вашему интерьеру. Легкие в уходе и не требуют много света.",
                 product_4_name: "Декор 4",
                 product_4_price: "Цена: 800 грн.",
                 product_4_desc: "Декоративные подушки для диванов и кресел, которые придают уют и тепло вашей гостиной или спальне. В наличии различные цвета.",
@@ -847,6 +892,7 @@
                 product_5_price: "Цена: 1800 грн.",
                 product_5_desc: "Кованая декоративная подставка для цветов, которая станет центром внимания в вашем интерьере. Отлично смотрится в любом уголке дома.",
                 product_phone_label: "Подробнее по телефону:",
+                search_placeholder: "Поиск товаров...",
                 footer_contacts: "Контакты",
                 footer_contact: "Тел: +380 12 779 96 | Электронная почта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
                 footer_address: "Одесса, ул. Моторная, 1",
@@ -890,6 +936,7 @@
                 product_5_price: "Price: 1800 UAH",
                 product_5_desc: "Forged decorative flower stand that becomes the centerpiece of your interior. Looks great in any corner of the house.",
                 product_phone_label: "More details by phone:",
+                search_placeholder: "Search products...",
                 footer_contacts: "Contacts",
                 footer_contact: "Tel: +380 12 779 96 | Email: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
                 footer_address: "Odessa, Motorna St, 1",
@@ -933,6 +980,7 @@
                 product_5_price: "Ціна: 1800 грн.",
                 product_5_desc: "Кована декоративна підставка для квітів, яка стане центром уваги у вашому інтер'єрі. Чудово виглядає в будь-якому куточку дому.",
                 product_phone_label: "Детальніше за телефоном:",
+                search_placeholder: "Пошук товарів...",
                 footer_contacts: "Контакти",
                 footer_contact: "Тел: +380 12 779 96 | Електронна пошта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
                 footer_address: "Одеса, вул. Моторна, 1",
@@ -1040,8 +1088,29 @@
                     document.getElementById('volumeResult').textContent = `${translations[currentLang].calculator_volume}: ${lastVolume.toFixed(3)} м³`;
                     document.getElementById('areaResult').textContent = `${translations[currentLang].calculator_area}: ${lastArea.toFixed(3)} м²`;
                 }
+
+                // Trigger search to update filtered products with new language
+                searchProducts();
             });
         });
+
+        // Search functionality
+        function searchProducts() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+
+            products.forEach(product => {
+                const name = product.querySelector('h3.translate').textContent.toLowerCase();
+                const desc = product.querySelector('p.translate[data-key^="product_"][data-key$="_desc"]').textContent.toLowerCase();
+                if (name.includes(input) || desc.includes(input)) {
+                    product.classList.remove('hidden');
+                } else {
+                    product.classList.add('hidden');
+                }
+            });
+        }
+
+        document.getElementById('searchInput').addEventListener('input', searchProducts);
     </script>
 </body>
 </html>
