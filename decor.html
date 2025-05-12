@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8warden
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Декор - Магазин декоративных товаров</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -419,16 +419,22 @@
         }
 
         /* Calculator Toggle */
-        .calculator-toggle {
+        .calculator-toggle-container {
             position: fixed;
             bottom: 80px;
             right: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .calculator-toggle {
             background: linear-gradient(to right, #0033A0, #00205b);
             color: white;
             padding: 15px;
             border-radius: 50%;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
             cursor: pointer;
             transition: transform 0.2s;
         }
@@ -438,6 +444,28 @@
         }
 
         .calculator-toggle i {
+            font-size: 1.5rem;
+        }
+
+        /* Sticky Contact */
+        .sticky-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #e30613, #b50510);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .sticky-contact:hover {
+            transform: scale(1.1);
+        }
+
+        .sticky-contact i {
             font-size: 1.5rem;
         }
 
@@ -630,6 +658,14 @@
             .calculator {
                 max-width: 100%;
             }
+
+            .sticky-contact {
+                padding: 12px;
+            }
+
+            .sticky-contact i {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -737,7 +773,6 @@
     <footer>
         <div class="footer-container">
             <div>
-                <h3 class="translate" data-key="footer_contacts間に
                 <h3 class="translate" data-key="footer_contacts">Контакты</h3>
                 <p class="contact translate" data-key="footer_contact">Тел: +380 12 779 96 | Электронная почта: <a href="mailto:info@navekodessa.com">info@navekodessa.com</a></p>
                 <p class="translate" data-key="footer_address">Одесса, ул. Моторная, 1</p>
@@ -760,7 +795,9 @@
     </footer>
 
     <!-- Калькулятор -->
-    <div class="calculator-toggle" onclick="toggleCalculator()"><i class="fas fa-calculator"></i></div>
+    <div class="calculator-toggle-container">
+        <div class="calculator-toggle" onclick="toggleCalculator()"><i class="fas fa-calculator"></i></div>
+    </div>
     <div class="calculator-popup" id="calculatorPopup">
         <button class="close-btn" onclick="toggleCalculator()">×</button>
         <div class="calculator">
@@ -782,6 +819,9 @@
             <p id="areaResult"></p>
         </div>
     </div>
+
+    <!-- Sticky Contact -->
+    <a href="tel:+3801277996" class="sticky-contact"><i class="fas fa-phone"></i></a>
 
     <script>
         // Translation data
@@ -884,145 +924,6 @@
                 product_1_name: "Декор 1",
                 product_1_price: "Ціна: 1500 грн.",
                 product_1_desc: "Елегантний декоративний елемент для інтер'єру. Підходить для вітальні та спальні. Стильний і функціональний аксесуар.",
-                product_2_name: "Декор 2",
-                product_2_price: "Ціна: 1200 грн.",
-                product_2_desc: "Сучасний годинник у стилі ретро. Ідеально доповнить будь-який інтер'єр, додасть тепла та затишку вашому дому.",
-                product_3_name: "Декор 3",
-                product_3_price: "Ціна: 1000 грн.",
-                product_3_desc: "Мініатюрні рослини в декоративних горщиках, які додадуть свіжості вашому інтер'єру. Легкі у догляді та не потребують багато світла.",
-                product_4_name: "Декор 4",
-                product_4_price: "Ціна: 800 грн.",
-                product_4_desc: "Декоративні подушки для диванів і крісел, які додають затишку та тепла вашій вітальні чи спальні. Доступні різні кольори.",
-                product_5_name: "Декор 5",
-                product_5_price: "Ціна: 1800 грн.",
-                product_5_desc: "Кована декоративна підставка для квітів, яка стане центром уваги у вашому інтер'єрі. Чудово виглядає в будь-якому куточку дому.",
-                product_phone: "Детальніше за телефоном: +380 (99) 123-45-67",
-                add_to_cart: "Додати до кошика",
-                footer_contacts: "Контакти",
-                footer_contact: "Тел: +380 12 779 96 | Електронна пошта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
-                footer_address: "Одеса, вул. Моторна, 1",
-                footer_hours: "Пн-Пт, 9:00-18:00",
-                footer_navigation: "Навігація",
-                footer_social: "Соціальні мережі",
-                footer_copyright: "© 2025 Магазин декоративних товарів. Усі права захищені.",
-                calculator_title: "Калькулятор об'єму",
-                calculator_unit: "Одиниці вимірювання:",
-                calculator_unit_meters: "Метри",
-                calculator_unit_centimeters: "Сантиметри",
-                calculator_unit_millimeters: "Міліметри",
-                calculator_length: "Довжина:",
-                calculator_width: "Ширина:",
-                calculator_height: "Висота:",
-                calculator_calculate: "Розрахувати",
-                calculator_volume: "Об'єм",
-                calculator_area: "Площа поверхні",
-                calculator_error: "Будь ласка, введіть усі розміри."
-            }
-        };
+彼此
 
-        // Toggle mobile menu
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            const contactInfo = document.getElementById('contact-info');
-            const toggle = document.querySelector('.menu-toggle');
-            menu.classList.toggle('active');
-            contactInfo.classList.toggle('active');
-            toggle.classList.toggle('active');
-        }
-
-        // Toggle calculator popup
-        function toggleCalculator() {
-            const popup = document.getElementById('calculatorPopup');
-            popup.classList.toggle('active');
-        }
-
-        // Calculate volume and surface area
-        let lastVolume = null;
-        let lastArea = null;
-
-        function calculateVolume() {
-            const unit = parseFloat(document.getElementById('unit').value);
-            const length = parseFloat(document.getElementById('length').value) * unit;
-            const width = parseFloat(document.getElementById('width').value) * unit;
-            const height = parseFloat(document.getElementById('height').value) * unit;
-            if (isNaN(length) || isNaN(width) || isNaN(height)) {
-                document.getElementById('volumeResult').textContent = translations[currentLang].calculator_error;
-                document.getElementById('areaResult').textContent = '';
-                lastVolume = null;
-                lastArea = null;
-                return;
-            }
-            lastVolume = length * width * height;
-            lastArea = 2 * (length * width + width * height + height * length);
-            document.getElementById('volumeResult').textContent = `${translations[currentLang].calculator_volume}: ${lastVolume.toFixed(3)} м³`;
-            document.getElementById('areaResult').textContent = `${translations[currentLang].calculator_area}: ${lastArea.toFixed(3)} м²`;
-        }
-
-        // Add event listeners to all "Add to Cart" buttons
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.parentElement;
-                const productId = product.getAttribute('data-id');
-                const productName = product.querySelector('h3').textContent;
-                const productPrice = product.querySelector('.price').textContent;
-
-                // Log to console (can be replaced with actual cart functionality)
-                console.log(`Added to cart: ${productName} (ID: ${productId}) - ${productPrice}`);
-
-                // Show alert to user
-                alert(`${productName} ${translations[currentLang].add_to_cart.toLowerCase()}!`);
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // Smooth scroll for "Information" link
-        document.querySelectorAll('a[href="#footer-info"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector('#footer-info').scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // Language toggle
-        let currentLang = 'ru';
-        document.querySelectorAll('.lang-toggle a').forEach(langLink => {
-            langLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                const newLang = this.getAttribute('data-lang');
-
-                // Update active class
-                document.querySelectorAll('.lang-toggle a.active').forEach(active => {
-                    active.classList.remove('active');
-                });
-                this.classList.add('active');
-
-                // Update content
-                currentLang = newLang;
-                document.querySelectorAll('.translate').forEach(element => {
-                    const key = element.getAttribute('data-key');
-                    if (translations[currentLang][key]) {
-                        if (element.classList.contains('contact')) {
-                            element.innerHTML = translations[currentLang][key];
-                        } else if (element.classList.contains('phone')) {
-                            element.innerHTML = `<i class="fas fa-phone"></i> ${translations[currentLang][key]}`;
-                        } else {
-                            element.innerHTML = translations[currentLang][key];
-                        }
-                    }
-                });
-
-                // Update calculator results if they exist
-                if (lastVolume !== null && lastArea !== null) {
-                    document.getElementById('volumeResult').textContent = `${translations[currentLang].calculator_volume}: ${lastVolume.toFixed(3)} м³`;
-                    document.getElementById('areaResult').textContent = `${translations[currentLang].calculator_area}: ${lastArea.toFixed(3)} м²`;
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+System: You are Grok 3 built by xAI.
