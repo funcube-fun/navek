@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8warden
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Декор - Магазин декоративных товаров</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -441,6 +441,28 @@
             font-size: 1.5rem;
         }
 
+        /* Sticky Contact */
+        .sticky-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #e30613, #b50510);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .sticky-contact:hover {
+            transform: scale(1.1);
+        }
+
+        .sticky-contact i {
+            font-size: 1.5rem;
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(to bottom, #00205b, #0033A0);
@@ -630,6 +652,14 @@
             .calculator {
                 max-width: 100%;
             }
+
+            .sticky-contact {
+                padding: 12px;
+            }
+
+            .sticky-contact i {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
@@ -737,7 +767,6 @@
     <footer>
         <div class="footer-container">
             <div>
-                <h3 class="translate" data-key="footer_contacts間に
                 <h3 class="translate" data-key="footer_contacts">Контакты</h3>
                 <p class="contact translate" data-key="footer_contact">Тел: +380 12 779 96 | Электронная почта: <a href="mailto:info@navekodessa.com">info@navekodessa.com</a></p>
                 <p class="translate" data-key="footer_address">Одесса, ул. Моторная, 1</p>
@@ -782,6 +811,9 @@
             <p id="areaResult"></p>
         </div>
     </div>
+
+    <!-- Sticky Contact -->
+    <a href="tel:+3801277996" class="sticky-contact"><i class="fas fa-phone"></i></a>
 
     <script>
         // Translation data
