@@ -414,6 +414,46 @@
             transform: scale(1.05);
         }
 
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 40px;
+            padding: 20px 0;
+        }
+
+        .pagination a {
+            color: #0033A0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: #fff0f0;
+            transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        }
+
+        .pagination a:hover {
+            background-color: #e30613;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        .pagination a.disabled {
+            color: #999;
+            background: #f5f7fa;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .pagination a.disabled:hover {
+            background: #f5f7fa;
+            color: #999;
+            transform: none;
+        }
+
         /* Calculator Popup */
         .calculator-popup {
             position: fixed;
@@ -771,6 +811,16 @@
                 padding: 6px 12px;
             }
 
+            .pagination {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .pagination a {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
+
             .footer-container {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -1016,6 +1066,10 @@
                     <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
             </div>
+            <div class="pagination">
+                <a href="#" class="translate disabled" data-key="pagination_prev">Предыдущая</a>
+                <a href="index2.html" class="translate" data-key="pagination_next">Следующая</a>
+            </div>
         </div>
     </section>
 
@@ -1131,7 +1185,9 @@
                 calculator_calculate: "Рассчитать",
                 calculator_volume: "Объём",
                 calculator_area: "Площадь поверхности",
-                calculator_error: "Пожалуйста, введите все размеры."
+                calculator_error: "Пожалуйста, введите все размеры.",
+                pagination_prev: "Предыдущая",
+                pagination_next: "Следующая"
             },
             en: {
                 home: "Return to Home",
@@ -1190,7 +1246,9 @@
                 calculator_calculate: "Calculate",
                 calculator_volume: "Volume",
                 calculator_area: "Surface Area",
-                calculator_error: "Please enter all dimensions."
+                calculator_error: "Please enter all dimensions.",
+                pagination_prev: "Previous",
+                pagination_next: "Next"
             },
             ua: {
                 home: "Повернутися на головну",
@@ -1249,7 +1307,9 @@
                 calculator_calculate: "Розрахувати",
                 calculator_volume: "Об'єм",
                 calculator_area: "Площа поверхні",
-                calculator_error: "Будь ласка, введіть усі розміри."
+                calculator_error: "Будь ласка, введіть усі розміри.",
+                pagination_prev: "Попередня",
+                pagination_next: "Наступна"
             }
         };
 
