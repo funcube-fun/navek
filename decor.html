@@ -318,10 +318,49 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .product img {
+        .product .image-slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .product .image-slider img {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
+            display: none;
+        }
+
+        .product .image-slider img.active {
+            display: block;
+        }
+
+        .product .image-slider .prev,
+        .product .image-slider .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .product .image-slider .prev:hover,
+        .product .image-slider .next:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .product .image-slider .prev {
+            left: 10px;
+        }
+
+        .product .image-slider .next {
+            right: 10px;
         }
 
         .product h3 {
@@ -544,7 +583,7 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax-200px, 1fr));
             gap: 30px;
             text-align: left;
             position: relative;
@@ -658,6 +697,8 @@
             .contact-info.active {
                 display: flex;
             }
+
+           
 
             .menu-toggle {
                 display: flex;
@@ -786,7 +827,12 @@
             <div class="products">
                 <!-- Продукт 1 -->
                 <div class="product" data-id="1">
-                    <img src="https://kolonist.in.ua/image/cache/catalog/img_products/mold_09-850x850.jpg" alt="Декор 1">
+                    <div class="image-slider">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/mold_09-850x850.jpg" alt="Декор 1" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+1+Alt" alt="Декор 1 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">&#10094;</button>
+                        <button class="next" onclick="changeImage(this, 1)">&#10095;</button>
+                    </div>
                     <h3 class="translate" data-key="product_1_name">Декор 1</h3>
                     <p class="price translate" data-key="product_1_price">Цена: 1500 грн.</p>
                     <p class="translate" data-key="product_1_desc">Элегантный декоративный элемент для интерьера. Подходит для гостиной и спальни. Стильный и функциональный аксессуар.</p>
@@ -796,7 +842,12 @@
 
                 <!-- Продукт 2 -->
                 <div class="product" data-id="2">
-                    <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn6-850x850.jpg" alt="Декор 2">
+                    <div class="image-slider">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn6-850x850.jpg" alt="Декор 2" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+2+Alt" alt="Декор 2 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">&#10094;</button>
+                        <button class="next" onclick="changeImage(this, 1)">&#10095;</button>
+                    </div>
                     <h3 class="translate" data-key="product_2_name">Декор 2</h3>
                     <p class="price translate" data-key="product_2_price">Цена: 1200 грн.</p>
                     <p class="translate" data-key="product_2_desc">Современные часы в стиле ретро. Отлично дополнит любой интерьер, привнесет тепло и уют в ваш дом.</p>
@@ -806,7 +857,12 @@
 
                 <!-- Продукт 3 -->
                 <div class="product" data-id="3">
-                    <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTOyzD7AUz8I7GVI4HOuaQN14fdswLqS4WTRimuiV18dmUcBK6jcVh-xjwHu-ibVuRtw61TUw6oabN-iurCqajurvFEZK5d7MBA106Ghas" alt="Декор 3">
+                    <div class="image-slider">
+                        <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn9GcTOyzD7AUz8I7GVI4HOuaQN14fdswLqS4WTRimuiV18dmUcBK6jcVh-xjwHu-ibVuRtw61TUw6oabN-iurCqajurvFEZK5d7MBA106Ghas" alt="Декор 3" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+3+Alt" alt="Декор 3 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">&#10094;</button>
+                        <button class="next" onclick="changeImage(this, 1)">&#10095;</button>
+                    </div>
                     <h3 class="translate" data-key="product_3_name">Декор 3</h3>
                     <p class="price translate" data-key="product_3_price">Цена: 1000 грн.</p>
                     <p class="translate" data-key="product_3_desc">Миниатюрные растения в декоративных горшках, которые придадут свежести вашему интерьеру. Легкие в уходе и не требуют много света.</p>
@@ -816,7 +872,12 @@
 
                 <!-- Продукт 4 -->
                 <div class="product" data-id="4">
-                    <img src="https://kolonist.in.ua/image/cache/catalog/img_products/konsol5-850x850.jpg" alt="Декор 4">
+                    <div class="image-slider">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/konsol5-850x850.jpg" alt="Декор 4" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+4+Alt" alt="Декор 4 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">&#10094;</button>
+                        <button class="next" onclick="changeImage(this, 1)">&#10095;</button>
+                    </div>
                     <h3 class="translate" data-key="product_4_name">Декор 4</h3>
                     <p class="price translate" data-key="product_4_price">Цена: 800 грн.</p>
                     <p class="translate" data-key="product_4_desc">Декоративные подушки для диванов и кресел, которые придают уют и тепло вашей гостиной или спальне. В наличии различные цвета.</p>
@@ -826,7 +887,12 @@
 
                 <!-- Продукт 5 -->
                 <div class="product" data-id="5">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 5">
+                    <div class="image-slider">
+                        <img src="https://via.placeholder.com/300x200" alt="Декор 5" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+5+Alt" alt="Декор 5 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">&#10094;</button>
+                        <button class="next" onclick="changeImage(this, 1)">&#10095;</button>
+                    </div>
                     <h3 class="translate" data-key="product_5_name">Декор 5</h3>
                     <p class="price translate" data-key="product_5_price">Цена: 1800 грн.</p>
                     <p class="translate" data-key="product_5_desc">Кованая декоративная подставка для цветов, которая станет центром внимания в вашем интерьере. Отлично смотрится в любом уголке дома.</p>
@@ -836,7 +902,12 @@
 
                 <!-- Продукт 6 -->
                 <div class="product" data-id="6">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 6">
+                    <div class="image-slider">
+                        <img src="https://via.placeholder.com/300x200" alt="Декор 6" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+6+Alt" alt="Декор 6 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">&#10094;</button>
+                        <button class="next" onclick="changeImage(this, 1)">&#10095;</button>
+                    </div>
                     <h3 class="translate" data-key="product_6_name">Декор 6</h3>
                     <p class="price translate" data-key="product_6_price">Цена: 1100 грн.</p>
                     <p class="translate" data-key="product_6_desc">Декоративное зеркало в винтажной раме. Идеально подходит для прихожей или спальни, добавляя изысканности вашему интерьеру.</p>
@@ -846,7 +917,12 @@
 
                 <!-- Продукт 7 -->
                 <div class="product" data-id="7">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 7">
+                    <div class="image-slider">
+                        <img src="https://via.placeholder.com/300x200" alt="Декор 7" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+7+Alt" alt="Декор 7 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">&#10094;</button>
+                        <button class="next" onclick="changeImage(this, 1)">&#10095;</button>
+                    </div>
                     <h3 class="translate" data-key="product_7_name">Декор 7</h3>
                     <p class="price translate" data-key="product_7_price">Цена: 900 грн.</p>
                     <p class="translate" data-key="product_7_desc">Набор керамических ваз для цветов. Прекрасно смотрится на журнальном столике или полке, добавляя элегантности.</p>
@@ -856,7 +932,12 @@
 
                 <!-- Продукт 8 -->
                 <div class="product" data-id="8">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 8">
+                    <div class="image-slider">
+                        <img src="https://via.placeholder.com/300x200" alt="Декор 8" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Decor+8+Alt" alt="Декор 8 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">&#10094;</button>
+                        <button class="next" onclick="changeImage(this, 1)">&#10095;</button>
+                    </div>
                     <h3 class="translate" data-key="product_8_name">Декор 8</h3>
                     <p class="price translate" data-key="product_8_price">Цена: 1300 грн.</p>
                     <p class="translate" data-key="product_8_desc">Настенный светильник в современном стиле. Создает мягкое освещение и уютную атмосферу в гостиной или спальне.</p>
@@ -1191,6 +1272,16 @@
         }
 
         document.getElementById('productSearchInput').addEventListener('input', searchProducts);
+
+        // Image slider functionality
+        function changeImage(button, direction) {
+            const slider = button.parentElement;
+            const images = slider.querySelectorAll('img');
+            let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+        }
     </script>
 </body>
 </html>
