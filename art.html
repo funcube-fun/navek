@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Декор - Магазин декоративных товаров</title>
+    <title>Арт изделия - Магазин декоративных товаров</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -223,7 +223,6 @@
         /* Hero Section */
         #hero {
             background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
-            color: #fff;
             text-align: center;
             padding: 100px 20px;
             margin-top: 85px;
@@ -232,10 +231,12 @@
         .hero-content h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            color: #000;
         }
 
         .hero-content p {
             font-size: 1.2rem;
+            color: #000;
         }
 
         /* Products Section */
@@ -243,16 +244,61 @@
             padding: 50px 0;
         }
 
+        #decor-products .products-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        #decor-products .search-container {
+            display: flex;
+            align-items: center;
+            background: #fff0f0;
+            border-radius: 50px;
+            padding: 8px 12px;
+            transition: background-color 0.3s, transform 0.2s;
+            max-width: 300px;
+            flex: 1;
+        }
+
+        #decor-products .search-container:hover {
+            background-color: #ffe6e6;
+            transform: scale(1.05);
+        }
+
+        #decor-products .search-container input {
+            border: none;
+            background: transparent;
+            outline: none;
+            color: #333;
+            font-size: 1rem;
+            width: 100%;
+            padding: 0 8px;
+        }
+
+        #decor-products .search-container input::placeholder {
+            color: #666;
+        }
+
+        #decor-products .search-container i {
+            color: #e30613;
+            font-size: 1rem;
+        }
+
         #decor-products h2 {
             text-align: center;
-            margin-bottom: 40px;
             font-size: 2rem;
+            flex: 2;
         }
 
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
+            justify-content: center;
         }
 
         .product {
@@ -262,6 +308,13 @@
             padding: 20px;
             text-align: center;
             transition: transform 0.3s;
+            max-width: 300px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .product.hidden {
+            display: none;
         }
 
         .product:hover {
@@ -269,10 +322,51 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .product img {
+        .product .image-slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+
+        .product .image-slider img {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
+            display: none;
+            width: 250px;
+            object-fit: cover;
+        }
+
+        .product .image-slider img.active {
+            display: block;
+        }
+
+        .product .image-slider .prev,
+        .product .image-slider .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 50%;
+            transition: background 0.3s;
+        }
+
+        .product .image-slider .prev:hover,
+        .product .image-slider .next:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .product .image-slider .prev {
+            left: 10px;
+        }
+
+        .product .image-slider .next {
+            right: 10px;
         }
 
         .product h3 {
@@ -285,29 +379,34 @@
             font-size: 1rem;
         }
 
+        .product p.translate[data-key="product_phone_label"] {
+            color: #e30613;
+            font-weight: 700;
+        }
+
         .product .price {
             font-weight: bold;
             color: #2c3e50;
         }
 
         .product .phone {
-            color: #2980b9;
-            font-weight: bold;
-        }
-
-        .add-to-cart {
-            background: #3498db;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+            color: #e30613;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            background: #fff0f0;
+            padding: 6px 12px;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
             margin-top: 10px;
-            transition: background 0.3s;
         }
 
-        .add-to-cart:hover {
-            background: #2980b9;
+        .product .phone:hover {
+            background-color: #ffe6e6;
+            transform: scale(1.05);
         }
 
         /* Calculator Popup */
@@ -441,11 +540,33 @@
             font-size: 1.5rem;
         }
 
+        /* Sticky Contact */
+        .sticky-contact {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(to right, #e30613, #b50510);
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: transform 0.2s;
+        }
+
+        .sticky-contact:hover {
+            transform: scale(1.1);
+        }
+
+        .sticky-contact i {
+            font-size: 1.5rem;
+        }
+
         /* Footer */
         footer {
             background: linear-gradient(to bottom, #00205b, #0033A0);
             color: white;
-            padding: 80px 20px;
+            padding: 60px 20px;
             text-align: center;
             box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
             position: relative;
@@ -468,95 +589,64 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             text-align: left;
             position: relative;
             z-index: 1;
         }
 
-        .footer-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 25px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            animation: fadeIn 0.5s ease-in;
+        .footer-container > div {
+            padding: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .footer-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        .footer-container > div:last-child {
+            border-right: none;
         }
 
-        .footer-card h3 {
+        .footer-container h3,
+        .footer-container a,
+        .footer-container p {
+            color: white !important;
+        }
+
+        .footer-container h3 {
             font-size: 1.3rem;
             margin-bottom: 20px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: white;
         }
 
-        .footer-card a,
-        .footer-card p {
-            color: white !important;
+        .footer-container a {
             text-decoration: none;
             font-size: 1rem;
-            margin: 12px 0;
             display: block;
+            margin: 12px 0;
             transition: color 0.3s, transform 0.2s, padding-left 0.2s;
         }
 
-        .footer-card a:hover {
+        .footer-container a:hover {
             color: #e30613 !important;
             transform: translateX(8px);
             padding-left: 5px;
         }
 
-        .footer-card .social a {
+        .footer-container .social a {
             display: inline-block;
             font-size: 1.4rem;
             margin: 0 15px 0 0;
             transition: color 0.3s, transform 0.2s;
         }
 
-        .footer-card .social a:hover {
+        .footer-container .social a:hover {
             color: #e30613 !important;
             transform: scale(1.2);
         }
 
-        .footer-card .contact-info .phone {
-            background: none;
-            color: white;
-            padding: 0;
-        }
-
-        .footer-card .contact-info .phone:hover {
-            background: none;
-            transform: translateX(8px);
-            color: #e30613 !important;
-        }
-
-        .footer-card .contact-info .lang-toggle a {
-            background: none;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .footer-card .contact-info .lang-toggle a:hover {
-            background: none;
-            color: #e30613 !important;
-            transform: none;
-        }
-
-        .footer-card .contact-info .lang-toggle a.active {
-            background: none;
-            color: #e30613;
-            font-weight: 700;
-        }
-
         footer .copyright {
-            margin-top: 40px;
+            margin-top: 30px;
             font-size: 0.95rem;
             text-align: center;
             color: white;
@@ -626,8 +716,26 @@
                 font-size: 1rem;
             }
 
+            #decor-products .products-header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #decor-products .search-container {
+                max-width: 100%;
+                width: 100%;
+            }
+
+            #decor-products h2 {
+                text-align: center;
+            }
+
             .products {
                 grid-template-columns: 1fr;
+            }
+
+            .product {
+                max-width: 100%;
             }
 
             .footer-container {
@@ -635,21 +743,22 @@
                 text-align: center;
             }
 
-            .footer-card {
-                padding: 20px;
+            .footer-container > div {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                padding: 20px 0;
             }
 
-            .footer-card a,
-            .footer-card p {
+            .footer-container > div:last-child {
+                border-bottom: none;
+            }
+
+            .footer-container a {
                 display: inline-block;
             }
 
-            .footer-card .social a {
+            .footer-container .social a {
                 margin: 0 10px;
-            }
-
-            .footer-card .contact-info {
-                align-items: center;
             }
 
             .calculator-popup {
@@ -659,6 +768,14 @@
 
             .calculator {
                 max-width: 100%;
+            }
+
+            .sticky-contact {
+                padding: 12px;
+            }
+
+            .sticky-contact i {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -700,105 +817,168 @@
     <!-- Фоновый блок с текстом -->
     <section id="hero">
         <div class="hero-content">
-            <h2 class="translate" data-key="hero_title">Декор</h2>
-            <p class="translate" data-key="hero_text">Прекрасные декоративные элементы для вашего дома и сада, которые придадут уникальный стиль вашему интерьеру.</p>
+            <h2 class="translate" data-key="hero_title">Арт изделия</h2>
+            <p class="translate" data-key="hero_text">Уникальные арт-изделия для вашего дома и сада, которые придадут изысканный стиль вашему интерьеру.</p>
         </div>
     </section>
 
-    <!-- Секция товаров: Декор -->
+    <!-- Секция товаров: Арт изделия -->
     <section id="decor-products">
         <div class="container">
-            <h2 class="translate" data-key="products_title">Наши товары для декора</h2>
+            <div class="products-header">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="productSearchInput" placeholder="Поиск товаров..." class="translate" data-key="product_search_placeholder">
+                </div>
+                <h2 class="translate" data-key="products_title">Наши арт-изделия</h2>
+            </div>
             <div class="products">
                 <!-- Продукт 1 -->
                 <div class="product" data-id="1">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 1">
-                    <h3 class="translate" data-key="product_1_name">Декор 1</h3>
+                    <div class="image-slider">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/mold_09-850x850.jpg" alt="Арт изделие 1" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Art+Product+1+Alt" alt="Арт изделие 1 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">❮</button>
+                        <button class="next" onclick="changeImage(this, 1)">❯</button>
+                    </div>
+                    <h3 class="translate" data-key="product_1_name">Арт изделие 1</h3>
                     <p class="price translate" data-key="product_1_price">Цена: 1500 грн.</p>
-                    <p class="translate" data-key="product_1_desc">Элегантный декоративный элемент для интерьера. Подходит для гостиной и спальни. Стильный и функциональный аксессуар.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_1_desc">Элегантное арт-изделие для интерьера. Идеально подходит для гостиной и спальни, добавляя утонченности.</p>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
                 <!-- Продукт 2 -->
                 <div class="product" data-id="2">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 2">
-                    <h3 class="translate" data-key="product_2_name">Декор 2</h3>
+                    <div class="image-slider">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/karn6-850x850.jpg" alt="Арт изделие 2" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Art+Product+2+Alt" alt="Арт изделие 2 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">❮</button>
+                        <button class="next" onclick="changeImage(this, 1)">❯</button>
+                    </div>
+                    <h3 class="translate" data-key="product_2_name">Арт изделие 2</h3>
                     <p class="price translate" data-key="product_2_price">Цена: 1200 грн.</p>
-                    <p class="translate" data-key="product_2_desc">Современные часы в стиле ретро. Отлично дополнит любой интерьер, привнесет тепло и уют в ваш дом.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_2_desc">Современные часы в стиле ретро, выполненные как арт-изделие. Добавляют уют и стиль вашему дому.</p>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
                 <!-- Продукт 3 -->
                 <div class="product" data-id="3">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 3">
-                    <h3 class="translate" data-key="product_3_name">Декор 3</h3>
+                    <div class="image-slider">
+                        <img src="https://via.placeholder.com/300x200?text=Mini+Plants" alt="Арт изделие 3" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Mini+Plants+Alt" alt="Арт изделие 3 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">❮</button>
+                        <button class="next" onclick="changeImage(this, 1)">❯</button>
+                    </div>
+                    <h3 class="translate" data-key="product_3_name">Арт изделие 3</h3>
                     <p class="price translate" data-key="product_3_price">Цена: 1000 грн.</p>
-                    <p class="translate" data-key="product_3_desc">Миниатюрные растения в декоративных горшках, которые придадут свежести вашему интерьеру. Легкие в уходе и не требуют много света.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_3_desc">Миниатюрные имитации растений в горшках, выполненные как арт-изделия. Придают свежесть и стиль интерьеру.</p>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
                 <!-- Продукт 4 -->
                 <div class="product" data-id="4">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 4">
-                    <h3 class="translate" data-key="product_4_name">Декор 4</h3>
+                    <div class="image-slider">
+                        <img src="https://kolonist.in.ua/image/cache/catalog/img_products/konsol5-850x850.jpg" alt="Арт изделие 4" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Art+Product+4+Alt" alt="Арт изделие 4 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">❮</button>
+                        <button class="next" onclick="changeImage(this, 1)">❯</button>
+                    </div>
+                    <h3 class="translate" data-key="product_4_name">Арт изделие 4</h3>
                     <p class="price translate" data-key="product_4_price">Цена: 800 грн.</p>
-                    <p class="translate" data-key="product_4_desc">Декоративные подушки для диванов и кресел, которые придают уют и тепло вашей гостиной или спальне. В наличии различные цвета.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_4_desc">Декоративные подушки с арт-элементами для диванов и кресел. Придают уют и изысканность интерьеру.</p>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
 
                 <!-- Продукт 5 -->
                 <div class="product" data-id="5">
-                    <img src="https://via.placeholder.com/300x200" alt="Декор 5">
-                    <h3 class="translate" data-key="product_5_name">Декор 5</h3>
+                    <div class="image-slider">
+                        <img src="https://via.placeholder.com/300x200" alt="Арт изделие 5" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Art+Product+5+Alt" alt="Арт изделие 5 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">❮</button>
+                        <button class="next" onclick="changeImage(this, 1)">❯</button>
+                    </div>
+                    <h3 class="translate" data-key="product_5_name">Арт изделие 5</h3>
                     <p class="price translate" data-key="product_5_price">Цена: 1800 грн.</p>
-                    <p class="translate" data-key="product_5_desc">Кованая декоративная подставка для цветов, которая станет центром внимания в вашем интерьере. Отлично смотрится в любом уголке дома.</p>
-                    <p class="phone translate" data-key="product_phone">Подробнее по телефону: +380 (99) 123-45-67</p>
-                    <button class="add-to-cart translate" data-key="add_to_cart">Добавить в корзину</button>
+                    <p class="translate" data-key="product_5_desc">Подставка для цветов, выполненная как арт-изделие. Станет ярким акцентом в вашем интерьере.</p>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
+                </div>
+
+                <!-- Продукт 6 -->
+                <div class="product" data-id="6">
+                    <div class="image-slider">
+                        <img src="https://via.placeholder.com/300x200" alt="Арт изделие 6" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Art+Product+6+Alt" alt="Арт изделие 6 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">❮</button>
+                        <button class="next" onclick="changeImage(this, 1)">❯</button>
+                    </div>
+                    <h3 class="translate" data-key="product_6_name">Арт изделие 6</h3>
+                    <p class="price translate" data-key="product_6_price">Цена: 1100 грн.</p>
+                    <p class="translate" data-key="product_6_desc">Зеркало с рамой в винтажном стиле, выполненное как арт-изделие. Подходит для прихожей или спальни.</p>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
+                </div>
+
+                <!-- Продукт 7 -->
+                <div class="product" data-id="7">
+                    <div class="image-slider">
+                        <img src="https://via.placeholder.com/300x200" alt="Арт изделие 7" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Art+Product+7+Alt" alt="Арт изделие 7 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">❮</button>
+                        <button class="next" onclick="changeImage(this, 1)">❯</button>
+                    </div>
+                    <h3 class="translate" data-key="product_7_name">Арт изделие 7</h3>
+                    <p class="price translate" data-key="product_7_price">Цена: 900 грн.</p>
+                    <p class="translate" data-key="product_7_desc">Набор ваз для цветов, выполненных как арт-изделия. Стильные и легкие, подходят для любой полки.</p>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
+                </div>
+
+                <!-- Продукт 8 -->
+                <div class="product" data-id="8">
+                    <div class="image-slider">
+                        <img src="https://via.placeholder.com/300x200" alt="Арт изделие 8" class="active">
+                        <img src="https://via.placeholder.com/300x200?text=Art+Product+8+Alt" alt="Арт изделие 8 Альт">
+                        <button class="prev" onclick="changeImage(this, -1)">❮</button>
+                        <button class="next" onclick="changeImage(this, 1)">❯</button>
+                    </div>
+                    <h3 class="translate" data-key="product_8_name">Арт изделие 8</h3>
+                    <p class="price translate" data-key="product_8_price">Цена: 1300 грн.</p>
+                    <p class="translate" data-key="product_8_desc">Настенный светильник, выполненный как арт-изделие. Создает мягкое освещение и уютную атмосферу.</p>
+                    <p class="translate" data-key="product_phone_label">Подробнее по телефону:</p>
+                    <a href="tel:+3801277996" class="phone"><i class="fas fa-phone"></i> +380 12 779 96</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Футер -->
-    <footer>
+    <footer id="footer-info">
         <div class="footer-container">
-            <div class="footer-card">
-                <h3 class="translate" data-key="footer_contacts_title">Контакты</h3>
-                <p class="contact translate" data-key="footer_contacts_text">Тел: +380 12 779 96 | Электронная почта: <a href="mailto:info@navekodessa.com">info@navekodessa.com</a></p>
+            <div>
+                <h3 class="translate" data-key="footer_contacts">Контакты</h3>
+                <p class="contact translate" data-key="footer_contact">Тел: +380 12 779 96 | Электронная почта: <a href="mailto:info@navekodessa.com">info@navekodessa.com</a></p>
                 <p class="translate" data-key="footer_address">Одесса, ул. Моторная, 1</p>
                 <p class="translate" data-key="footer_hours">Пн-Пт, 9:00-18:00</p>
             </div>
-            <div class="footer-card">
-                <h3 class="translate" data-key="footer_navigation_title">Навигация</h3>
+            <div>
+                <h3 class="translate" data-key="footer_navigation">Навигация</h3>
                 <a href="#" class="translate" data-key="home">Вернуться на главную</a>
                 <a href="#footer-info" class="translate" data-key="info">Информация</a>
             </div>
-            <div class="footer-card">
-                <h3 class="translate" data-key="footer_social_title">Социальные сети</h3>
+            <div>
+                <h3 class="translate" data-key="footer_social">Социальные сети</h3>
                 <div class="social">
                     <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-card contact-info" id="footer-info">
-                <h3 class="translate" data-key="footer_info_title">Информация</h3>
-                <a href="tel:+3801277996" class="phone translate" data-key="phone_number"><i class="fas fa-phone"></i> +380 12 779 96</a>
-                <div class="social">
-                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                </div>
-                <div class="lang-toggle">
-                    <a href="#" data-lang="ru" class="lang active">RU</a>
-                    <a href="#" data-lang="en" class="lang">EN</a>
-                    <a href="#" data-lang="ua" class="lang">UA</a>
                 </div>
             </div>
         </div>
-        <p class="copyright translate" data-key="footer_copyright">© 2025 Магазин декоративных товаров. Все права защищены.</p>
+        <p class="copyright translate" data-key="footer_copyright">© 2025 Магазин арт-изделий. Все права защищены.</p>
     </footer>
 
     <!-- Калькулятор -->
@@ -825,6 +1005,9 @@
         </div>
     </div>
 
+    <!-- Sticky Contact -->
+    <a href="tel:+3801277996" class="sticky-contact"><i class="fas fa-phone"></i></a>
+
     <script>
         // Translation data
         const translations = {
@@ -832,34 +1015,42 @@
                 home: "Вернуться на главную",
                 info: "Информация",
                 phone_number: "+380 12 779 96",
-                hero_title: "Декор",
-                hero_text: "Прекрас拼图Прекрасные декоративные элементы для вашего дома и сада, которые придадут уникальный стиль вашему интерьеру.",
-                products_title: "Наши товары для декора",
-                product_1_name: "Декор 1",
+                hero_title: "Арт изделия",
+                hero_text: "Уникальные арт-изделия для вашего дома и сада, которые придадут изысканный стиль вашему интерьеру.",
+                products_title: "Наши арт-изделия",
+                product_1_name: "Арт изделие 1",
                 product_1_price: "Цена: 1500 грн.",
-                product_1_desc: "Элегантный декоративный элемент для интерьера. Подходит для гостиной и спальни. Стильный и функциональный аксессуар.",
-                product_2_name: "Декор 2",
+                product_1_desc: "Элегантное арт-изделие для интерьера. Идеально подходит для гостиной и спальни, добавляя утонченности.",
+                product_2_name: "Арт изделие 2",
                 product_2_price: "Цена: 1200 грн.",
-                product_2_desc: "Современные часы в стиле ретро. Отлично дополнит любой интерьер, привнесет тепло и уют в ваш дом.",
-                product_3_name: "Декор 3",
+                product_2_desc: "Современные часы в стиле ретро, выполненные как арт-изделие. Добавляют уют и стиль вашему дому.",
+                product_3_name: "Арт изделие 3",
                 product_3_price: "Цена: 1000 грн.",
-                product_3_desc: "Миниатюры растений в декоративных горшках, которые придадут свежести вашему интерьеру. Легкие в уходе и не требуют много света.",
-                product_4_name: "Декор 4",
+                product_3_desc: "Миниатюрные имитации растений в горшках, выполненные как арт-изделия. Придают свежесть и стиль интерьеру.",
+                product_4_name: "Арт изделие 4",
                 product_4_price: "Цена: 800 грн.",
-                product_4_desc: "Декоративные подушки для диванов и кресел, которые придают уют и тепло вашей гостиной или спальне. В наличии различные цвета.",
-                product_5_name: "Декор 5",
+                product_4_desc: "Декоративные подушки с арт-элементами для диванов и кресел. Придают уют и изысканность интерьеру.",
+                product_5_name: "Арт изделие 5",
                 product_5_price: "Цена: 1800 грн.",
-                product_5_desc: "Кованая декоративная подставка для цветов, которая станет центром внимания в вашем интерьере. Отлично смотрится в любом уголке дома.",
-                product_phone: "Подробнее по телефону: +380 (99) 123-45-67",
-                add_to_cart: "Добавить в корзину",
-                footer_contacts_title: "Контакты",
-                footer_contacts_text: "Тел: +380 12 779 96 | Электронная почта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
+                product_5_desc: "Подставка для цветов, выполненная как арт-изделие. Станет ярким акцентом в вашем интерьере.",
+                product_6_name: "Арт изделие 6",
+                product_6_price: "Цена: 1100 грн.",
+                product_6_desc: "Зеркало с рамой в винтажном стиле, выполненное как арт-изделие. Подходит для прихожей или спальни.",
+                product_7_name: "Арт изделие 7",
+                product_7_price: "Цена: 900 грн.",
+                product_7_desc: "Набор ваз для цветов, выполненных как арт-изделия. Стильные и легкие, подходят для любой полки.",
+                product_8_name: "Арт изделие 8",
+                product_8_price: "Цена: 1300 грн.",
+                product_8_desc: "Настенный светильник, выполненный как арт-изделие. Создает мягкое освещение и уютную атмосферу.",
+                product_phone_label: "Подробнее по телефону:",
+                product_search_placeholder: "Поиск товаров...",
+                footer_contacts: "Контакты",
+                footer_contact: "Тел: +380 12 779 96 | Электронная почта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
                 footer_address: "Одесса, ул. Моторная, 1",
                 footer_hours: "Пн-Пт, 9:00-18:00",
-                footer_navigation_title: "Навигация",
-                footer_social_title: "Социальные сети",
-                footer_info_title: "Информация",
-                footer_copyright: "© 2025 Магазин декоративных товаров. Все права защищены.",
+                footer_navigation: "Навигация",
+                footer_social: "Социальные сети",
+                footer_copyright: "© 2025 Магазин арт-изделий. Все права защищены.",
                 calculator_title: "Калькулятор объёма",
                 calculator_unit: "Единицы измерения:",
                 calculator_unit_meters: "Метры",
@@ -877,34 +1068,42 @@
                 home: "Return to Home",
                 info: "Information",
                 phone_number: "+380 12 779 96",
-                hero_title: "Decor",
-                hero_text: "Beautiful decorative elements for your home and garden, adding a unique style to your interior.",
-                products_title: "Our Decor Products",
-                product_1_name: "Decor 1",
+                hero_title: "Art Products",
+                hero_text: "Unique art products for your home and garden, adding an exquisite style to your interior.",
+                products_title: "Our Art Products",
+                product_1_name: "Art Product 1",
                 product_1_price: "Price: 1500 UAH",
-                product_1_desc: "Elegant decorative element for the interior. Suitable for living rooms and bedrooms. Stylish and functional accessory.",
-                product_2_name: "Decor 2",
+                product_1_desc: "Elegant art product for the interior. Perfect for living rooms and bedrooms, adding sophistication.",
+                product_2_name: "Art Product 2",
                 product_2_price: "Price: 1200 UAH",
-                product_2_desc: "Modern retro-style clock. Perfectly complements any interior, adding warmth and coziness to your home.",
-                product_3_name: "Decor 3",
+                product_2_desc: "Modern retro-style clock, crafted as an art product. Adds coziness and style to your home.",
+                product_3_name: "Art Product 3",
                 product_3_price: "Price: 1000 UAH",
-                product_3_desc: "Miniature plants in decorative pots that bring freshness to your interior. Easy to care for and require little light.",
-                product_4_name: "Decor 4",
+                product_3_desc: "Miniature plant imitations in pots, crafted as art products. Bring freshness and style to your interior.",
+                product_4_name: "Art Product 4",
                 product_4_price: "Price: 800 UAH",
-                product_4_desc: "Decorative pillows for sofas and armchairs, adding coziness and warmth to your living room or bedroom. Available in various colors.",
-                product_5_name: "Decor 5",
+                product_4_desc: "Decorative pillows with art elements for sofas and armchairs. Add coziness and elegance to your interior.",
+                product_5_name: "Art Product 5",
                 product_5_price: "Price: 1800 UAH",
-                product_5_desc: "Forged decorative flower stand that becomes the centerpiece of your interior. Looks great in any corner of the house.",
-                product_phone: "More details by phone: +380 (99) 123-45-67",
-                add_to_cart: "Add to Cart",
-                footer_contacts_title: "Contacts",
-                footer_contacts_text: "Tel: +380 12 779 96 | Email: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
+                product_5_desc: "Flower stand, crafted as an art product. Becomes a vibrant accent in your interior.",
+                product_6_name: "Art Product 6",
+                product_6_price: "Price: 1100 UAH",
+                product_6_desc: "Mirror with a vintage-style frame, crafted as an art product. Suitable for hallways or bedrooms.",
+                product_7_name: "Art Product 7",
+                product_7_price: "Price: 900 UAH",
+                product_7_desc: "Set of vases for flowers, crafted as art products. Stylish and lightweight, suitable for any shelf.",
+                product_8_name: "Art Product 8",
+                product_8_price: "Price: 1300 UAH",
+                product_8_desc: "Wall-mounted lamp, crafted as an art product. Creates soft lighting and a cozy atmosphere.",
+                product_phone_label: "More details by phone:",
+                product_search_placeholder: "Search products...",
+                footer_contacts: "Contacts",
+                footer_contact: "Tel: +380 12 779 96 | Email: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
                 footer_address: "Odessa, Motorna St, 1",
                 footer_hours: "Mon-Fri, 9:00-18:00",
-                footer_navigation_title: "Navigation",
-                footer_social_title: "Social Media",
-                footer_info_title: "Information",
-                footer_copyright: "© 2025 Decor Store. All rights reserved.",
+                footer_navigation: "Navigation",
+                footer_social: "Social Media",
+                footer_copyright: "© 2025 Art Products Store. All rights reserved.",
                 calculator_title: "Volume Calculator",
                 calculator_unit: "Units of Measurement:",
                 calculator_unit_meters: "Meters",
@@ -922,38 +1121,46 @@
                 home: "Повернутися на головну",
                 info: "Інформація",
                 phone_number: "+380 12 779 96",
-                hero_title: "Декор",
-                hero_text: "Чудові декоративні елементи для вашого дому та саду, які додадуть унікальний стиль вашому інтер'єру.",
-                products_title: "Наші товари для декору",
-                product_1_name: "Декор 1",
+                hero_title: "Арт-вироби",
+                hero_text: "Унікальні арт-вироби для вашого дому та саду, які додадуть вишуканий стиль вашому інтер'єру.",
+                products_title: "Наші арт-вироби",
+                product_1_name: "Арт-виріб 1",
                 product_1_price: "Ціна: 1500 грн.",
-                product_1_desc: "Елегантний декоративний елемент для інтер'єру. Підходить для вітальні та спальні. Стильний і функціональний аксесуар.",
-                product_2_name: "Декор 2",
+                product_1_desc: "Елегантний арт-виріб для інтер'єру. Ідеально підходить для вітальні та спальні, додаючи вишуканості.",
+                product_2_name: "Арт-виріб 2",
                 product_2_price: "Ціна: 1200 грн.",
-                product_2_desc: "Сучасний годинник у стилі ретро. Ідеально доповнить будь-який інтер'єр, додасть тепла та затишку вашому дому.",
-                product_3_name: "Декор 3",
+                product_2_desc: "Сучасний годинник у стилі ретро, виконаний як арт-виріб. Додає затишку та стилю вашому дому.",
+                product_3_name: "Арт-виріб 3",
                 product_3_price: "Ціна: 1000 грн.",
-                product_3_desc: "Мініатюрні рослини в декоративних горщиках, які додадуть свіжості вашому інтер'єру. Легкі у догляді та не потребують багато світла.",
-                product_4_name: "Декор 4",
+                product_3_desc: "Мініатюрні імітації рослин у горщиках, виконані як арт-вироби. Додають свіжості та стилю інтер'єру.",
+                product_4_name: "Арт-виріб 4",
                 product_4_price: "Ціна: 800 грн.",
-                product_4_desc: "Декоративні подушки для диванів і крісел, які додають затишку та тепла вашій вітальні чи спальні. Доступні різні кольори.",
-                product_5_name: "Декор 5",
+                product_4_desc: "Декоративні подушки з арт-елементами для диванів і крісел. Додають затишку та вишуканості інтер'єру.",
+                product_5_name: "Арт-виріб 5",
                 product_5_price: "Ціна: 1800 грн.",
-                product_5_desc: "Кована декоративна підставка для квітів, яка стане центром уваги у вашому інтер'єрі. Чудово виглядає в будь-якому куточку дому.",
-                product_phone: "Детальніше за телефоном: +380 (99) 123-45-67",
-                add_to_cart: "Додати до кошика",
-                footer_contacts_title: "Контакти",
-                footer_contacts_text: "Тел: +380 12 779 96 | Електронна пошта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
+                product_5_desc: "Підставка для квітів, виконана як арт-виріб. Стане яскравим акцентом у вашому інтер'єрі.",
+                product_6_name: "Арт-виріб 6",
+                product_6_price: "Ціна: 1100 грн.",
+                product_6_desc: "Дзеркало з рамою у вінтажному стилі, виконане як арт-виріб. Підходить для передпокою або спальні.",
+                product_7_name: "Арт-виріб 7",
+                product_7_price: "Ціна: 900 грн.",
+                product_7_desc: "Набір ваз для квітів, виконаних як арт-вироби. Стильні та легкі, підходять для будь-якої полиці.",
+                product_8_name: "Арт-виріб 8",
+                product_8_price: "Ціна: 1300 грн.",
+                product_8_desc: "Настінний світильник, виконаний як арт-виріб. Створює м'яке освітлення та затишну атмосферу.",
+                product_phone_label: "Детальніше за телефоном:",
+                product_search_placeholder: "Пошук товарів...",
+                footer_contacts: "Контакти",
+                footer_contact: "Тел: +380 12 779 96 | Електронна пошта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
                 footer_address: "Одеса, вул. Моторна, 1",
                 footer_hours: "Пн-Пт, 9:00-18:00",
-                footer_navigation_title: "Навігація",
-                footer_social_title: "Соціальні мережі",
-                footer_info_title: "Інформація",
-                footer_copyright: "© 2025 Магазин декоративних товарів. Усі права захищені.",
+                footer_navigation: "Навігація",
+                footer_social: "Соціальні мережі",
+                footer_copyright: "© 2025 Магазин арт-виробів. Усі права захищені.",
                 calculator_title: "Калькулятор об'єму",
                 calculator_unit: "Одиниці вимірювання:",
                 calculator_unit_meters: "Метри",
-                calculator_unit_centimeters: "Сантиметры",
+                calculator_unit_centimeters: "Сантиметри",
                 calculator_unit_millimeters: "Міліметри",
                 calculator_length: "Довжина:",
                 calculator_width: "Ширина:",
@@ -1003,22 +1210,6 @@
             document.getElementById('areaResult').textContent = `${translations[currentLang].calculator_area}: ${lastArea.toFixed(3)} м²`;
         }
 
-        // Add event listeners to all "Add to Cart" buttons
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', function() {
-                const product = this.parentElement;
-                const productId = product.getAttribute('data-id');
-                const productName = product.querySelector('h3').textContent;
-                const productPrice = product.querySelector('.price').textContent;
-
-                // Log to console (can be replaced with actual cart functionality)
-                console.log(`Added to cart: ${productName} (ID: ${productId}) - ${productPrice}`);
-
-                // Show alert to user
-                alert(`${productName} ${translations[currentLang].add_to_cart.toLowerCase()}!`);
-            });
-        });
-
         // Header scroll effect
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
@@ -1066,8 +1257,39 @@
                     document.getElementById('volumeResult').textContent = `${translations[currentLang].calculator_volume}: ${lastVolume.toFixed(3)} м³`;
                     document.getElementById('areaResult').textContent = `${translations[currentLang].calculator_area}: ${lastArea.toFixed(3)} м²`;
                 }
+
+                // Trigger search to update filtered products with new language
+                searchProducts();
             });
         });
+
+        // Search functionality
+        function searchProducts() {
+            const input = document.getElementById('productSearchInput').value.toLowerCase();
+            const products = document.querySelectorAll('.product');
+
+            products.forEach(product => {
+                const name = product.querySelector('h3.translate').textContent.toLowerCase();
+                const desc = product.querySelector('p.translate[data-key^="product_"][data-key$="_desc"]').textContent.toLowerCase();
+                if (name.includes(input) || desc.includes(input)) {
+                    product.classList.remove('hidden');
+                } else {
+                    product.classList.add('hidden');
+                }
+            });
+        }
+
+        document.getElementById('productSearchInput').addEventListener('input', searchProducts);
+
+        // Image slider functionality
+        function changeImage(button, direction) {
+            const slider = button.parentElement;
+            const images = slider.querySelectorAll('img');
+            let currentIndex = Array.from(images).findIndex(img => img.classList.contains('active'));
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            images[currentIndex].classList.add('active');
+        }
     </script>
 </body>
 </html>
