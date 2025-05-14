@@ -454,6 +454,32 @@
             transform: none;
         }
 
+        /* Переопределение стилей для кнопки "Следующая" */
+        .pagination a[data-key="pagination_next"] {
+            color: #999;
+            background: #f5f7fa;
+            cursor: not-allowed;
+        }
+
+        .pagination a[data-key="pagination_next"]:hover {
+            background: #f5f7fa;
+            color: #999;
+            transform: none;
+        }
+
+        /* Переопределение стилей для кнопки "Предыдущая" */
+        .pagination a[data-key="pagination_prev"] {
+            color: #0033A0;
+            background: #fff0f0;
+            cursor: pointer;
+        }
+
+        .pagination a[data-key="pagination_prev"]:hover {
+            background-color: #e30613;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
         /* Calculator Popup */
         .calculator-popup {
             position: fixed;
@@ -723,11 +749,41 @@
                 top: 100%;
                 left: 0;
                 padding: 20px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0	/* ... остальной CSS код остается без изменений ... */
-</style>
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .contact-info {
+                display: none;
+            }
+
+            .contact-info.active {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background: linear-gradient(to bottom, #00205b, #0033A0);
+                position: absolute;
+                top: calc(100% + 60px);
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-
     <!-- Шапка -->
     <header>
         <div class="header-container">
@@ -902,7 +958,7 @@
                 <!-- Продукт 11 -->
                 <div class="product" data-id="11">
                     <div class="image-slider">
-                        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1372192738715500554/-27.jpg?ex=6825e193&is=68249013&hm=bdbf4f89e46929ac98b375f573b8f81a0eb3f9efe38188b042d5f12219ff7b51&" alt="Фасадний inclusão карниз К 9" class="active">
+                        <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1372192738715500554/-27.jpg?ex=6825e193&is=68249013&hm=bdbf4f89e46929ac98b375f573b8f81a0eb3f9efe38188b042d5f12219ff7b51&" alt="Фасадний карниз К 9" class="active">
                         <img src="https://via.placeholder.com/300x200?text=Molding+11+Alt" alt="Фасадний карниз К 9 Альт">
                         <button class="prev" onclick="changeImage(this, -1)">❮</button>
                         <button class="next" onclick="changeImage(this, 1)">❯</button>
@@ -936,7 +992,7 @@
         </div>
     </section>
 
-    <!-- Футер -->а п
+    <!-- Футер -->
     <footer id="footer-info">
         <div class="footer-container">
             <div>
