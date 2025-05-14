@@ -337,7 +337,7 @@
         }
 
         .calculator {
-            background-color: #fff;
+            background drastically: #fff;
             padding: 25px;
             border-radius: 12px;
             border: 1px solid #e6f0ff;
@@ -736,7 +736,7 @@
                 <!-- Категория: Карнизы -->
                 <div class="category">
                     <img src="https://cdn.discordapp.com/attachments/1251956990842900563/1371476441442553887/fk1_1-465x465.png?ex=68234678&is=6821f4f8&hm=124a4001e1bda5629f82f02c15f09c0cf6f6e3d51417bb03960980c3961c84ed&" alt="Карнизи">
-                    <h3 class="translate" data-key="category_cornices_name">Карнизи</h3>
+                    <h3 class="translate" data-key="category_cornices_name">Карнизы</h3>
                     <p class="translate" data-key="category_cornices_desc">Фасадные карнизы для украшения зданий, устойчивые к погодным условиям.</p>
                     <a href="decor.html" class="translate" data-key="view_products">Посмотреть товары</a>
                 </div>
@@ -779,6 +779,14 @@
                     <h3 class="translate" data-key="category_rustication_name">Русти</h3>
                     <p class="translate" data-key="category_rustication_desc">Элементы для создания текстурного оформления фасадов.</p>
                     <a href="rysti.html" class="translate" data-key="view_products">Посмотреть товары</a>
+                </div>
+
+                <!-- Категория: Межэтажные декоры -->
+                <div class="category">
+                    <img src="https://ermitagedecor.com.ua/image/cache/catalog/megetazhnye-dekory/mezh1-950x950.jpg" alt="Межэтажные декоры">
+                    <h3 class="translate" data-key="category_interfloor_decors_name">Межэтажные декоры</h3>
+                    <p class="translate" data-key="category_interfloor_decors_desc">Декоративные элементы для оформления межэтажных пространств, добавляющие эстетику фасаду.</p>
+                    <a href="mezhetazhnye.html" class="translate" data-key="view_products">Посмотреть товары</a>
                 </div>
             </div>
         </div>
@@ -862,6 +870,8 @@
                 category_keystone_panels_desc: "Декоративные панели для акцента на арках и проемах.",
                 category_rustication_name: "Русты",
                 category_rustication_desc: "Элементы для создания текстурного оформления фасадов.",
+                category_interfloor_decors_name: "Межэтажные декоры",
+                category_interfloor_decors_desc: "Декоративные элементы для оформления межэтажных пространств, добавляющие эстетику фасаду.",
                 view_products: "Посмотреть товары",
                 footer_contacts: "Контакты",
                 footer_contact: "Тел: +380 12 779 96 | Электронная почта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
@@ -906,6 +916,8 @@
                 category_keystone_panels_desc: "Decorative panels for accentuating arches and openings.",
                 category_rustication_name: "Rustication",
                 category_rustication_desc: "Elements for textured facade decoration.",
+                category_interfloor_decors_name: "Interfloor Decors",
+                category_interfloor_decors_desc: "Decorative elements for interfloor spaces, enhancing facade aesthetics.",
                 view_products: "View Products",
                 footer_contacts: "Contacts",
                 footer_contact: "Tel: +380 12 779 96 | Email: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
@@ -950,6 +962,8 @@
                 category_keystone_panels_desc: "Декоративні панелі для акценту на арках і отворах.",
                 category_rustication_name: "Русти",
                 category_rustication_desc: "Елементи для створення текстурного оформлення фасадів.",
+                category_interfloor_decors_name: "Міжповерхові декори",
+                category_interfloor_decors_desc: "Декоративні елементи для оформлення міжповерхових просторів, що додають естетику фасаду.",
                 view_products: "Переглянути товари",
                 footer_contacts: "Контакти",
                 footer_contact: "Тел: +380 12 779 96 | Електронна пошта: <a href='mailto:info@navekodessa.com'>info@navekodessa.com</a>",
@@ -965,7 +979,7 @@
                 calculator_unit_millimeters: "Міліметри",
                 calculator_length: "Довжина:",
                 calculator_width: "Ширина:",
-                calculator_height: "Висота:",
+                calculator_height: "В lucre:",
                 calculator_calculate: "Розрахувати",
                 calculator_volume: "Об'єм",
                 calculator_area: "Площа поверхні",
@@ -977,4 +991,67 @@
         function toggleMenu() {
             const menu = document.getElementById('menu');
             const contactInfo = document.getElementById('contact-info');
-            BaselineException: Unhandled exception in the conversation turn: InvalidOperationException: The conversation turn has already been executed and cannot be re-executed. Ensure that the turn is not being reused or reprocessed after execution.
+            menu.classList.toggle('active');
+            contactInfo.classList.toggle('active');
+            document.querySelector('.menu-toggle').classList.toggle('active');
+        }
+
+        // Toggle calculator popup
+        function toggleCalculator() {
+            const calculatorPopup = document.getElementById('calculatorPopup');
+            calculatorPopup.classList.toggle('active');
+        }
+
+        // Calculate volume
+        function calculateVolume() {
+            const unit = parseFloat(document.getElementById('unit').value);
+            const length = parseFloat(document.getElementById('length').value) * unit;
+            const width = parseFloat(document.getElementById('width').value) * unit;
+            const height = parseFloat(document.getElementById('height').value) * unit;
+            const volumeResult = document.getElementById('volumeResult');
+            const areaResult = document.getElementById('areaResult');
+
+            if (isNaN(length) || isNaN(width) || isNaN(height)) {
+                volumeResult.textContent = translations[currentLang].calculator_error;
+                areaResult.textContent = '';
+                return;
+            }
+
+            const volume = length * width * height;
+            const surfaceArea = 2 * (length * width + length * height + width * height);
+            volumeResult.textContent = `${translations[currentLang].calculator_volume}: ${volume.toFixed(2)} м³`;
+            areaResult.textContent = `${translations[currentLang].calculator_area}: ${surfaceArea.toFixed(2)} м²`;
+        }
+
+        // Language switcher
+        let currentLang = 'ru';
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.translate').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (element.classList.contains('contact')) {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            document.querySelectorAll('.lang').forEach(link => {
+                link.classList.toggle('active', link.getAttribute('data-lang') === lang);
+            });
+        }
+
+        document.querySelectorAll('.lang').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                setLanguage(link.getAttribute('data-lang'));
+            });
+        });
+
+        // Initial language setup
+        setLanguage('ru');
+    </script>
+</body>
+</html>
